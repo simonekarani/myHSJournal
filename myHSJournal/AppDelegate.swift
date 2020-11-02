@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  myHSJournal
 //
-//  Created by Vijay Karani on 10/25/20.
+//  Created by Simone Karani on 10/25/20.
 //  Copyright © 2020 simonekarani. All rights reserved.
 //
 

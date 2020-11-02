@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E348254F2D17006BAB7A /* MainScreenController.swift */; };
+		2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */; };
+		2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */; };
+		2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */; };
+		2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */; };
+		2C9FBA0925500DD000D9F4BD /* SeniorScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0825500DD000D9F4BD /* SeniorScreenController.swift */; };
+		2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0A25500E6A00D9F4BD /* MyAchievementScreenController.swift */; };
+		2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */; };
 		2CF710B92546366800D5FFE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF710B82546366800D5FFE6 /* AppDelegate.swift */; };
 		2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF710BA2546366800D5FFE6 /* ViewController.swift */; };
 		2CF710BE2546366800D5FFE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CF710BC2546366800D5FFE6 /* Main.storyboard */; };
@@ -16,6 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C16E348254F2D17006BAB7A /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
+		2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionCell.swift; sourceTree = "<group>"; };
+		2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshmenScreenController.swift; sourceTree = "<group>"; };
+		2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SophomoreScreenController.swift; sourceTree = "<group>"; };
+		2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuniorScreenController.swift; sourceTree = "<group>"; };
+		2C9FBA0825500DD000D9F4BD /* SeniorScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeniorScreenController.swift; sourceTree = "<group>"; };
+		2C9FBA0A25500E6A00D9F4BD /* MyAchievementScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAchievementScreenController.swift; sourceTree = "<group>"; };
+		2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeHSScreenController.swift; sourceTree = "<group>"; };
 		2CF710B52546366800D5FFE6 /* myHSJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myHSJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF710B82546366800D5FFE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CF710BA2546366800D5FFE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +53,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C16E347254F2CD0006BAB7A /* MainHS Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2C16E348254F2D17006BAB7A /* MainScreenController.swift */,
+				2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */,
+			);
+			path = "MainHS Screen";
+			sourceTree = "<group>";
+		};
+		2C9FBA0025500CD900D9F4BD /* HS Grades */ = {
+			isa = PBXGroup;
+			children = (
+				2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */,
+				2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */,
+				2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */,
+				2C9FBA0825500DD000D9F4BD /* SeniorScreenController.swift */,
+				2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */,
+			);
+			path = "HS Grades";
+			sourceTree = "<group>";
+		};
+		2C9FBA0125500D0800D9F4BD /* HS Results */ = {
+			isa = PBXGroup;
+			children = (
+				2C9FBA0A25500E6A00D9F4BD /* MyAchievementScreenController.swift */,
+			);
+			path = "HS Results";
+			sourceTree = "<group>";
+		};
 		2CF710AC2546366800D5FFE6 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +101,9 @@
 		2CF710B72546366800D5FFE6 /* myHSJournal */ = {
 			isa = PBXGroup;
 			children = (
+				2C9FBA0125500D0800D9F4BD /* HS Results */,
+				2C9FBA0025500CD900D9F4BD /* HS Grades */,
+				2C16E347254F2CD0006BAB7A /* MainHS Screen */,
 				2CF710B82546366800D5FFE6 /* AppDelegate.swift */,
 				2CF710BA2546366800D5FFE6 /* ViewController.swift */,
 				2CF710BC2546366800D5FFE6 /* Main.storyboard */,
@@ -138,8 +186,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C9FBA0925500DD000D9F4BD /* SeniorScreenController.swift in Sources */,
+				2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */,
+				2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */,
+				2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */,
+				2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */,
+				2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */,
+				2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */,
 				2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */,
 				2CF710B92546366800D5FFE6 /* AppDelegate.swift in Sources */,
+				2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */,
 				2CF710C12546366800D5FFE6 /* myHSJournal.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

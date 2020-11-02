@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  myHSJournal
 //
-//  Created by Vijay Karani on 10/25/20.
+//  Created by Simone Karani on 10/25/20.
 //  Copyright © 2020 simonekarani. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        performSegue(withIdentifier: "gotoHSMainScreen", sender: self)
     }
-
-
+    
 }
 
