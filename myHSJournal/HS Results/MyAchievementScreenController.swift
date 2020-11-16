@@ -13,5 +13,7 @@ class MyAchievementScreenController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        performSegue(withIdentifier: "gotoAchievementsRec", sender: self)
     }
 }

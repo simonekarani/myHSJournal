@@ -13,5 +13,7 @@ class SeniorScreenController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        performSegue(withIdentifier: "gotoSeniorRec", sender: self)
     }
 }

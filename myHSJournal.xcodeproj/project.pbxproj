@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C093E032557B8FF008F7659 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C093E022557B8FF008F7659 /* RoundButton.swift */; };
 		2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E348254F2D17006BAB7A /* MainScreenController.swift */; };
 		2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */; };
+		2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */; };
 		2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */; };
 		2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */; };
 		2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */; };
@@ -24,8 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C093E022557B8FF008F7659 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		2C16E348254F2D17006BAB7A /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionCell.swift; sourceTree = "<group>"; };
+		2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolRecordDetailsController.swift; sourceTree = "<group>"; };
 		2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshmenScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SophomoreScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuniorScreenController.swift; sourceTree = "<group>"; };
@@ -53,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C093E012557B8BC008F7659 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2C093E022557B8FF008F7659 /* RoundButton.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		2C16E347254F2CD0006BAB7A /* MainHS Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +82,7 @@
 				2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */,
 				2C9FBA0825500DD000D9F4BD /* SeniorScreenController.swift */,
 				2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */,
+				2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */,
 			);
 			path = "HS Grades";
 			sourceTree = "<group>";
@@ -101,6 +114,7 @@
 		2CF710B72546366800D5FFE6 /* myHSJournal */ = {
 			isa = PBXGroup;
 			children = (
+				2C093E012557B8BC008F7659 /* Helpers */,
 				2C9FBA0125500D0800D9F4BD /* HS Results */,
 				2C9FBA0025500CD900D9F4BD /* HS Grades */,
 				2C16E347254F2CD0006BAB7A /* MainHS Screen */,
@@ -192,7 +206,9 @@
 				2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */,
 				2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */,
 				2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */,
+				2C093E032557B8FF008F7659 /* RoundButton.swift in Sources */,
 				2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */,
+				2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */,
 				2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */,
 				2CF710B92546366800D5FFE6 /* AppDelegate.swift in Sources */,
 				2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */,

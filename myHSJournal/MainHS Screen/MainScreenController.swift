@@ -11,7 +11,7 @@ import UIKit
 
 class MainScreenController: UICollectionViewController {
     
-    let frontLabelArray = ["Before 9th", "Freshmen", "Sophomore", "Junior","Senior", "My Achievements"]
+    let frontLabelArray = ["Pre High School", "Freshmen Year", "Sophomore Year", "Junior Year", "Senior Year", "My Achievements"]
     let frontImageArray = [
         UIImage(named: "beforeHS"),
         UIImage(named: "grade9"),
