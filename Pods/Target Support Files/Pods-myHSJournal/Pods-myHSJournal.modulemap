@@ -1,0 +1,6 @@
+module Pods_myHSJournal {
+  umbrella header "Pods-myHSJournal-umbrella.h"
+
+  export *
+  module * { export * }
+}

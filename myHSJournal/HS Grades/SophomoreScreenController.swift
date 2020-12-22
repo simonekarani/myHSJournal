@@ -14,6 +14,11 @@ class SophomoreScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadHSRecords()
         performSegue(withIdentifier: "gotoSophomoreRec", sender: self)
+    }
+    
+    func loadHSRecords() {
+        
     }
 }

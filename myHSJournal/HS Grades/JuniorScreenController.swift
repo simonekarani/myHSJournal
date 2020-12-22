@@ -14,6 +14,11 @@ class JuniorScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadHSRecords()
         performSegue(withIdentifier: "gotoJuniorRec", sender: self)
+    }
+
+    func loadHSRecords() {
+        
     }
 }

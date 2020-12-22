@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		178C0300C2A41E0672D1329D /* libPods-myHSJournal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94711D0EC626ADE7280B5B0B /* libPods-myHSJournal.a */; };
 		2C093E032557B8FF008F7659 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C093E022557B8FF008F7659 /* RoundButton.swift */; };
 		2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E348254F2D17006BAB7A /* MainScreenController.swift */; };
 		2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */; };
@@ -17,6 +18,7 @@
 		2C9FBA0925500DD000D9F4BD /* SeniorScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0825500DD000D9F4BD /* SeniorScreenController.swift */; };
 		2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0A25500E6A00D9F4BD /* MyAchievementScreenController.swift */; };
 		2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */; };
+		2CA1AFC425908A9900147769 /* HSRecType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1AFC325908A9900147769 /* HSRecType.swift */; };
 		2CF710B92546366800D5FFE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF710B82546366800D5FFE6 /* AppDelegate.swift */; };
 		2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF710BA2546366800D5FFE6 /* ViewController.swift */; };
 		2CF710BE2546366800D5FFE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CF710BC2546366800D5FFE6 /* Main.storyboard */; };
@@ -26,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1FD0F7F69C47FDDDFB6EE5 /* Pods-myHSJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myHSJournal.release.xcconfig"; path = "Target Support Files/Pods-myHSJournal/Pods-myHSJournal.release.xcconfig"; sourceTree = "<group>"; };
 		2C093E022557B8FF008F7659 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		2C16E348254F2D17006BAB7A /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionCell.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		2C9FBA0825500DD000D9F4BD /* SeniorScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeniorScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0A25500E6A00D9F4BD /* MyAchievementScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAchievementScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeHSScreenController.swift; sourceTree = "<group>"; };
+		2CA1AFC325908A9900147769 /* HSRecType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecType.swift; sourceTree = "<group>"; };
 		2CF710B52546366800D5FFE6 /* myHSJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myHSJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF710B82546366800D5FFE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CF710BA2546366800D5FFE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +48,8 @@
 		2CF710C22546366800D5FFE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CF710C52546366800D5FFE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CF710C72546366800D5FFE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4189BDB64A75809437BD9D22 /* Pods-myHSJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myHSJournal.debug.xcconfig"; path = "Target Support Files/Pods-myHSJournal/Pods-myHSJournal.debug.xcconfig"; sourceTree = "<group>"; };
+		94711D0EC626ADE7280B5B0B /* libPods-myHSJournal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myHSJournal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				178C0300C2A41E0672D1329D /* libPods-myHSJournal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				2C093E022557B8FF008F7659 /* RoundButton.swift */,
+				2CA1AFC325908A9900147769 /* HSRecType.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -95,11 +103,21 @@
 			path = "HS Results";
 			sourceTree = "<group>";
 		};
+		2CA1AFC0258F2F8000147769 /* HS DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				2CF710BF2546366800D5FFE6 /* myHSJournal.xcdatamodeld */,
+			);
+			path = "HS DataModel";
+			sourceTree = "<group>";
+		};
 		2CF710AC2546366800D5FFE6 = {
 			isa = PBXGroup;
 			children = (
 				2CF710B72546366800D5FFE6 /* myHSJournal */,
 				2CF710B62546366800D5FFE6 /* Products */,
+				8546211334F1443A9A3403E0 /* Pods */,
+				5A12622368806D49EBEE533B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +132,7 @@
 		2CF710B72546366800D5FFE6 /* myHSJournal */ = {
 			isa = PBXGroup;
 			children = (
+				2CA1AFC0258F2F8000147769 /* HS DataModel */,
 				2C093E012557B8BC008F7659 /* Helpers */,
 				2C9FBA0125500D0800D9F4BD /* HS Results */,
 				2C9FBA0025500CD900D9F4BD /* HS Grades */,
@@ -124,9 +143,25 @@
 				2CF710C22546366800D5FFE6 /* Assets.xcassets */,
 				2CF710C42546366800D5FFE6 /* LaunchScreen.storyboard */,
 				2CF710C72546366800D5FFE6 /* Info.plist */,
-				2CF710BF2546366800D5FFE6 /* myHSJournal.xcdatamodeld */,
 			);
 			path = myHSJournal;
+			sourceTree = "<group>";
+		};
+		5A12622368806D49EBEE533B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94711D0EC626ADE7280B5B0B /* libPods-myHSJournal.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8546211334F1443A9A3403E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4189BDB64A75809437BD9D22 /* Pods-myHSJournal.debug.xcconfig */,
+				0E1FD0F7F69C47FDDDFB6EE5 /* Pods-myHSJournal.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CF710CA2546366800D5FFE6 /* Build configuration list for PBXNativeTarget "myHSJournal" */;
 			buildPhases = (
+				3F9848B79C6F00E86F8F6306 /* [CP] Check Pods Manifest.lock */,
 				2CF710B12546366800D5FFE6 /* Sources */,
 				2CF710B22546366800D5FFE6 /* Frameworks */,
 				2CF710B32546366800D5FFE6 /* Resources */,
+				04650179E78A93BE55B4E40F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,6 +232,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		04650179E78A93BE55B4E40F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-myHSJournal/Pods-myHSJournal-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-myHSJournal/Pods-myHSJournal-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myHSJournal/Pods-myHSJournal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F9848B79C6F00E86F8F6306 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-myHSJournal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2CF710B12546366800D5FFE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -203,6 +282,7 @@
 				2C9FBA0925500DD000D9F4BD /* SeniorScreenController.swift in Sources */,
 				2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */,
 				2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */,
+				2CA1AFC425908A9900147769 /* HSRecType.swift in Sources */,
 				2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */,
 				2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */,
 				2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */,
@@ -356,6 +436,7 @@
 		};
 		2CF710CB2546366800D5FFE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4189BDB64A75809437BD9D22 /* Pods-myHSJournal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -373,6 +454,7 @@
 		};
 		2CF710CC2546366800D5FFE6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E1FD0F7F69C47FDDDFB6EE5 /* Pods-myHSJournal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

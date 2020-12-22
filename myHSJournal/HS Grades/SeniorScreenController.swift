@@ -14,6 +14,11 @@ class SeniorScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadHSRecords()
         performSegue(withIdentifier: "gotoSeniorRec", sender: self)
+    }
+
+    func loadHSRecords() {
+        
     }
 }
