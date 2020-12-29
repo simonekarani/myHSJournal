@@ -11,7 +11,14 @@
 		2C093E032557B8FF008F7659 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C093E022557B8FF008F7659 /* RoundButton.swift */; };
 		2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E348254F2D17006BAB7A /* MainScreenController.swift */; };
 		2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */; };
+		2C25E27F2599E0F400E38467 /* HSRecNoValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C25E27D2599E0F400E38467 /* HSRecNoValueTableViewCell.swift */; };
+		2C25E2802599E0F400E38467 /* HSRecNoValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C25E27E2599E0F400E38467 /* HSRecNoValueTableViewCell.xib */; };
 		2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */; };
+		2C6BF4AC259341D6002641EC /* SchoolYearType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4AB259341D6002641EC /* SchoolYearType.swift */; };
+		2C6BF4B72596EFBE002641EC /* HSRecTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */; };
+		2C6BF4B82596EFBE002641EC /* HSRecTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */; };
+		2C6BF4BB2596EFEB002641EC /* HSRecDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B92596EFEB002641EC /* HSRecDetailTableViewCell.swift */; };
+		2C6BF4BC2596EFEB002641EC /* HSRecDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6BF4BA2596EFEB002641EC /* HSRecDetailTableViewCell.xib */; };
 		2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */; };
 		2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */; };
 		2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */; };
@@ -32,7 +39,14 @@
 		2C093E022557B8FF008F7659 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		2C16E348254F2D17006BAB7A /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionCell.swift; sourceTree = "<group>"; };
+		2C25E27D2599E0F400E38467 /* HSRecNoValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecNoValueTableViewCell.swift; sourceTree = "<group>"; };
+		2C25E27E2599E0F400E38467 /* HSRecNoValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSRecNoValueTableViewCell.xib; sourceTree = "<group>"; };
 		2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolRecordDetailsController.swift; sourceTree = "<group>"; };
+		2C6BF4AB259341D6002641EC /* SchoolYearType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolYearType.swift; sourceTree = "<group>"; };
+		2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecTitleTableViewCell.swift; sourceTree = "<group>"; };
+		2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSRecTitleTableViewCell.xib; sourceTree = "<group>"; };
+		2C6BF4B92596EFEB002641EC /* HSRecDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecDetailTableViewCell.swift; sourceTree = "<group>"; };
+		2C6BF4BA2596EFEB002641EC /* HSRecDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSRecDetailTableViewCell.xib; sourceTree = "<group>"; };
 		2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshmenScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SophomoreScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuniorScreenController.swift; sourceTree = "<group>"; };
@@ -69,6 +83,7 @@
 			children = (
 				2C093E022557B8FF008F7659 /* RoundButton.swift */,
 				2CA1AFC325908A9900147769 /* HSRecType.swift */,
+				2C6BF4AB259341D6002641EC /* SchoolYearType.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -91,6 +106,12 @@
 				2C9FBA0825500DD000D9F4BD /* SeniorScreenController.swift */,
 				2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */,
 				2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */,
+				2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */,
+				2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */,
+				2C6BF4B92596EFEB002641EC /* HSRecDetailTableViewCell.swift */,
+				2C25E27D2599E0F400E38467 /* HSRecNoValueTableViewCell.swift */,
+				2C25E27E2599E0F400E38467 /* HSRecNoValueTableViewCell.xib */,
+				2C6BF4BA2596EFEB002641EC /* HSRecDetailTableViewCell.xib */,
 			);
 			path = "HS Grades";
 			sourceTree = "<group>";
@@ -225,7 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CF710C62546366800D5FFE6 /* LaunchScreen.storyboard in Resources */,
+				2C6BF4BC2596EFEB002641EC /* HSRecDetailTableViewCell.xib in Resources */,
+				2C25E2802599E0F400E38467 /* HSRecNoValueTableViewCell.xib in Resources */,
 				2CF710C32546366800D5FFE6 /* Assets.xcassets in Resources */,
+				2C6BF4B82596EFBE002641EC /* HSRecTitleTableViewCell.xib in Resources */,
 				2CF710BE2546366800D5FFE6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,17 +303,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C6BF4BB2596EFEB002641EC /* HSRecDetailTableViewCell.swift in Sources */,
 				2C9FBA0925500DD000D9F4BD /* SeniorScreenController.swift in Sources */,
 				2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */,
 				2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */,
 				2CA1AFC425908A9900147769 /* HSRecType.swift in Sources */,
 				2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */,
+				2C6BF4AC259341D6002641EC /* SchoolYearType.swift in Sources */,
 				2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */,
 				2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */,
 				2C093E032557B8FF008F7659 /* RoundButton.swift in Sources */,
 				2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */,
+				2C25E27F2599E0F400E38467 /* HSRecNoValueTableViewCell.swift in Sources */,
 				2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */,
 				2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */,
+				2C6BF4B72596EFBE002641EC /* HSRecTitleTableViewCell.swift in Sources */,
 				2CF710B92546366800D5FFE6 /* AppDelegate.swift in Sources */,
 				2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */,
 				2CF710C12546366800D5FFE6 /* myHSJournal.xcdatamodeld in Sources */,

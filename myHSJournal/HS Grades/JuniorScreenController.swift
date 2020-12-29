@@ -14,10 +14,19 @@ class JuniorScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addTapped)
+        )
+        
         loadHSRecords()
-        performSegue(withIdentifier: "gotoJuniorRec", sender: self)
     }
 
+    @objc private func addTapped() {
+        performSegue(withIdentifier: "gotoJuniorRec", sender: self)
+    }
+    
     func loadHSRecords() {
         
     }

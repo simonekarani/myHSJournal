@@ -111,17 +111,32 @@
                     <view key="view" contentMode="scaleToFill" id="9RX-eV-hau">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FlI-8s-XDD">
+                                <rect key="frame" x="5" y="74" width="365" height="588"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FlI-8s-XDD" firstAttribute="top" secondItem="Yto-id-qIs" secondAttribute="top" constant="10" id="GDp-HD-Ua3"/>
+                            <constraint firstItem="Yto-id-qIs" firstAttribute="trailing" secondItem="FlI-8s-XDD" secondAttribute="trailing" constant="5" id="WJc-aK-kbZ"/>
+                            <constraint firstItem="Yto-id-qIs" firstAttribute="bottom" secondItem="FlI-8s-XDD" secondAttribute="bottom" constant="5" id="kO8-rk-uMB"/>
+                            <constraint firstItem="FlI-8s-XDD" firstAttribute="leading" secondItem="Yto-id-qIs" secondAttribute="leading" constant="5" id="u86-qN-Rrp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Yto-id-qIs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sophomore Year Records" id="z9h-Qu-psr"/>
+                    <navigationItem key="navigationItem" title="Sophomore Year Records" id="z9h-Qu-psr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JmR-1p-JA3"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="academicTableView" destination="FlI-8s-XDD" id="tqS-sr-5Xm"/>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoSophomoreRec" id="keP-Y5-UI6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hp4-ma-Hap" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="-328"/>
+            <point key="canvasLocation" x="1848.8" y="-328.78560719640183"/>
         </scene>
         <!--My Achievements Report-->
         <scene sceneID="daq-0c-Lde">
@@ -198,20 +213,22 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gV-iu-0Zm" userLabel="Rec Year">
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="34"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLy-JH-bJW" userLabel="SchoolYear">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rg6-AK-JqK">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="34"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="34" id="SDm-4t-WCz"/>
-                                                            <constraint firstAttribute="width" constant="60" id="fsh-c8-Icx"/>
+                                                            <constraint firstAttribute="width" constant="60" id="rzS-AN-LdF"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="Year"/>
+                                                        <connections>
+                                                            <action selector="schoolYearDropDownAction:" destination="qCu-Gm-w8x" eventType="touchUpInside" id="j5U-WN-pNx"/>
+                                                        </connections>
+                                                    </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUq-qY-FKK" userLabel="Spacer3">
-                                                        <rect key="frame" x="60" y="0.0" width="160" height="34"/>
+                                                        <rect key="frame" x="60" y="0.0" width="114" height="34"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVm-FR-36a" userLabel="Spacer3">
-                                                        <rect key="frame" x="220" y="0.0" width="50" height="34"/>
+                                                        <rect key="frame" x="174" y="0.0" width="96" height="34"/>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
@@ -247,6 +264,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="NRT-5d-chd"/>
+                                            <constraint firstItem="hNq-bS-Jsa" firstAttribute="leading" secondItem="d7Q-6g-Xr3" secondAttribute="trailing" id="sjg-7q-aC5"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TKq-cs-AM9" userLabel="Spacer1">
@@ -282,46 +300,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="375" id="2mB-q6-nzK"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISR-2H-9di">
-                                <rect key="frame" x="67.5" y="555" width="240" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ad-xb-fCG" customClass="RoundButton" customModule="myHSJournal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="KaT-Bo-s7U"/>
-                                            <constraint firstAttribute="height" constant="60" id="hIE-gd-asH"/>
-                                        </constraints>
-                                        <state key="normal" title="CANCEL"/>
-                                        <connections>
-                                            <action selector="doCancelAction:" destination="qCu-Gm-w8x" eventType="touchUpInside" id="UM3-wL-UE7"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ib-FH-Fyy">
-                                        <rect key="frame" x="100" y="0.0" width="40" height="60"/>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ck-ZM-KOr" customClass="RoundButton" customModule="myHSJournal" customModuleProvider="target">
-                                        <rect key="frame" x="140" y="0.0" width="100" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="VDY-b9-eHu"/>
-                                            <constraint firstAttribute="height" constant="60" id="j6j-WK-l7I"/>
-                                        </constraints>
-                                        <state key="normal" title="SAVE"/>
-                                        <connections>
-                                            <action selector="processRecAction:" destination="qCu-Gm-w8x" eventType="touchUpInside" id="4aU-d4-IRc"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="2ck-ZM-KOr" firstAttribute="top" secondItem="ISR-2H-9di" secondAttribute="top" id="0Th-IZ-EcC"/>
-                                    <constraint firstAttribute="bottom" secondItem="2ck-ZM-KOr" secondAttribute="bottom" id="7ov-2B-kra"/>
-                                    <constraint firstAttribute="height" constant="60" id="QVt-L2-Nez"/>
-                                    <constraint firstItem="5Ad-xb-fCG" firstAttribute="leading" secondItem="ISR-2H-9di" secondAttribute="leading" id="R39-Bz-A6z"/>
-                                    <constraint firstAttribute="bottom" secondItem="5Ad-xb-fCG" secondAttribute="bottom" id="ZDx-9k-INU"/>
-                                    <constraint firstItem="5Ad-xb-fCG" firstAttribute="top" secondItem="ISR-2H-9di" secondAttribute="top" id="jM9-QG-p8T"/>
-                                    <constraint firstAttribute="trailing" secondItem="2ck-ZM-KOr" secondAttribute="trailing" id="nzA-7e-Brt"/>
-                                    <constraint firstAttribute="width" constant="240" id="sV2-hJ-FVX"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="0wI-D2-bGK" userLabel="Label View">
@@ -402,18 +380,18 @@
                             <constraint firstItem="0wI-D2-bGK" firstAttribute="top" secondItem="kxd-Bb-Os0" secondAttribute="bottom" constant="20" id="VDY-f9-v39"/>
                             <constraint firstItem="EfH-m2-kFM" firstAttribute="trailing" secondItem="kxd-Bb-Os0" secondAttribute="trailing" constant="10" id="YMH-No-y1B"/>
                             <constraint firstItem="EfH-m2-kFM" firstAttribute="trailing" secondItem="gZ5-nM-Mlt" secondAttribute="trailing" constant="15" id="Yj6-fs-Rjp"/>
-                            <constraint firstItem="ISR-2H-9di" firstAttribute="top" secondItem="gZ5-nM-Mlt" secondAttribute="bottom" constant="20" id="fD9-Ah-ieE"/>
                             <constraint firstItem="0wI-D2-bGK" firstAttribute="leading" secondItem="EfH-m2-kFM" secondAttribute="leading" constant="15" id="fux-Uy-37J"/>
                             <constraint firstItem="kxd-Bb-Os0" firstAttribute="leading" secondItem="EfH-m2-kFM" secondAttribute="leading" constant="10" id="keV-b5-Kca"/>
                             <constraint firstItem="gZ5-nM-Mlt" firstAttribute="top" secondItem="kxd-Bb-Os0" secondAttribute="bottom" constant="20" id="mkY-11-UmF"/>
                             <constraint firstItem="gZ5-nM-Mlt" firstAttribute="leading" secondItem="0wI-D2-bGK" secondAttribute="trailing" constant="10" id="t1p-07-Xbs"/>
                             <constraint firstItem="kxd-Bb-Os0" firstAttribute="top" secondItem="EfH-m2-kFM" secondAttribute="top" constant="35" id="tKX-El-4ur"/>
-                            <constraint firstItem="ISR-2H-9di" firstAttribute="centerX" secondItem="zYS-2S-pZw" secondAttribute="centerX" id="wOM-fd-IuA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EfH-m2-kFM"/>
                     </view>
                     <navigationItem key="navigationItem" title="High School Record" id="UTH-Mq-nNt" customClass="Sch">
                         <barButtonItem key="backBarButtonItem" title="Back" id="gc5-yb-CN2"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2w5-Fd-Pbz"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vbl-sn-Ztm"/>
                     </navigationItem>
                     <connections>
                         <outlet property="recAward" destination="St2-gm-qoN" id="ncP-kH-bgV"/>
@@ -421,7 +399,7 @@
                         <outlet property="recGrade" destination="d7Q-6g-Xr3" id="bqi-X6-7Eo"/>
                         <outlet property="recTitle" destination="pcG-2D-Q5h" id="EZB-7x-HXA"/>
                         <outlet property="recType" destination="jgN-n4-2wV" id="6ba-2k-MDY"/>
-                        <outlet property="schoolYear" destination="fLy-JH-bJW" id="Kvq-8H-n3k"/>
+                        <outlet property="schoolYear" destination="Rg6-AK-JqK" id="axP-5t-x90"/>
                         <outlet property="titleLabel" destination="shE-cS-fxu" id="bbW-Ye-OSQ"/>
                     </connections>
                 </viewController>
@@ -454,7 +432,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dlu-4v-gGY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Junior Year Records" id="u9v-6T-bAT"/>
+                    <navigationItem key="navigationItem" title="Junior Year Records" id="u9v-6T-bAT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9ZU-YF-xZl"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoJuniorRec" id="10G-5n-bg0"/>
                     </connections>
@@ -473,7 +453,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3rT-b7-V97"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Senior Year Records" id="Eir-QD-GkJ"/>
+                    <navigationItem key="navigationItem" title="Senior Year Records" id="Eir-QD-GkJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tD4-zy-72s"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoSeniorRec" id="NDA-bH-ptp"/>
                     </connections>
@@ -489,11 +471,31 @@
                     <view key="view" contentMode="scaleToFill" id="EsL-We-CKY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SrI-ZE-kNE">
+                                <rect key="frame" x="5" y="74" width="365" height="588"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LTM-aD-5Tq" firstAttribute="bottom" secondItem="SrI-ZE-kNE" secondAttribute="bottom" constant="5" id="8Lk-3t-tRQ"/>
+                            <constraint firstItem="SrI-ZE-kNE" firstAttribute="top" secondItem="LTM-aD-5Tq" secondAttribute="top" constant="10" id="lbg-Nw-11v"/>
+                            <constraint firstItem="LTM-aD-5Tq" firstAttribute="trailing" secondItem="SrI-ZE-kNE" secondAttribute="trailing" constant="5" id="wQP-CF-8S1"/>
+                            <constraint firstItem="SrI-ZE-kNE" firstAttribute="leading" secondItem="LTM-aD-5Tq" secondAttribute="leading" constant="5" id="zYz-fF-zwc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LTM-aD-5Tq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Freshmen Year Records" id="BVi-aM-YCa"/>
+                    <navigationItem key="navigationItem" title="Freshmen Year Records" id="BVi-aM-YCa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oNG-gg-5ZY">
+                            <connections>
+                                <segue destination="qCu-Gm-w8x" kind="show" id="0Ma-Pv-O1N"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="academicTableView" destination="SrI-ZE-kNE" id="v5z-IQ-Tp6"/>
+                        <outlet property="freshmenTableView" destination="SrI-ZE-kNE" id="ovG-sa-a3w"/>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoFreshmenRec" id="W7S-DL-RS3"/>
                     </connections>
                 </viewController>
@@ -529,7 +531,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qr0-PL-0hA"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Before High School Records" id="XIJ-Jy-FAK"/>
+                    <navigationItem key="navigationItem" title="Before High School Records" id="XIJ-Jy-FAK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OSb-fV-vKu"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoBeforeHsRec" id="Nx6-3H-nXS"/>
                     </connections>
@@ -670,7 +674,7 @@
         <segue reference="VEt-03-SLA"/>
         <segue reference="3ph-A4-h8y"/>
         <segue reference="cJ7-TU-STm"/>
-        <segue reference="keP-Y5-UI6"/>
+        <segue reference="0Ma-Pv-O1N"/>
         <segue reference="lhj-l7-2zB"/>
         <segue reference="4TV-RD-LZf"/>
     </inferredMetricsTieBreakers>

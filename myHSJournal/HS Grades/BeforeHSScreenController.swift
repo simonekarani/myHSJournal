@@ -14,6 +14,15 @@ class BeforeHSScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addTapped)
+        )
+        
+    }
+    
+    @objc private func addTapped() {
         performSegue(withIdentifier: "gotoBeforeHsRec", sender: self)
     }
 }
