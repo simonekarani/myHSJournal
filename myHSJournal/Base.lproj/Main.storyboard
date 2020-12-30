@@ -145,17 +145,38 @@
                     <view key="view" contentMode="scaleToFill" id="Ckz-IS-sHy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yjt-TW-I5e">
+                                <rect key="frame" x="5" y="74" width="365" height="544"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yjt-TW-I5e" firstAttribute="leading" secondItem="VZ4-9F-EtN" secondAttribute="leading" constant="5" id="G2t-2x-Uzl"/>
+                            <constraint firstItem="VZ4-9F-EtN" firstAttribute="trailing" secondItem="yjt-TW-I5e" secondAttribute="trailing" constant="5" id="GdT-Ek-az4"/>
+                            <constraint firstItem="yjt-TW-I5e" firstAttribute="top" secondItem="VZ4-9F-EtN" secondAttribute="top" constant="10" id="a2D-it-dzH"/>
+                            <constraint firstItem="VZ4-9F-EtN" firstAttribute="bottom" secondItem="yjt-TW-I5e" secondAttribute="bottom" constant="5" id="f6k-S7-sHL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VZ4-9F-EtN"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Achievements Report" id="JAi-tf-dq2"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="My Achievements Report" id="JAi-tf-dq2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vif-dE-QdL">
+                            <connections>
+                                <action selector="addTapped:" destination="bPE-ns-YaX" id="yhT-EQ-xn2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="myAchievementTableView" destination="yjt-TW-I5e" id="vhe-4O-orR"/>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoAchievementsRec" id="xoH-xL-2iw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0y-dK-u15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3663" y="-276"/>
+            <point key="canvasLocation" x="3661.5999999999999" y="-276.61169415292358"/>
         </scene>
         <!--High School Record-->
         <scene sceneID="RTr-KZ-xfw">
@@ -429,19 +450,32 @@
                     <view key="view" contentMode="scaleToFill" id="zH8-hu-xJT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7c8-ah-t6Y">
+                                <rect key="frame" x="5" y="74" width="365" height="588"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dlu-4v-gGY" firstAttribute="bottom" secondItem="7c8-ah-t6Y" secondAttribute="bottom" constant="5" id="IH0-Bk-Obs"/>
+                            <constraint firstItem="7c8-ah-t6Y" firstAttribute="leading" secondItem="dlu-4v-gGY" secondAttribute="leading" constant="5" id="RzC-KY-2I3"/>
+                            <constraint firstItem="7c8-ah-t6Y" firstAttribute="top" secondItem="dlu-4v-gGY" secondAttribute="top" constant="10" id="Z4e-x9-ZGU"/>
+                            <constraint firstItem="dlu-4v-gGY" firstAttribute="trailing" secondItem="7c8-ah-t6Y" secondAttribute="trailing" constant="5" id="vRH-7K-hae"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dlu-4v-gGY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Junior Year Records" id="u9v-6T-bAT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9ZU-YF-xZl"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="juniorTableView" destination="7c8-ah-t6Y" id="xKJ-hj-jSJ"/>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoJuniorRec" id="10G-5n-bg0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXU-iK-L8I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1898" y="391"/>
+            <point key="canvasLocation" x="1896.8" y="390.85457271364322"/>
         </scene>
         <!--Senior Year Records-->
         <scene sceneID="Oxn-gl-eN3">
@@ -450,19 +484,32 @@
                     <view key="view" contentMode="scaleToFill" id="hvu-3J-6wK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nzl-ka-Orc">
+                                <rect key="frame" x="5" y="74" width="365" height="588"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Nzl-ka-Orc" firstAttribute="leading" secondItem="3rT-b7-V97" secondAttribute="leading" constant="5" id="1gN-ki-b8Q"/>
+                            <constraint firstItem="3rT-b7-V97" firstAttribute="bottom" secondItem="Nzl-ka-Orc" secondAttribute="bottom" constant="5" id="GY0-ae-iFh"/>
+                            <constraint firstItem="Nzl-ka-Orc" firstAttribute="top" secondItem="3rT-b7-V97" secondAttribute="top" constant="10" id="S4E-KD-jyp"/>
+                            <constraint firstItem="3rT-b7-V97" firstAttribute="trailing" secondItem="Nzl-ka-Orc" secondAttribute="trailing" constant="5" id="XuU-qS-CsC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3rT-b7-V97"/>
                     </view>
                     <navigationItem key="navigationItem" title="Senior Year Records" id="Eir-QD-GkJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tD4-zy-72s"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="seniorTableView" destination="Nzl-ka-Orc" id="2ZG-Q6-MmZ"/>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoSeniorRec" id="NDA-bH-ptp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r2-KI-poU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1897" y="1127"/>
+            <point key="canvasLocation" x="1896.8" y="1126.6866566716642"/>
         </scene>
         <!--Freshmen Year Records-->
         <scene sceneID="Bhy-3t-pMk">
@@ -528,19 +575,32 @@
                     <view key="view" contentMode="scaleToFill" id="XHB-eW-yQS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aVa-Om-dek">
+                                <rect key="frame" x="5" y="74" width="365" height="588"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qr0-PL-0hA" firstAttribute="trailing" secondItem="aVa-Om-dek" secondAttribute="trailing" constant="5" id="4Z3-yS-xO5"/>
+                            <constraint firstItem="aVa-Om-dek" firstAttribute="leading" secondItem="qr0-PL-0hA" secondAttribute="leading" constant="5" id="D3s-6d-AMJ"/>
+                            <constraint firstItem="qr0-PL-0hA" firstAttribute="bottom" secondItem="aVa-Om-dek" secondAttribute="bottom" constant="5" id="QSC-Uu-8qN"/>
+                            <constraint firstItem="aVa-Om-dek" firstAttribute="top" secondItem="qr0-PL-0hA" secondAttribute="top" constant="10" id="evO-Pl-yhh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qr0-PL-0hA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Before High School Records" id="XIJ-Jy-FAK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OSb-fV-vKu"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="beforeHSTableView" destination="aVa-Om-dek" id="kq9-DG-fNY"/>
                         <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoBeforeHsRec" id="Nx6-3H-nXS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahR-ar-i6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="-1418"/>
+            <point key="canvasLocation" x="837.60000000000002" y="-1418.1409295352325"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EYy-TC-GKR">
@@ -674,7 +734,7 @@
         <segue reference="VEt-03-SLA"/>
         <segue reference="3ph-A4-h8y"/>
         <segue reference="cJ7-TU-STm"/>
-        <segue reference="0Ma-Pv-O1N"/>
+        <segue reference="xoH-xL-2iw"/>
         <segue reference="lhj-l7-2zB"/>
         <segue reference="4TV-RD-LZf"/>
     </inferredMetricsTieBreakers>
