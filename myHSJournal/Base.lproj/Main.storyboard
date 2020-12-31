@@ -176,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0y-dK-u15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3661.5999999999999" y="-276.61169415292358"/>
+            <point key="canvasLocation" x="3806" y="-493"/>
         </scene>
         <!--High School Record-->
         <scene sceneID="RTr-KZ-xfw">
@@ -519,31 +519,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SrI-ZE-kNE">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t2E-5S-cE6">
                                 <rect key="frame" x="5" y="74" width="365" height="588"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LTM-aD-5Tq" firstAttribute="bottom" secondItem="SrI-ZE-kNE" secondAttribute="bottom" constant="5" id="8Lk-3t-tRQ"/>
-                            <constraint firstItem="SrI-ZE-kNE" firstAttribute="top" secondItem="LTM-aD-5Tq" secondAttribute="top" constant="10" id="lbg-Nw-11v"/>
-                            <constraint firstItem="LTM-aD-5Tq" firstAttribute="trailing" secondItem="SrI-ZE-kNE" secondAttribute="trailing" constant="5" id="wQP-CF-8S1"/>
-                            <constraint firstItem="SrI-ZE-kNE" firstAttribute="leading" secondItem="LTM-aD-5Tq" secondAttribute="leading" constant="5" id="zYz-fF-zwc"/>
+                            <constraint firstItem="LTM-aD-5Tq" firstAttribute="bottom" secondItem="t2E-5S-cE6" secondAttribute="bottom" constant="5" id="CtS-yt-IeP"/>
+                            <constraint firstItem="t2E-5S-cE6" firstAttribute="top" secondItem="LTM-aD-5Tq" secondAttribute="top" constant="10" id="cVm-H7-fbH"/>
+                            <constraint firstItem="t2E-5S-cE6" firstAttribute="leading" secondItem="LTM-aD-5Tq" secondAttribute="leading" constant="5" id="dbS-oG-bTi"/>
+                            <constraint firstItem="LTM-aD-5Tq" firstAttribute="trailing" secondItem="t2E-5S-cE6" secondAttribute="trailing" constant="5" id="nue-yr-WRI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LTM-aD-5Tq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Freshmen Year Records" id="BVi-aM-YCa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oNG-gg-5ZY">
-                            <connections>
-                                <segue destination="qCu-Gm-w8x" kind="show" id="0Ma-Pv-O1N"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oNG-gg-5ZY"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="academicTableView" destination="SrI-ZE-kNE" id="v5z-IQ-Tp6"/>
-                        <outlet property="freshmenTableView" destination="SrI-ZE-kNE" id="ovG-sa-a3w"/>
-                        <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoFreshmenRec" id="W7S-DL-RS3"/>
+                        <outlet property="freshmenTableView" destination="t2E-5S-cE6" id="CZ7-Qg-gWH"/>
+                        <segue destination="qCu-Gm-w8x" kind="show" identifier="gotoYear1Rec" id="fs1-pW-8og"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVG-us-hew" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -690,7 +685,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jeV-bz-rfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3452" y="-275.71214392803603"/>
+            <point key="canvasLocation" x="3662" y="-493"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="07x-AI-p0k">
@@ -734,8 +729,8 @@
         <segue reference="VEt-03-SLA"/>
         <segue reference="3ph-A4-h8y"/>
         <segue reference="cJ7-TU-STm"/>
-        <segue reference="xoH-xL-2iw"/>
-        <segue reference="lhj-l7-2zB"/>
+        <segue reference="fs1-pW-8og"/>
+        <segue reference="cc5-R3-Etj"/>
         <segue reference="4TV-RD-LZf"/>
     </inferredMetricsTieBreakers>
 </document>

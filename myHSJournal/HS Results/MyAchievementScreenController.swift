@@ -102,7 +102,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             if (indexPath.section == 0) {
                 if academicItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: academicItemArray[indexPath.row-1].title!, count: academicItemArray.count)
+                    cell.configureCell(name: academicItemArray[indexPath.row-1].title!, grade: academicItemArray[indexPath.row-1].grade!, count: academicItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
@@ -112,17 +112,17 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             } else if (indexPath.section == 1) {
                 if researchItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: researchItemArray[indexPath.row-1].title!, count: researchItemArray.count)
+                    cell.configureCell(name: researchItemArray[indexPath.row-1].title!, grade: researchItemArray[indexPath.row-1].grade!, count: researchItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
-                    cell.configureCell(name: "Research or Internship or Passion Project", count: researchItemArray.count)
+                    cell.configureCell(name: "Research or Internship Project", count: researchItemArray.count)
                     return cell
                 }
             } else {
                 if activityItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: activityItemArray[indexPath.row-1].title!, count: activityItemArray.count)
+                    cell.configureCell(name: activityItemArray[indexPath.row-1].title!, grade: activityItemArray[indexPath.row-1].grade!, count: activityItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell

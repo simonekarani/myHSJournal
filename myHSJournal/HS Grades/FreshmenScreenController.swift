@@ -35,8 +35,8 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             target: self,
             action: #selector(addTapped)
         )
-        
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+ 
+        /*print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))*/
     }
     
     func setupTableView() {
@@ -51,7 +51,7 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
     }
 
     @objc private func addTapped() {
-        performSegue(withIdentifier: "gotoFreshmenRec", sender: self)
+        performSegue(withIdentifier: "gotoYear1Rec", sender: self)
     }
     
     func loadHSRecords() {
@@ -85,7 +85,6 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("** row = \(indexPath.row) section = \(indexPath.section) count=\(indexPath.count)")
         if (indexPath.section == 0 && indexPath.row == 0) {
             let cell: HSRecTitleTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecTitleTableViewCell", for: indexPath) as! HSRecTitleTableViewCell
             cell.configureCell(name: "Academic")
@@ -102,7 +101,7 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             if (indexPath.section == 0) {
                 if academicItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: academicItemArray[indexPath.row-1].title!, count: academicItemArray.count)
+                    cell.configureCell(name: academicItemArray[indexPath.row-1].title!, grade: academicItemArray[indexPath.row-1].grade!, count: academicItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
@@ -112,17 +111,17 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             } else if (indexPath.section == 1) {
                 if researchItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: researchItemArray[indexPath.row-1].title!, count: researchItemArray.count)
+                    cell.configureCell(name: researchItemArray[indexPath.row-1].title!, grade: researchItemArray[indexPath.row-1].grade!, count: researchItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
-                    cell.configureCell(name: "Research or Internship or Passion Project", count: researchItemArray.count)
+                    cell.configureCell(name: "Research or Internship Project", count: researchItemArray.count)
                     return cell
                 }
             } else {
                 if activityItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: activityItemArray[indexPath.row-1].title!, count: activityItemArray.count)
+                    cell.configureCell(name: activityItemArray[indexPath.row-1].title!, grade: activityItemArray[indexPath.row-1].grade!, count: activityItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell

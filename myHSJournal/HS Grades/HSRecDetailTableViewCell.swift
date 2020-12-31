@@ -11,6 +11,7 @@ import UIKit
 class HSRecDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var detailDescription: UITextView!
+    @IBOutlet weak var gradeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,11 +24,13 @@ class HSRecDetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(name: String, count: Int) {
+    func configureCell(name: String, grade: String, count: Int) {
         if (count == 0) {
             detailLabel.text = "No \(name) Records"
+            gradeLabel.text = ""
         } else {
             detailLabel.text = name
+            gradeLabel.text = grade
         }
         setupCellDetails()
     }
