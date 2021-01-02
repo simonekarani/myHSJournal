@@ -109,9 +109,9 @@
 				2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */,
 				2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */,
 				2C6BF4B92596EFEB002641EC /* HSRecDetailTableViewCell.swift */,
+				2C6BF4BA2596EFEB002641EC /* HSRecDetailTableViewCell.xib */,
 				2C25E27D2599E0F400E38467 /* HSRecNoValueTableViewCell.swift */,
 				2C25E27E2599E0F400E38467 /* HSRecNoValueTableViewCell.xib */,
-				2C6BF4BA2596EFEB002641EC /* HSRecDetailTableViewCell.xib */,
 			);
 			path = "HS Grades";
 			sourceTree = "<group>";

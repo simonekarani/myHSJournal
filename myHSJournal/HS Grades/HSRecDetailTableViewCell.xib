@@ -12,15 +12,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HSRecDetailTableViewCell" rowHeight="112" id="KGk-i7-Jjw" customClass="HSRecDetailTableViewCell" customModule="myHSJournal" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="359" height="112"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HSRecDetailTableViewCell" rowHeight="105" id="KGk-i7-Jjw" customClass="HSRecDetailTableViewCell" customModule="myHSJournal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="359" height="111.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="359" height="104.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGB-5u-SY2">
-                        <rect key="frame" x="10" y="5" width="42" height="24"/>
+                        <rect key="frame" x="10" y="5" width="292" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="f53-ZC-r7S"/>
                         </constraints>
@@ -38,8 +38,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="un8-ug-xoi">
-                        <rect key="frame" x="10" y="34" width="339" height="69"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="un8-ug-xoi">
+                        <rect key="frame" x="10" y="34" width="339" height="21"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -50,11 +50,12 @@
                     <constraint firstItem="un8-ug-xoi" firstAttribute="top" secondItem="sGB-5u-SY2" secondAttribute="bottom" constant="5" id="59K-xU-awh"/>
                     <constraint firstAttribute="trailing" secondItem="un8-ug-xoi" secondAttribute="trailing" constant="10" id="5Go-q3-h78"/>
                     <constraint firstItem="nxF-EW-Fe8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="I3P-f9-3o8"/>
-                    <constraint firstItem="nxF-EW-Fe8" firstAttribute="leading" secondItem="sGB-5u-SY2" secondAttribute="trailing" constant="255" id="Ldw-ev-dmC"/>
+                    <constraint firstItem="nxF-EW-Fe8" firstAttribute="leading" secondItem="sGB-5u-SY2" secondAttribute="trailing" constant="5" id="Ldw-ev-dmC"/>
                     <constraint firstItem="sGB-5u-SY2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="LyN-Lj-jfM"/>
                     <constraint firstItem="un8-ug-xoi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ohw-yn-I3I"/>
                     <constraint firstItem="sGB-5u-SY2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="lqJ-Eu-iHr"/>
                     <constraint firstAttribute="trailing" secondItem="nxF-EW-Fe8" secondAttribute="trailing" constant="10" id="qOJ-gr-PV0"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="un8-ug-xoi" secondAttribute="bottom" constant="5" id="sab-eL-mcz"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -63,15 +64,7 @@
                 <outlet property="detailLabel" destination="sGB-5u-SY2" id="dMU-ay-8LI"/>
                 <outlet property="gradeLabel" destination="nxF-EW-Fe8" id="7yU-NB-rtZ"/>
             </connections>
-            <point key="canvasLocation" x="165.94202898550725" y="103.125"/>
+            <point key="canvasLocation" x="165.94202898550725" y="100.78125"/>
         </tableViewCell>
-        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4B1-2Z-WPu">
-            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-            <nil key="textColor"/>
-            <nil key="highlightedColor"/>
-            <point key="canvasLocation" x="388" y="47"/>
-        </label>
     </objects>
 </document>

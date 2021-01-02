@@ -22,6 +22,9 @@ class SchoolRecordDetailsController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    var editHSRec: HSRecItem!
+    var selectedSchoolYear: SchoolYearType!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recItemArray = [String]()
     
@@ -50,8 +53,24 @@ class SchoolRecordDetailsController: UIViewController {
             action: #selector(popToPrevious)
         )
 
-        yearDropDown.selectRow(1)
-        schoolYear.setTitle(SchoolYearType.SEVENTH.description, for: .normal)
+        if (selectedSchoolYear != nil) {
+            yearDropDown.selectRow(selectedSchoolYear.asInt())
+            schoolYear.setTitle(selectedSchoolYear.description, for: .normal)
+        } else {
+            yearDropDown.selectRow(1)
+            schoolYear.setTitle(SchoolYearType.SEVENTH.description, for: .normal)
+        }
+        
+        if (editHSRec != nil) {
+            recTitle.text = editHSRec.title!
+            recGrade.text = editHSRec.grade!
+            recAward.text = editHSRec.recognition!
+            recDetail.text = editHSRec.desc!
+            dropDown.selectRow(HSRecType.toInt(value: editHSRec.recType!))
+            recType.setTitle(editHSRec.recType!, for: .normal)
+            yearDropDown.selectRow(SchoolYearType.toInt(value: editHSRec.schoolyear!))
+            schoolYear.setTitle(editHSRec.schoolyear!, for: .normal)
+        }
 
         addBorderTextView(recView: recAward)
         addBorderTextView(recView: recDetail)

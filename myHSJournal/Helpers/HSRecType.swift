@@ -8,13 +8,26 @@
 
 import Foundation
 
-public enum HSRecType: String {
+public enum HSRecType: String, CaseIterable {
     case ACADEMIC = "Academic"
     case RESEARCH = "Research"
     case INTERNSHIP = "Internship"
     case PASSION = "Passion Project"
     case EXTRACURRICULAR = "Extracurricular"
     
+    static var asArray: [HSRecType] {return self.allCases}
+
+    static var hsRecTypeDict: [String: Int] = [
+        "Academic": 0,
+        "Research": 1,
+        "Internship": 2,
+        "Passion Project": 3,
+        "Extracurricular": 4];
+    
+    static func toInt(value:String) -> Int {
+        return hsRecTypeDict[value]!
+    }
+
     var description: String {
         switch self {
         case .ACADEMIC: return "Academic"
@@ -40,5 +53,9 @@ public enum HSRecType: String {
         default:
             return nil
         }
+    }
+
+    func asInt() -> Int {
+        return HSRecType.asArray.firstIndex(of: self)!
     }
 }

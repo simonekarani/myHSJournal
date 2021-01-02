@@ -9,6 +9,9 @@
 import UIKit
 
 class HSRecDetailTableViewCell: UITableViewCell {
+    
+    weak var cellDelegate: GrowingCellProtocol?
+
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var detailDescription: UITextView!
     @IBOutlet weak var gradeLabel: UILabel!
@@ -16,6 +19,7 @@ class HSRecDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        detailDescription.delegate = (self as! UITextViewDelegate)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,13 +28,14 @@ class HSRecDetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(name: String, grade: String, count: Int) {
+    func configureCell(recItem: HSRecItem, count: Int) {
         if (count == 0) {
-            detailLabel.text = "No \(name) Records"
+            detailLabel.text = "No \(recItem.title!) Records"
             gradeLabel.text = ""
         } else {
-            detailLabel.text = name
-            gradeLabel.text = grade
+            detailLabel.text = recItem.title!
+            gradeLabel.text = recItem.grade!
+            detailDescription.text = recItem.desc!
         }
         setupCellDetails()
     }
@@ -43,5 +48,18 @@ class HSRecDetailTableViewCell: UITableViewCell {
         layer.borderWidth = 1
         layer.cornerRadius = 8
         clipsToBounds = true
+    }
+}
+
+protocol GrowingCellProtocol: class {
+    func updateHeightOfRow(_ cell: HSRecDetailTableViewCell, _ textView: UITextView)
+}
+
+extension HSRecDetailTableViewCell: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if let deletate = cellDelegate {
+            deletate.updateHeightOfRow(self, textView)
+        }
     }
 }

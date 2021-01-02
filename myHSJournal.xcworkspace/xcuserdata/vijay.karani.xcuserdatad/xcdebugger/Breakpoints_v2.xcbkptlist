@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myHSJournal/HS Grades/HSRecDetailTableViewCell.swift"
-            timestampString = "631093089.559875"
+            filePath = "myHSJournal/HS Grades/SophomoreScreenController.swift"
+            timestampString = "631282186.131958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "configureCell(name:grade:count:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "myHSJournal/HS Grades/FreshmenScreenController.swift"
-            timestampString = "631093089.560057"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "setupTableView()"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "deleteRecord(deleteActionForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

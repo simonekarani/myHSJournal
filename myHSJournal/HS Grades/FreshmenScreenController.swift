@@ -14,6 +14,9 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var freshmenTableView: UITableView!
     
+    var selectedSchoolYear: SchoolYearType!
+    var editHSRec: HSRecItem!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var hsItemArray = [HSRecItem]()
     var academicItemArray = [HSRecItem]()
@@ -36,7 +39,7 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             action: #selector(addTapped)
         )
  
-        /*print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))*/
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
     func setupTableView() {
@@ -48,9 +51,13 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
         self.freshmenTableView.register(UINib.init(nibName: "HSRecNoValueTableViewCell", bundle: .main), forCellReuseIdentifier: "HSRecNoValueTableViewCell")
         
         freshmenTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        freshmenTableView.rowHeight = UITableView.automaticDimension
+        freshmenTableView.estimatedRowHeight = 2000
     }
 
     @objc private func addTapped() {
+        editHSRec = nil
         performSegue(withIdentifier: "gotoYear1Rec", sender: self)
     }
     
@@ -101,7 +108,8 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             if (indexPath.section == 0) {
                 if academicItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: academicItemArray[indexPath.row-1].title!, grade: academicItemArray[indexPath.row-1].grade!, count: academicItemArray.count)
+                    cell.configureCell(recItem: academicItemArray[indexPath.row-1], count: academicItemArray.count)
+                    cell.cellDelegate = self
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
@@ -111,7 +119,8 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             } else if (indexPath.section == 1) {
                 if researchItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: researchItemArray[indexPath.row-1].title!, grade: researchItemArray[indexPath.row-1].grade!, count: researchItemArray.count)
+                    cell.configureCell(recItem: researchItemArray[indexPath.row-1], count: researchItemArray.count)
+                    cell.cellDelegate = self
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
@@ -121,7 +130,8 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             } else {
                 if activityItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: activityItemArray[indexPath.row-1].title!, grade: activityItemArray[indexPath.row-1].grade!, count: activityItemArray.count)
+                    cell.configureCell(recItem: activityItemArray[indexPath.row-1], count: activityItemArray.count)
+                    cell.cellDelegate = self
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
@@ -130,6 +140,46 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if (indexPath.section == 0 && (indexPath.row == 0 || academicItemArray.count == 0)) {
+            return []
+        } else if (indexPath.section == 1 && (indexPath.row == 0 || researchItemArray.count == 0)) {
+            return []
+        } else if (indexPath.section == 2 && (indexPath.row == 0 || activityItemArray.count == 0)) {
+            return []
+        }
+        editHSRec = getRecord(actionForRowAt: indexPath)!
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+            self.performSegue(withIdentifier:"gotoYear1Rec", sender: self.freshmenTableView.cellForRow(at: indexPath))
+        })
+        editAction.backgroundColor = UIColor.blue
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            // Declare Alert message
+            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record\n\(self.editHSRec.title!)?", preferredStyle: .alert)
+            
+            // Create OK button with action handler
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                print("Ok button tapped")
+                self.deleteRecord(deleteActionForRowAt: indexPath)
+            })
+            
+            // Create Cancel button with action handlder
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+                print("Cancel button tapped")
+            }
+            
+            //Add OK and Cancel button to dialog message
+            dialogMessage.addAction(ok)
+            dialogMessage.addAction(cancel)
+            
+            // Present dialog message to user
+            self.present(dialogMessage, animated: true, completion: nil)
+        })
+        deleteAction.backgroundColor = UIColor.red
+        return [editAction, deleteAction]
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -153,6 +203,63 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
         activityRecCount = activityItemArray.count + 1
         if activityItemArray.count == 0 {
             activityRecCount += 1
+        }
+    }
+
+    func getRecord(actionForRowAt indexPath: IndexPath) -> HSRecItem? {
+        if (indexPath.section == 0) {
+            return academicItemArray[indexPath.row-1]
+        } else if (indexPath.section == 1) {
+            return researchItemArray[indexPath.row-1]
+        } else if (indexPath.section == 2) {
+            return activityItemArray[indexPath.row-1]
+        }
+        return nil
+    }
+    
+    func deleteRecord(deleteActionForRowAt indexPath: IndexPath) {
+        print("delete section \(indexPath.section) row = \(indexPath.row)")
+        if (indexPath.section == 0) {
+            academicItemArray.remove(at: indexPath.row-1)
+            DispatchQueue.main.async {
+                self.freshmenTableView.reloadData() }
+        } else if (indexPath.section == 1) {
+            researchItemArray.remove(at: indexPath.row-1)
+            DispatchQueue.main.async {
+                self.freshmenTableView.reloadData() }
+        } else if (indexPath.section == 2) {
+            activityItemArray.remove(at: indexPath.row-1)
+            DispatchQueue.main.async {
+                self.freshmenTableView.reloadData() }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is SchoolRecordDetailsController {
+            let vc = segue.destination as? SchoolRecordDetailsController
+            vc?.selectedSchoolYear = SchoolYearType.NINETH
+            if sender != nil {
+                vc?.editHSRec = self.editHSRec
+            }
+        }
+    }
+}
+
+extension FreshmenScreenController: GrowingCellProtocol {
+    // Update height of UITextView based on string height
+    func updateHeightOfRow(_ cell: HSRecDetailTableViewCell, _ textView: UITextView) {
+        let size = textView.bounds.size
+        let newSize = freshmenTableView.sizeThatFits(CGSize(width: size.width,
+                                                    height: CGFloat.greatestFiniteMagnitude))
+        if size.height != newSize.height {
+            UIView.setAnimationsEnabled(false)
+            freshmenTableView?.beginUpdates()
+            freshmenTableView?.endUpdates()
+            UIView.setAnimationsEnabled(true)
+            // Scoll up your textview if required
+            if let thisIndexPath = freshmenTableView.indexPath(for: cell) {
+                freshmenTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            }
         }
     }
 }

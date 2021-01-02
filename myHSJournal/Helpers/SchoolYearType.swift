@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum SchoolYearType: String {
+public enum SchoolYearType: String, CaseIterable {
     case SIXTH = "6th"
     case SEVENTH = "7th"
     case EIGHTH = "8th"
@@ -16,6 +16,21 @@ public enum SchoolYearType: String {
     case TENTH = "10th"
     case ELEVENTH = "11th"
     case TWELVETH = "12th"
+    
+    static var asArray: [SchoolYearType] {return self.allCases}
+    
+    static var schoolRecTypeDict: [String: Int] = [
+        "6th": 0,
+        "7th": 1,
+        "8th": 2,
+        "9th": 3,
+        "10th": 4,
+        "11th": 5,
+        "12th": 6 ];
+    
+    static func toInt(value:String) -> Int {
+        return schoolRecTypeDict[value]!
+    }
     
     var description: String {
         switch self {
@@ -48,6 +63,10 @@ public enum SchoolYearType: String {
         default:
             return nil
         }
+    }
+    
+    func asInt() -> Int {
+        return SchoolYearType.asArray.firstIndex(of: self)!
     }
 }
 

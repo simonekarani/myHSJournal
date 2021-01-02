@@ -14,6 +14,9 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
     
     @IBOutlet weak var myAchievementTableView: UITableView!
     
+    var selectedSchoolYear: SchoolYearType!
+    var editHSRec: HSRecItem!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var hsItemArray = [HSRecItem]()
     var academicItemArray = [HSRecItem]()
@@ -51,6 +54,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
     }
 
     @IBAction func addTapped(_ sender: Any) {
+        editHSRec = nil
         performSegue(withIdentifier: "gotoAchievementsRec", sender: self)
     }
     
@@ -102,7 +106,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             if (indexPath.section == 0) {
                 if academicItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: academicItemArray[indexPath.row-1].title!, grade: academicItemArray[indexPath.row-1].grade!, count: academicItemArray.count)
+                    cell.configureCell(recItem: academicItemArray[indexPath.row-1], count: academicItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
@@ -112,7 +116,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             } else if (indexPath.section == 1) {
                 if researchItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: researchItemArray[indexPath.row-1].title!, grade: researchItemArray[indexPath.row-1].grade!, count: researchItemArray.count)
+                    cell.configureCell(recItem: researchItemArray[indexPath.row-1], count: researchItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
@@ -122,7 +126,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             } else {
                 if activityItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
-                    cell.configureCell(name: activityItemArray[indexPath.row-1].title!, grade: activityItemArray[indexPath.row-1].grade!, count: activityItemArray.count)
+                    cell.configureCell(recItem: activityItemArray[indexPath.row-1], count: activityItemArray.count)
                     return cell
                 } else {
                     let cell: HSRecNoValueTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecNoValueTableViewCell", for: indexPath) as! HSRecNoValueTableViewCell
@@ -131,6 +135,46 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if (indexPath.section == 0 && (indexPath.row == 0 || academicItemArray.count == 0)) {
+            return []
+        } else if (indexPath.section == 1 && (indexPath.row == 0 || researchItemArray.count == 0)) {
+            return []
+        } else if (indexPath.section == 2 && (indexPath.row == 0 || activityItemArray.count == 0)) {
+            return []
+        }
+        editHSRec = getRecord(actionForRowAt: indexPath)!
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+            self.performSegue(withIdentifier:"gotoAchievementsRec", sender: self.myAchievementTableView.cellForRow(at: indexPath))
+        })
+        editAction.backgroundColor = UIColor.blue
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            // Declare Alert message
+            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record\n\(self.editHSRec.title!)?", preferredStyle: .alert)
+            
+            // Create OK button with action handler
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                print("Ok button tapped")
+                self.deleteRecord(deleteActionForRowAt: indexPath)
+            })
+            
+            // Create Cancel button with action handlder
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+                print("Cancel button tapped")
+            }
+            
+            //Add OK and Cancel button to dialog message
+            dialogMessage.addAction(ok)
+            dialogMessage.addAction(cancel)
+            
+            // Present dialog message to user
+            self.present(dialogMessage, animated: true, completion: nil)
+        })
+        deleteAction.backgroundColor = UIColor.red
+        return [editAction, deleteAction]
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,6 +198,63 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
         activityRecCount = activityItemArray.count + 1
         if activityItemArray.count == 0 {
             activityRecCount += 1
+        }
+    }
+
+    func getRecord(actionForRowAt indexPath: IndexPath) -> HSRecItem? {
+        if (indexPath.section == 0) {
+            return academicItemArray[indexPath.row-1]
+        } else if (indexPath.section == 1) {
+            return researchItemArray[indexPath.row-1]
+        } else if (indexPath.section == 2) {
+            return activityItemArray[indexPath.row-1]
+        }
+        return nil
+    }
+    
+    func deleteRecord(deleteActionForRowAt indexPath: IndexPath) {
+        print("delete section \(indexPath.section) row = \(indexPath.row)")
+        if (indexPath.section == 0) {
+            academicItemArray.remove(at: indexPath.row-1)
+            DispatchQueue.main.async {
+                self.myAchievementTableView.reloadData() }
+        } else if (indexPath.section == 1) {
+            researchItemArray.remove(at: indexPath.row-1)
+            DispatchQueue.main.async {
+                self.myAchievementTableView.reloadData() }
+        } else if (indexPath.section == 2) {
+            activityItemArray.remove(at: indexPath.row-1)
+            DispatchQueue.main.async {
+                self.myAchievementTableView.reloadData() }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is SchoolRecordDetailsController {
+            let vc = segue.destination as? SchoolRecordDetailsController
+            vc?.selectedSchoolYear = SchoolYearType.TENTH
+            if sender != nil {
+                vc?.editHSRec = self.editHSRec
+            }
+        }
+    }
+}
+
+extension MyAchievementScreenController: GrowingCellProtocol {
+    // Update height of UITextView based on string height
+    func updateHeightOfRow(_ cell: HSRecDetailTableViewCell, _ textView: UITextView) {
+        let size = textView.bounds.size
+        let newSize = myAchievementTableView.sizeThatFits(CGSize(width: size.width,
+                                                            height: CGFloat.greatestFiniteMagnitude))
+        if size.height != newSize.height {
+            UIView.setAnimationsEnabled(false)
+            myAchievementTableView?.beginUpdates()
+            myAchievementTableView?.endUpdates()
+            UIView.setAnimationsEnabled(true)
+            // Scoll up your textview if required
+            if let thisIndexPath = myAchievementTableView.indexPath(for: cell) {
+                myAchievementTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            }
         }
     }
 }
