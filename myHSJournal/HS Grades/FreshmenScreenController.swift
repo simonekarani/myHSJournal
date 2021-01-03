@@ -30,7 +30,6 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         
         loadHSRecords()
-        
         setupTableView()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -75,13 +74,14 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
             hsItemArray = try context.fetch(request)
-            for (index, element) in hsItemArray.enumerated() {
-                print(index, ":", element)
-                if (element.recType == "Academic") {
+            for (_, element) in hsItemArray.enumerated() {
+                if (element.recType == "Academic" &&
+                    element.schoolyear == SchoolYearType.NINETH.description) {
                     academicItemArray.append(element)
-                } else if (element.recType == "Extracurricular") {
+                } else if (element.recType == "Extracurricular" &&
+                    element.schoolyear == SchoolYearType.NINETH.description) {
                     activityItemArray.append(element)
-                } else {
+                } else if (element.schoolyear == SchoolYearType.NINETH.description) {
                     researchItemArray.append(element)
                 }
             }
@@ -118,6 +118,7 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             if (indexPath.section == 0) {
                 if academicItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "FreshmenScreen")
                     cell.configureCell(recItem: academicItemArray[indexPath.row-1], count: academicItemArray.count)
                     cell.cellDelegate = self
                     return cell
@@ -129,6 +130,7 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             } else if (indexPath.section == 1) {
                 if researchItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "FreshmenScreen")
                     cell.configureCell(recItem: researchItemArray[indexPath.row-1], count: researchItemArray.count)
                     cell.cellDelegate = self
                     return cell
@@ -140,6 +142,7 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
             } else {
                 if activityItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = freshmenTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "FreshmenScreen")
                     cell.configureCell(recItem: activityItemArray[indexPath.row-1], count: activityItemArray.count)
                     cell.cellDelegate = self
                     return cell
@@ -228,7 +231,6 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
     }
     
     func deleteHSRecord(deleteActionForRowAt indexPath: IndexPath, recitem: HSRecItem) {
-        print("delete section \(indexPath.section) row = \(indexPath.row)")
         if (indexPath.section == 0) {
             academicItemArray.remove(at: indexPath.row-1)
             deleteRecord(title: recitem.title!)
@@ -236,10 +238,12 @@ class FreshmenScreenController: UIViewController, UITableViewDataSource, UITable
                 self.freshmenTableView.reloadData() }
         } else if (indexPath.section == 1) {
             researchItemArray.remove(at: indexPath.row-1)
+            deleteRecord(title: recitem.title!)
             DispatchQueue.main.async {
                 self.freshmenTableView.reloadData() }
         } else if (indexPath.section == 2) {
             activityItemArray.remove(at: indexPath.row-1)
+            deleteRecord(title: recitem.title!)
             DispatchQueue.main.async {
                 self.freshmenTableView.reloadData() }
         }

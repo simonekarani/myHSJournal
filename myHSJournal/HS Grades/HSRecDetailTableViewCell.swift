@@ -16,16 +16,20 @@ class HSRecDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var detailDescription: UITextView!
     @IBOutlet weak var gradeLabel: UILabel!
     
+    var inputViewScreen: String!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        detailDescription.delegate = (self as! UITextViewDelegate)
+        detailDescription.delegate = (self as UITextViewDelegate)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func setInputView(inputScreen: String) {
+        inputViewScreen = inputScreen
     }
     
     func configureCell(recItem: HSRecItem, count: Int) {
@@ -33,9 +37,13 @@ class HSRecDetailTableViewCell: UITableViewCell {
             detailLabel.text = "No \(recItem.title!) Records"
             gradeLabel.text = ""
         } else {
-            detailLabel.text = recItem.title!
+            if inputViewScreen == "MyAchievementScreen" {
+                detailLabel.text = "[\(recItem.schoolyear?.description ?? "")] - \(recItem.title!)"
+            } else {
+                detailLabel.text = recItem.title!
+            }
             gradeLabel.text = recItem.grade!
-            detailDescription.text = recItem.desc!
+            detailDescription.text = recItem.recognition!
         }
         setupCellDetails()
     }

@@ -30,7 +30,6 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
 
         loadHSRecords()
-        
         setupTableView()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -72,8 +71,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
             hsItemArray = try context.fetch(request)
-            for (index, element) in hsItemArray.enumerated() {
-                print(index, ":", element)
+            for (_, element) in hsItemArray.enumerated() {
                 if (element.recType == "Academic") {
                     academicItemArray.append(element)
                 } else if (element.recType == "Extracurricular") {
@@ -116,6 +114,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             if (indexPath.section == 0) {
                 if academicItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "MyAchievementScreen")
                     cell.configureCell(recItem: academicItemArray[indexPath.row-1], count: academicItemArray.count)
                     return cell
                 } else {
@@ -126,6 +125,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             } else if (indexPath.section == 1) {
                 if researchItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "MyAchievementScreen")
                     cell.configureCell(recItem: researchItemArray[indexPath.row-1], count: researchItemArray.count)
                     return cell
                 } else {
@@ -136,6 +136,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             } else {
                 if activityItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "MyAchievementScreen")
                     cell.configureCell(recItem: activityItemArray[indexPath.row-1], count: activityItemArray.count)
                     return cell
                 } else {
@@ -223,7 +224,6 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
     }
     
     func deleteHSRecord(deleteActionForRowAt indexPath: IndexPath, recitem: HSRecItem) {
-        print("delete section \(indexPath.section) row = \(indexPath.row)")
         if (indexPath.section == 0) {
             academicItemArray.remove(at: indexPath.row-1)
             deleteRecord(title: recitem.title!)

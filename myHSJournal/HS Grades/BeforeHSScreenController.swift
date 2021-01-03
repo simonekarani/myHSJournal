@@ -30,7 +30,6 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
 
         loadHSRecords()
-        
         setupTableView()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -72,14 +71,18 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
             hsItemArray = try context.fetch(request)
-            for (index, element) in hsItemArray.enumerated() {
-                print(index, ":", element)
-                if (element.recType == "Academic") {
-                    academicItemArray.append(element)
-                } else if (element.recType == "Extracurricular") {
-                    activityItemArray.append(element)
-                } else {
-                    researchItemArray.append(element)
+            for (_, element) in hsItemArray.enumerated() {
+                if (element.schoolyear == SchoolYearType.SIXTH.description ||
+                    element.schoolyear == SchoolYearType.SEVENTH.description ||
+                    element.schoolyear == SchoolYearType.EIGHTH.description) {
+                    
+                    if (element.recType == "Academic") {
+                        academicItemArray.append(element)
+                    } else if (element.recType == "Extracurricular") {
+                        activityItemArray.append(element)
+                    } else {
+                        researchItemArray.append(element)
+                    }
                 }
             }
         } catch {
@@ -116,6 +119,7 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
             if (indexPath.section == 0) {
                 if academicItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = beforeHSTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "BeforeHSScreen")
                     cell.configureCell(recItem: academicItemArray[indexPath.row-1], count: academicItemArray.count)
                     return cell
                 } else {
@@ -126,6 +130,7 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
             } else if (indexPath.section == 1) {
                 if researchItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = beforeHSTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "BeforeHSScreen")
                     cell.configureCell(recItem: researchItemArray[indexPath.row-1], count: researchItemArray.count)
                     return cell
                 } else {
@@ -136,6 +141,7 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
             } else {
                 if activityItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = beforeHSTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "BeforeHSScreen")
                     cell.configureCell(recItem: activityItemArray[indexPath.row-1], count: activityItemArray.count)
                     return cell
                 } else {
@@ -223,7 +229,6 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
     }
     
     func deleteHSRecord(deleteActionForRowAt indexPath: IndexPath, recitem: HSRecItem) {
-        print("delete section \(indexPath.section) row = \(indexPath.row)")
         if (indexPath.section == 0) {
             academicItemArray.remove(at: indexPath.row-1)
             deleteRecord(title: recitem.title!)

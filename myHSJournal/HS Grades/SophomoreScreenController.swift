@@ -30,7 +30,6 @@ class SophomoreScreenController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
 
         loadHSRecords()
-
         setupTableView()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -72,13 +71,14 @@ class SophomoreScreenController: UIViewController, UITableViewDataSource, UITabl
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
             hsItemArray = try context.fetch(request)
-            for (index, element) in hsItemArray.enumerated() {
-                print(index, ":", element)
-                if (element.recType == "Academic") {
+            for (_, element) in hsItemArray.enumerated() {
+                if (element.recType == "Academic" &&
+                    element.schoolyear == SchoolYearType.TENTH.description) {
                     academicItemArray.append(element)
-                } else if (element.recType == "Extracurricular") {
+                } else if (element.recType == "Extracurricular" &&
+                    element.schoolyear == SchoolYearType.TENTH.description) {
                     activityItemArray.append(element)
-                } else {
+                } else if (element.schoolyear == SchoolYearType.TENTH.description) {
                     researchItemArray.append(element)
                 }
             }
@@ -115,6 +115,7 @@ class SophomoreScreenController: UIViewController, UITableViewDataSource, UITabl
             if (indexPath.section == 0) {
                 if academicItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = academicTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "SophomoreScreen")
                     cell.configureCell(recItem: academicItemArray[indexPath.row-1], count: academicItemArray.count)
                     return cell
                 } else {
@@ -125,6 +126,7 @@ class SophomoreScreenController: UIViewController, UITableViewDataSource, UITabl
             } else if (indexPath.section == 1) {
                 if researchItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = academicTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "SophomoreScreen")
                     cell.configureCell(recItem: researchItemArray[indexPath.row-1], count: researchItemArray.count)
                     return cell
                 } else {
@@ -135,6 +137,7 @@ class SophomoreScreenController: UIViewController, UITableViewDataSource, UITabl
             } else {
                 if activityItemArray.count > 0 {
                     let cell: HSRecDetailTableViewCell = academicTableView.dequeueReusableCell(withIdentifier: "HSRecDetailTableViewCell", for: indexPath) as! HSRecDetailTableViewCell
+                    cell.setInputView(inputScreen: "SophomoreScreen")
                     cell.configureCell(recItem: activityItemArray[indexPath.row-1], count: activityItemArray.count)
                     return cell
                 } else {

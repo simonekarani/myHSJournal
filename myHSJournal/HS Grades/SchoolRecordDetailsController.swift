@@ -85,20 +85,14 @@ class SchoolRecordDetailsController: UIViewController {
         let rectitle: String = recTitle.text!
         if recState == .ADD {
             if !isRecordExists(rectitle: rectitle) {
-                let hsrecItem = HSRecItem(context: self.context)
-                hsrecItem.recType = dropDown.selectedItem
-                hsrecItem.schoolyear = yearDropDown.selectedItem
-                hsrecItem.title = recTitle.text!
-                hsrecItem.grade = recGrade.text
-                hsrecItem.recognition = recAward.text
-                hsrecItem.desc = recDetail.text
-                saveContext()
+                createRecord()
                 navigationController?.popViewController(animated: true)
             } else {
                 alertMessage(title: rectitle)
             }
         } else {
-            
+            updateRecord(rectitle: rectitle)
+            navigationController?.popViewController(animated: true)
         }
     }
     
@@ -118,13 +112,33 @@ class SchoolRecordDetailsController: UIViewController {
         return false
     }
     
-    func updateRecord() {
+    func createRecord() {
+        let hsrecItem = HSRecItem(context: self.context)
+        hsrecItem.recType = dropDown.selectedItem
+        hsrecItem.schoolyear = yearDropDown.selectedItem
+        hsrecItem.title = recTitle.text!
+        hsrecItem.grade = recGrade.text
+        hsrecItem.recognition = recAward.text
+        hsrecItem.desc = recDetail.text
+        saveContext()
+    }
+    
+    func updateRecord(rectitle: String) {
         var hsItemArray = [HSRecItem]()
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
             hsItemArray = try context.fetch(request)
-            for (index, element) in hsItemArray.enumerated() {
-                print(index, ":", element)
+            for (_, element) in hsItemArray.enumerated() {
+                if element.title == rectitle {
+                    element.recType = dropDown.selectedItem
+                    element.schoolyear = yearDropDown.selectedItem
+                    element.title = recTitle.text!
+                    element.grade = recGrade.text
+                    element.recognition = recAward.text
+                    element.desc = recDetail.text
+                    saveContext()
+                    return
+                }
             }
         } catch {
             print("Error in loading \(error)")
