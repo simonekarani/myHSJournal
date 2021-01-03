@@ -6,6 +6,7 @@
 //  Copyright © 2020 simonekarani. All rights reserved.
 //
 
+import CoreData
 import Foundation
 import UIKit
 import DropDown
@@ -27,6 +28,7 @@ class SchoolRecordDetailsController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recItemArray = [String]()
+    var recState: HSRecState = .NONE
     
     let dropDown = DropDown()
     let yearDropDown = DropDown()
@@ -56,9 +58,11 @@ class SchoolRecordDetailsController: UIViewController {
         if (selectedSchoolYear != nil) {
             yearDropDown.selectRow(selectedSchoolYear.asInt())
             schoolYear.setTitle(selectedSchoolYear.description, for: .normal)
+            recState = .ADD
         } else {
             yearDropDown.selectRow(1)
             schoolYear.setTitle(SchoolYearType.SEVENTH.description, for: .normal)
+            recState = .ADD
         }
         
         if (editHSRec != nil) {
@@ -70,6 +74,7 @@ class SchoolRecordDetailsController: UIViewController {
             recType.setTitle(editHSRec.recType!, for: .normal)
             yearDropDown.selectRow(SchoolYearType.toInt(value: editHSRec.schoolyear!))
             schoolYear.setTitle(editHSRec.schoolyear!, for: .normal)
+            recState = .UPDATE
         }
 
         addBorderTextView(recView: recAward)
@@ -77,23 +82,55 @@ class SchoolRecordDetailsController: UIViewController {
     }
 
     @objc private func saveTapped() {
-        let hsrecItem = HSRecItem(context: self.context)
-        hsrecItem.recType = dropDown.selectedItem
-        hsrecItem.schoolyear = yearDropDown.selectedItem
-        hsrecItem.title = recTitle.text!
-        hsrecItem.grade = recGrade.text
-        hsrecItem.recognition = recAward.text
-        hsrecItem.desc = recDetail.text
-        print(hsrecItem)
-        
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
+        let rectitle: String = recTitle.text!
+        if recState == .ADD {
+            if !isRecordExists(rectitle: rectitle) {
+                let hsrecItem = HSRecItem(context: self.context)
+                hsrecItem.recType = dropDown.selectedItem
+                hsrecItem.schoolyear = yearDropDown.selectedItem
+                hsrecItem.title = recTitle.text!
+                hsrecItem.grade = recGrade.text
+                hsrecItem.recognition = recAward.text
+                hsrecItem.desc = recDetail.text
+                saveContext()
+                navigationController?.popViewController(animated: true)
+            } else {
+                alertMessage(title: rectitle)
+            }
+        } else {
+            
         }
     }
     
+    func isRecordExists(rectitle: String) -> Bool {
+        var hsItemArray = [HSRecItem]()
+        let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
+        do {
+            hsItemArray = try context.fetch(request)
+            for (_, element) in hsItemArray.enumerated() {
+                if element.title == rectitle {
+                    return true
+                }
+            }
+        } catch {
+            print("Error in loading \(error)")
+        }
+        return false
+    }
     
+    func updateRecord() {
+        var hsItemArray = [HSRecItem]()
+        let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
+        do {
+            hsItemArray = try context.fetch(request)
+            for (index, element) in hsItemArray.enumerated() {
+                print(index, ":", element)
+            }
+        } catch {
+            print("Error in loading \(error)")
+        }
+    }
+
     @objc private func popToPrevious() {
         navigationController?.popViewController(animated: true)
     }
@@ -123,5 +160,20 @@ class SchoolRecordDetailsController: UIViewController {
         recView.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
         recView.layer.borderWidth = 0.5
         recView.clipsToBounds = true
+    }
+    
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
+    
+    func alertMessage(title: String) {
+        let alert = UIAlertController(title: "Add High School Record?",
+                                      message: "Record with title \(title) exists?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
 }

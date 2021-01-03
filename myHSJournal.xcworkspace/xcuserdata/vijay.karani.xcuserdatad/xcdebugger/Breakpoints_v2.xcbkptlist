@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myHSJournal/HS Grades/SophomoreScreenController.swift"
-            timestampString = "631282186.131958"
+            filePath = "myHSJournal/HS Grades/SchoolRecordDetailsController.swift"
+            timestampString = "631351470.698127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "deleteRecord(deleteActionForRowAt:)"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "saveTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

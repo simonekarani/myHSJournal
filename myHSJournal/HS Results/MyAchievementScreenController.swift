@@ -42,6 +42,12 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        loadHSRecords()
+        DispatchQueue.main.async {
+            self.myAchievementTableView.reloadData() }
+    }
+    
     func setupTableView() {
         myAchievementTableView.delegate = self
         myAchievementTableView.dataSource = self
@@ -59,6 +65,10 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
     }
     
     func loadHSRecords() {
+        hsItemArray.removeAll()
+        academicItemArray.removeAll()
+        activityItemArray.removeAll()
+        researchItemArray.removeAll()
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
             hsItemArray = try context.fetch(request)
@@ -158,7 +168,7 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 print("Ok button tapped")
-                self.deleteRecord(deleteActionForRowAt: indexPath)
+                self.deleteHSRecord(deleteActionForRowAt: indexPath, recitem: self.editHSRec)
             })
             
             // Create Cancel button with action handlder
@@ -212,27 +222,54 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
         return nil
     }
     
-    func deleteRecord(deleteActionForRowAt indexPath: IndexPath) {
+    func deleteHSRecord(deleteActionForRowAt indexPath: IndexPath, recitem: HSRecItem) {
         print("delete section \(indexPath.section) row = \(indexPath.row)")
         if (indexPath.section == 0) {
             academicItemArray.remove(at: indexPath.row-1)
+            deleteRecord(title: recitem.title!)
             DispatchQueue.main.async {
                 self.myAchievementTableView.reloadData() }
         } else if (indexPath.section == 1) {
             researchItemArray.remove(at: indexPath.row-1)
+            deleteRecord(title: recitem.title!)
             DispatchQueue.main.async {
                 self.myAchievementTableView.reloadData() }
         } else if (indexPath.section == 2) {
             activityItemArray.remove(at: indexPath.row-1)
+            deleteRecord(title: recitem.title!)
             DispatchQueue.main.async {
                 self.myAchievementTableView.reloadData() }
+        }
+    }
+    
+    func deleteRecord(title: String) {
+        let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
+        do {
+            hsItemArray = try context.fetch(request)
+            for (_, element) in hsItemArray.enumerated() {
+                if (element.title == title) {
+                    context.delete(element)
+                    saveContext()
+                    return
+                }
+            }
+        } catch {
+            print("Error in loading \(error)")
+        }
+    }
+    
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is SchoolRecordDetailsController {
             let vc = segue.destination as? SchoolRecordDetailsController
-            vc?.selectedSchoolYear = SchoolYearType.TENTH
+            vc?.selectedSchoolYear = SchoolYearType.TWELVETH
             if sender != nil {
                 vc?.editHSRec = self.editHSRec
             }

@@ -19,6 +19,7 @@
 		2C6BF4B82596EFBE002641EC /* HSRecTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */; };
 		2C6BF4BB2596EFEB002641EC /* HSRecDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B92596EFEB002641EC /* HSRecDetailTableViewCell.swift */; };
 		2C6BF4BC2596EFEB002641EC /* HSRecDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6BF4BA2596EFEB002641EC /* HSRecDetailTableViewCell.xib */; };
+		2C76DE7025A15D710065A84D /* HSRecState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C76DE6F25A15D710065A84D /* HSRecState.swift */; };
 		2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */; };
 		2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */; };
 		2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */; };
@@ -47,6 +48,7 @@
 		2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSRecTitleTableViewCell.xib; sourceTree = "<group>"; };
 		2C6BF4B92596EFEB002641EC /* HSRecDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecDetailTableViewCell.swift; sourceTree = "<group>"; };
 		2C6BF4BA2596EFEB002641EC /* HSRecDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSRecDetailTableViewCell.xib; sourceTree = "<group>"; };
+		2C76DE6F25A15D710065A84D /* HSRecState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecState.swift; sourceTree = "<group>"; };
 		2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshmenScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SophomoreScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuniorScreenController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				2C093E022557B8FF008F7659 /* RoundButton.swift */,
 				2CA1AFC325908A9900147769 /* HSRecType.swift */,
 				2C6BF4AB259341D6002641EC /* SchoolYearType.swift */,
+				2C76DE6F25A15D710065A84D /* HSRecState.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6BF4BB2596EFEB002641EC /* HSRecDetailTableViewCell.swift in Sources */,
+				2C76DE7025A15D710065A84D /* HSRecState.swift in Sources */,
 				2C9FBA0925500DD000D9F4BD /* SeniorScreenController.swift in Sources */,
 				2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */,
 				2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */,
