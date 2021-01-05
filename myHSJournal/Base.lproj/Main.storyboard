@@ -90,7 +90,7 @@
                             <outlet property="delegate" destination="0TJ-aI-Dm8" id="EWt-PK-HNR"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="My High School Achievements" id="36o-SN-avN"/>
+                    <navigationItem key="navigationItem" title="My School Journal" id="36o-SN-avN"/>
                     <connections>
                         <segue destination="Wu0-fd-m6H" kind="show" identifier="gotoFreshmen" id="VEt-03-SLA"/>
                         <segue destination="0c8-3p-8nj" kind="show" identifier="gotoSophomore" id="4TV-RD-LZf"/>
@@ -728,9 +728,9 @@
         <segue reference="Qw6-7R-bK4"/>
         <segue reference="VEt-03-SLA"/>
         <segue reference="3ph-A4-h8y"/>
-        <segue reference="s4T-PS-POc"/>
+        <segue reference="cJ7-TU-STm"/>
         <segue reference="keP-Y5-UI6"/>
-        <segue reference="cc5-R3-Etj"/>
-        <segue reference="SVD-de-Fpr"/>
+        <segue reference="lhj-l7-2zB"/>
+        <segue reference="4TV-RD-LZf"/>
     </inferredMetricsTieBreakers>
 </document>

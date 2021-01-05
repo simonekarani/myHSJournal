@@ -218,7 +218,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = simonekarani;
+				ORGANIZATIONNAME = "Simone Karani";
 				TargetAttributes = {
 					2CF710B42546366800D5FFE6 = {
 						CreatedOnToolsVersion = 10.1;
@@ -474,6 +474,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JAC5P67S2G;
 				INFOPLIST_FILE = myHSJournal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -493,6 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JAC5P67S2G;
 				INFOPLIST_FILE = myHSJournal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

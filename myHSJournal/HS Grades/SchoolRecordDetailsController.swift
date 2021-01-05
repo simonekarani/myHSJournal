@@ -58,10 +58,14 @@ class SchoolRecordDetailsController: UIViewController {
         if (selectedSchoolYear != nil) {
             yearDropDown.selectRow(selectedSchoolYear.asInt())
             schoolYear.setTitle(selectedSchoolYear.description, for: .normal)
+            dropDown.selectRow(0)
+            recType.setTitle(HSRecType.ACADEMIC.description, for: .normal)
             recState = .ADD
         } else {
             yearDropDown.selectRow(1)
             schoolYear.setTitle(SchoolYearType.SEVENTH.description, for: .normal)
+            dropDown.selectRow(0)
+            recType.setTitle(HSRecType.ACADEMIC.description, for: .normal)
             recState = .ADD
         }
         
