@@ -87,8 +87,9 @@ class SchoolRecordDetailsController: UIViewController {
 
     @objc private func saveTapped() {
         let rectitle: String = recTitle.text!
+        let schoolyear: String = yearDropDown.selectedItem!
         if recState == .ADD {
-            if !isRecordExists(rectitle: rectitle) {
+            if !isRecordExists(rectitle: rectitle, schoolYear: schoolyear) {
                 createRecord()
                 navigationController?.popViewController(animated: true)
             } else {
@@ -100,7 +101,7 @@ class SchoolRecordDetailsController: UIViewController {
         }
     }
     
-    func isRecordExists(rectitle: String) -> Bool {
+    func isRecordExists(rectitle: String, schoolYear: String) -> Bool {
         var hsItemArray = [HSRecItem]()
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
@@ -132,8 +133,9 @@ class SchoolRecordDetailsController: UIViewController {
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
             hsItemArray = try context.fetch(request)
+            var isFound: Bool = false
             for (_, element) in hsItemArray.enumerated() {
-                if element.title == rectitle {
+                if (element.title == rectitle) {
                     element.recType = dropDown.selectedItem
                     element.schoolyear = yearDropDown.selectedItem
                     element.title = recTitle.text!
@@ -141,8 +143,12 @@ class SchoolRecordDetailsController: UIViewController {
                     element.recognition = recAward.text
                     element.desc = recDetail.text
                     saveContext()
+                    isFound = true
                     return
                 }
+            }
+            if !isFound {
+               createRecord()
             }
         } catch {
             print("Error in loading \(error)")
