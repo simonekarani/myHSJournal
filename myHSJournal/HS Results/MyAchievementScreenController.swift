@@ -48,9 +48,16 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
     }
     
     func setupTableView() {
+        myAchievementTableView.allowsSelection = true
+        myAchievementTableView.allowsSelectionDuringEditing = true
+        
         myAchievementTableView.delegate = self
         myAchievementTableView.dataSource = self
         
+        // Set automatic dimensions for row height
+        myAchievementTableView.rowHeight = UITableView.automaticDimension
+        myAchievementTableView.estimatedRowHeight = UITableView.automaticDimension
+
         self.myAchievementTableView.register(UINib.init(nibName: "HSRecTitleTableViewCell", bundle: .main), forCellReuseIdentifier: "HSRecTitleTableViewCell")
         self.myAchievementTableView.register(UINib.init(nibName: "HSRecDetailTableViewCell", bundle: .main), forCellReuseIdentifier: "HSRecDetailTableViewCell")
         self.myAchievementTableView.register(UINib.init(nibName: "HSRecNoValueTableViewCell", bundle: .main), forCellReuseIdentifier: "HSRecNoValueTableViewCell")
@@ -188,6 +195,18 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
         return [editAction, deleteAction]
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 0 && (indexPath.row == 0 || academicItemArray.count == 0)) {
+            return
+        } else if (indexPath.section == 1 && (indexPath.row == 0 || researchItemArray.count == 0)) {
+            return
+        } else if (indexPath.section == 2 && (indexPath.row == 0 || activityItemArray.count == 0)) {
+            return
+        }
+        self.editHSRec = getRecord(actionForRowAt: indexPath)!
+        performSegue(withIdentifier: "gotoAchievementsRec", sender: self)
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }

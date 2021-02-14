@@ -11,14 +11,15 @@ import UIKit
 
 class MainScreenController: UICollectionViewController {
     
-    let frontLabelArray = ["Pre High School", "Freshmen Year", "Sophomore Year", "Junior Year", "Senior Year", "My Achievements"]
+    let frontLabelArray = ["Self-Esteem", "Plan Your School", "School Goals",
+                           "School Records", "School Report",  "Self-Help Resources"]
     let frontImageArray = [
-        UIImage(named: "beforeHS"),
-        UIImage(named: "grade9"),
-        UIImage(named: "grade10"),
-        UIImage(named: "grade11"),
-        UIImage(named: "grade12"),
-        UIImage(named: "report")
+        UIImage(named: "esteem"),
+        UIImage(named: "plan"),
+        UIImage(named: "goals"),
+        UIImage(named: "records"),
+        UIImage(named: "mainreport"),
+        UIImage(named: "resource")
     ]
     var tablefontSize: Int = 22
     
@@ -61,31 +62,25 @@ class MainScreenController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            //UserDefaults.standard.set(0, forKey: "UserSelection")
-            performSegue(withIdentifier: "gotoBeforeHS", sender: self)
+            performSegue(withIdentifier: "gotoEsteem", sender: self)
             
         case 1:
-            //UserDefaults.standard.set(1, forKey: "UserSelection")
-            performSegue(withIdentifier: "gotoFreshmen", sender: self)
+            performSegue(withIdentifier: "gotoPlan", sender: self)
             
         case 2:
-            //UserDefaults.standard.set(2, forKey: "UserSelection")
-            performSegue(withIdentifier: "gotoSophomore", sender: self)
+            performSegue(withIdentifier: "gotoGoals", sender: self)
 
         case 3:
-            //UserDefaults.standard.set(3, forKey: "UserSelection")
-            performSegue(withIdentifier: "gotoJunior", sender: self)
+            performSegue(withIdentifier: "gotoRecords", sender: self)
             
         case 4:
-            //UserDefaults.standard.set(4, forKey: "UserSelection")
-            performSegue(withIdentifier: "gotoSenior", sender: self)
-           
-        case 5:
-            //UserDefaults.standard.set(5, forKey: "UserSelection")
             performSegue(withIdentifier: "gotoAchievements", sender: self)
+
+        case 5:
+            performSegue(withIdentifier: "gotoResources", sender: self)
             
         default:
-            performSegue(withIdentifier: "gotoAchievements", sender: self)
+            performSegue(withIdentifier: "gotoRecords", sender: self)
         }
     }
     

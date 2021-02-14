@@ -22,6 +22,7 @@ class HSRecDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         detailDescription.delegate = (self as UITextViewDelegate)
+        detailDescription.isUserInteractionEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
