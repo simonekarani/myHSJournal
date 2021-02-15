@@ -11,9 +11,9 @@
 		2C093E032557B8FF008F7659 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C093E022557B8FF008F7659 /* RoundButton.swift */; };
 		2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E348254F2D17006BAB7A /* MainScreenController.swift */; };
 		2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */; };
+		2C239B2625D9FD5F003CE4BD /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239B2525D9FD5F003CE4BD /* RecordsTableViewCell.swift */; };
 		2C25E27F2599E0F400E38467 /* HSRecNoValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C25E27D2599E0F400E38467 /* HSRecNoValueTableViewCell.swift */; };
 		2C25E2802599E0F400E38467 /* HSRecNoValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C25E27E2599E0F400E38467 /* HSRecNoValueTableViewCell.xib */; };
-		2C3081D525C62D36000C1E4C /* SchoolRecordsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3081D425C62D36000C1E4C /* SchoolRecordsController.swift */; };
 		2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */; };
 		2C6BF4AC259341D6002641EC /* SchoolYearType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4AB259341D6002641EC /* SchoolYearType.swift */; };
 		2C6BF4B72596EFBE002641EC /* HSRecTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */; };
@@ -30,7 +30,7 @@
 		2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0A25500E6A00D9F4BD /* MyAchievementScreenController.swift */; };
 		2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */; };
 		2CA1AFC425908A9900147769 /* HSRecType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1AFC325908A9900147769 /* HSRecType.swift */; };
-		2CC463ED25C8111100CC4116 /* RecordsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC463EC25C8111100CC4116 /* RecordsTabViewController.swift */; };
+		2CC463ED25C8111100CC4116 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC463EC25C8111100CC4116 /* RecordsViewController.swift */; };
 		2CF710B92546366800D5FFE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF710B82546366800D5FFE6 /* AppDelegate.swift */; };
 		2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF710BA2546366800D5FFE6 /* ViewController.swift */; };
 		2CF710BE2546366800D5FFE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CF710BC2546366800D5FFE6 /* Main.storyboard */; };
@@ -44,9 +44,9 @@
 		2C093E022557B8FF008F7659 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		2C16E348254F2D17006BAB7A /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionCell.swift; sourceTree = "<group>"; };
+		2C239B2525D9FD5F003CE4BD /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		2C25E27D2599E0F400E38467 /* HSRecNoValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecNoValueTableViewCell.swift; sourceTree = "<group>"; };
 		2C25E27E2599E0F400E38467 /* HSRecNoValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSRecNoValueTableViewCell.xib; sourceTree = "<group>"; };
-		2C3081D425C62D36000C1E4C /* SchoolRecordsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolRecordsController.swift; sourceTree = "<group>"; };
 		2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolRecordDetailsController.swift; sourceTree = "<group>"; };
 		2C6BF4AB259341D6002641EC /* SchoolYearType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolYearType.swift; sourceTree = "<group>"; };
 		2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecTitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		2C9FBA0A25500E6A00D9F4BD /* MyAchievementScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAchievementScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeHSScreenController.swift; sourceTree = "<group>"; };
 		2CA1AFC325908A9900147769 /* HSRecType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecType.swift; sourceTree = "<group>"; };
-		2CC463EC25C8111100CC4116 /* RecordsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTabViewController.swift; sourceTree = "<group>"; };
+		2CC463EC25C8111100CC4116 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		2CF710B52546366800D5FFE6 /* myHSJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myHSJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF710B82546366800D5FFE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CF710BA2546366800D5FFE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +104,6 @@
 			children = (
 				2C16E348254F2D17006BAB7A /* MainScreenController.swift */,
 				2C16E34E254FE57E006BAB7A /* MainScreenCollectionCell.swift */,
-				2C3081D425C62D36000C1E4C /* SchoolRecordsController.swift */,
 			);
 			path = "MainHS Screen";
 			sourceTree = "<group>";
@@ -174,12 +173,13 @@
 		2CFC872225C764BC0082B1C1 /* Records */ = {
 			isa = PBXGroup;
 			children = (
-				2CC463EC25C8111100CC4116 /* RecordsTabViewController.swift */,
+				2CC463EC25C8111100CC4116 /* RecordsViewController.swift */,
+				2C239B2525D9FD5F003CE4BD /* RecordsTableViewCell.swift */,
+				2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */,
 				2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */,
 				2C9FBA0425500D6100D9F4BD /* SophomoreScreenController.swift */,
 				2C9FBA0625500DBB00D9F4BD /* JuniorScreenController.swift */,
 				2C9FBA0825500DD000D9F4BD /* SeniorScreenController.swift */,
-				2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */,
 				2C3736B425574D3800F9CD24 /* SchoolRecordDetailsController.swift */,
 				2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */,
 				2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */,
@@ -342,10 +342,10 @@
 				2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */,
 				2C25E27F2599E0F400E38467 /* HSRecNoValueTableViewCell.swift in Sources */,
 				2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */,
-				2C3081D525C62D36000C1E4C /* SchoolRecordsController.swift in Sources */,
 				2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */,
+				2C239B2625D9FD5F003CE4BD /* RecordsTableViewCell.swift in Sources */,
 				2C6BF4B72596EFBE002641EC /* HSRecTitleTableViewCell.swift in Sources */,
-				2CC463ED25C8111100CC4116 /* RecordsTabViewController.swift in Sources */,
+				2CC463ED25C8111100CC4116 /* RecordsViewController.swift in Sources */,
 				2CF710B92546366800D5FFE6 /* AppDelegate.swift in Sources */,
 				2C16E349254F2D17006BAB7A /* MainScreenController.swift in Sources */,
 				2CF710C12546366800D5FFE6 /* myHSJournal.xcdatamodeld in Sources */,

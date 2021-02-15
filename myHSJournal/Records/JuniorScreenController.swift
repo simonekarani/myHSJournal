@@ -189,6 +189,18 @@ class JuniorScreenController: UIViewController, UITableViewDataSource, UITableVi
         return [editAction, deleteAction]
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 0 && (indexPath.row == 0 || academicItemArray.count == 0)) {
+            return
+        } else if (indexPath.section == 1 && (indexPath.row == 0 || researchItemArray.count == 0)) {
+            return
+        } else if (indexPath.section == 2 && (indexPath.row == 0 || activityItemArray.count == 0)) {
+            return
+        }
+        self.editHSRec = getRecord(actionForRowAt: indexPath)!
+        performSegue(withIdentifier: "gotoJuniorRec", sender: self)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }

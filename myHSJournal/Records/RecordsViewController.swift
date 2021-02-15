@@ -1,29 +1,27 @@
 //
-//  SelfEsteemScreenController.swift
+//  RecordsViewController.swift
 //  myHSJournal
 //
-//  Created by Simone Karani on 2/12/21.
+//  Created by Simone Karani on 2/1/21.
 //  Copyright © 2021 Simone Karani. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class SelfEsteemScreenController: UIViewController {
-
-    @IBOutlet weak var esteemTableView: UITableView!
+class RecordsViewController: UIViewController {
+    
+    @IBOutlet weak var recordsTableView: UITableView!
     
     let devCourses = [
-        ("Today's Self-Booster"), ("Feeling Today?"),
-        ("What Made Me Angry?"), ("Note To Friend"),
-        ("Anxiety Report!")
+        ("Before High School"), ("Freshmen Year"), ("Sophomore Year"),
+        ("Junior Year"), ("Senior Year")
     ]
     let devCousesImages = [
-        UIImage(named: "booster"), UIImage(named: "feeling"),
-        UIImage(named: "angry"), UIImage(named: "friends"),
-        UIImage(named: "stressreport"),
+        UIImage(named: "beforeHS"), UIImage(named: "grade9"), UIImage(named: "grade10"),
+        UIImage(named: "grade11"), UIImage(named: "grade12"),
     ]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,39 +34,39 @@ class SelfEsteemScreenController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     func setupTableView() {
-        esteemTableView.delegate = self
-        esteemTableView.dataSource = self
+        recordsTableView.delegate = self
+        recordsTableView.dataSource = self
         
-        esteemTableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        recordsTableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.row) {
         case 0:
-            performSegue(withIdentifier: "gotoBooster", sender: self)
+            performSegue(withIdentifier: "gotoBeforeHS", sender: self)
         case 1:
-            performSegue(withIdentifier: "gotoFeltGood", sender: self)
+            performSegue(withIdentifier: "gotoFreshmen", sender: self)
         case 2:
-            performSegue(withIdentifier: "gotoMakeAngry", sender: self)
+            performSegue(withIdentifier: "gotoSophomore", sender: self)
         case 3:
-            performSegue(withIdentifier: "gotoFriendNote", sender: self)
+            performSegue(withIdentifier: "gotoJunior", sender: self)
         case 4:
-            performSegue(withIdentifier: "gotoStressReport", sender: self)
+            performSegue(withIdentifier: "gotoSenior", sender: self)
         default:
-            performSegue(withIdentifier: "gotoBooster", sender: self)
+            performSegue(withIdentifier: "gotoSenior", sender: self)
             
         }
     }
 }
 
-extension SelfEsteemScreenController: UITableViewDelegate {
+extension RecordsViewController: UITableViewDelegate {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
@@ -84,17 +82,17 @@ extension SelfEsteemScreenController: UITableViewDelegate {
     }
 }
 
-extension SelfEsteemScreenController: UITableViewDataSource {
+extension RecordsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devCourses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "esteemCell", for: indexPath as IndexPath) as! EsteemMainTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hsRecordCell", for: indexPath as IndexPath) as! RecordsTableViewCell
         
-        cell.esteemImg.image = self.devCousesImages[indexPath .row]
-        cell.esteemLabel.text  = self.devCourses[indexPath .row]
+        cell.hsYearImg.image = self.devCousesImages[indexPath .row]
+        cell.hsYear.text  = self.devCourses[indexPath .row]
         
         return cell
     }
