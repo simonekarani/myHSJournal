@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G7016" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G9009" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EsteemRecItem" representedClassName="EsteemRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="esteemType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="feelingType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="msgTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="HSRecItem" representedClassName=".HSRecItem" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="grade" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,5 +18,6 @@
     </entity>
     <elements>
         <element name="HSRecItem" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="EsteemRecItem" positionX="-63" positionY="27" width="128" height="135"/>
     </elements>
 </model>

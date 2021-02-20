@@ -51,9 +51,9 @@ class SelfEsteemScreenController: UIViewController {
         case 1:
             performSegue(withIdentifier: "gotoFeltGood", sender: self)
         case 2:
-            performSegue(withIdentifier: "gotoMakeAngry", sender: self)
+            performSegue(withIdentifier: "gotoAngryList", sender: self)
         case 3:
-            performSegue(withIdentifier: "gotoFriendNote", sender: self)
+            performSegue(withIdentifier: "gotoFriendList", sender: self)
         case 4:
             performSegue(withIdentifier: "gotoStressReport", sender: self)
         default:

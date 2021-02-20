@@ -2,7 +2,7 @@
 //  HSRecState.swift
 //  myHSJournal
 //
-//  Created by Vijay Karani on 1/2/21.
+//  Created by Simone Karani on 1/2/21.
 //  Copyright © 2021 simonekarani. All rights reserved.
 //
 
