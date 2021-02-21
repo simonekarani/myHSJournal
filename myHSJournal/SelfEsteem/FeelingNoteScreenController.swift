@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 import DropDown
 
@@ -16,13 +17,14 @@ class FeelingNoteScreenController: UIViewController {
     @IBOutlet weak var feelingTitle: UITextField!
     @IBOutlet weak var feelingDetail: UITextView!
     
-    var editFeelingRec: EsteemRecItem!
-    var feelingRecCount: Int!
+    var editEsteemRec: EsteemRecItem!
+    var esteemRecCount: Int!
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recItemArray = [String]()
     var recCreated = false
-    
+    var recState: HSRecState = .NONE
+
     let feelingDropDown = DropDown()
 
     override func viewDidLoad() {
@@ -37,27 +39,35 @@ class FeelingNoteScreenController: UIViewController {
             EsteemFeelingType.WORRIED.description
         ]
 
-        if (editFeelingRec != nil) {
-            feelingDropDown.selectRow(EsteemFeelingType.toInt(value: editFeelingRec.feelingType!))
-            feelingTypeButton.setTitle(editFeelingRec.feelingType, for: .normal)
-        } else {
-            feelingDropDown.selectRow(6)
-            feelingTypeButton.setTitle(EsteemFeelingType.HAPPY.description, for: .normal)
-        }
-
         recCreated = false
         feelingTitle.isUserInteractionEnabled = true
         feelingDetail.isEditable = true
+
+        if (editEsteemRec != nil) {
+            feelingTitle.text = editEsteemRec.msgTitle!
+            feelingDetail.text = editEsteemRec.message!
+            feelingDropDown.selectRow(EsteemFeelingType.toInt(value: editEsteemRec.feelingType!))
+            feelingTypeButton.setTitle(editEsteemRec.feelingType, for: .normal)
+            recState = .UPDATE
+        } else {
+            feelingDropDown.selectRow(6)
+            feelingTypeButton.setTitle(EsteemFeelingType.HAPPY.description, for: .normal)
+            recState = .ADD
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParent {
-            createRecord()
+            if (recState == .ADD) {
+                createRecord()
+            } else {
+                updateRecord()
+            }
         }
         
-        if (feelingRecCount == 0 && recCreated == false) {
+        if (esteemRecCount == 0 && recCreated == false) {
             let controllersInNavigationCount = self.navigationController?.viewControllers.count
             self.navigationController?.popToViewController(self.navigationController?.viewControllers[controllersInNavigationCount!-2] as! SelfEsteemScreenController, animated: true)
         }
@@ -87,6 +97,30 @@ class FeelingNoteScreenController: UIViewController {
         esteemRecItem.msgTitle = feelingTitle.text
         esteemRecItem.message = feelingDetail.text
         saveContext()
+    }
+    
+    func updateRecord() {
+        var esteemItemArray = [EsteemRecItem]()
+        let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
+        do {
+            esteemItemArray = try context.fetch(request)
+            var isFound: Bool = false
+            for (_, element) in esteemItemArray.enumerated() {
+                if (element.timeMillis == editEsteemRec.timeMillis) {
+                    element.feelingType = feelingDropDown.selectedItem
+                    element.msgTitle = feelingTitle.text
+                    element.message = feelingDetail.text
+                    saveContext()
+                    isFound = true
+                    return
+                }
+            }
+            if !isFound {
+                createRecord()
+            }
+        } catch {
+            print("Error in loading \(error)")
+        }
     }
     
     func saveContext() {

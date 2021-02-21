@@ -193,8 +193,8 @@ class AngryListScreenController: UIViewController, UITableViewDataSource, UITabl
         if segue.destination is AngryNoteScreenController {
             let vc = segue.destination as? AngryNoteScreenController
             if sender != nil {
-                vc?.editAngryRec = self.editAngryRec
-                vc?.angryRecCount = self.getRecordCount()
+                vc?.editEsteemRec = self.editAngryRec
+                vc?.esteemRecCount = self.getRecordCount()
             }
         }
     }

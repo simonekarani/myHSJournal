@@ -193,8 +193,8 @@ class FeelingListScreenController: UIViewController, UITableViewDataSource, UITa
         if segue.destination is FeelingNoteScreenController {
             let vc = segue.destination as? FeelingNoteScreenController
             if sender != nil {
-                vc?.editFeelingRec = self.editFeelingRec
-                vc?.feelingRecCount = self.getRecordCount()
+                vc?.editEsteemRec = self.editFeelingRec
+                vc?.esteemRecCount = self.getRecordCount()
             }
         }
     }

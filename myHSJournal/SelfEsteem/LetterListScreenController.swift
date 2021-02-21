@@ -193,8 +193,8 @@ class LetterListScreenController: UIViewController, UITableViewDataSource, UITab
         if segue.destination is LetterFriendScreenController {
             let vc = segue.destination as? LetterFriendScreenController
             if sender != nil {
-                vc?.editLetterRec = self.editLetterRec
-                vc?.letterRecCount = self.getRecordCount()
+                vc?.editEsteemRec = self.editLetterRec
+                vc?.esteemRecCount = self.getRecordCount()
             }
         }
     }

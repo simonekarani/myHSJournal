@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 
 class LetterFriendScreenController: UIViewController {
@@ -15,12 +16,13 @@ class LetterFriendScreenController: UIViewController {
     
     @IBOutlet weak var friendLetter: UITextView!
     
-    var editLetterRec: EsteemRecItem!
-    var letterRecCount: Int!
+    var editEsteemRec: EsteemRecItem!
+    var esteemRecCount: Int!
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recItemArray = [String]()
     var recCreated = false
+    var recState: HSRecState = .NONE
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +30,27 @@ class LetterFriendScreenController: UIViewController {
         recCreated = false
         friendName.isUserInteractionEnabled = true
         friendLetter.isEditable = true
+
+        if (editEsteemRec != nil) {
+            friendName.text = editEsteemRec.msgTitle!
+            friendLetter.text = editEsteemRec.message!
+            recState = .UPDATE
+        } else {
+            recState = .ADD
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParent {
-            createRecord()
+            if (recState == .ADD) {
+                createRecord()
+            } else {
+                updateRecord()
+            }
         }
-        if (letterRecCount == 0 && recCreated == false) {
+        if (esteemRecCount == 0 && recCreated == false) {
             let controllersInNavigationCount = self.navigationController?.viewControllers.count
         self.navigationController?.popToViewController(self.navigationController?.viewControllers[controllersInNavigationCount!-2] as! SelfEsteemScreenController, animated: true)
         }
@@ -56,6 +70,29 @@ class LetterFriendScreenController: UIViewController {
         esteemRecItem.msgTitle = friendName.text
         esteemRecItem.message = friendLetter.text
         saveContext()
+    }
+    
+    func updateRecord() {
+        var esteemItemArray = [EsteemRecItem]()
+        let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
+        do {
+            esteemItemArray = try context.fetch(request)
+            var isFound: Bool = false
+            for (_, element) in esteemItemArray.enumerated() {
+                if (element.timeMillis == editEsteemRec.timeMillis) {
+                    element.msgTitle = friendName.text
+                    element.message = friendLetter.text
+                    saveContext()
+                    isFound = true
+                    return
+                }
+            }
+            if !isFound {
+                createRecord()
+            }
+        } catch {
+            print("Error in loading \(error)")
+        }
     }
 
     func saveContext() {
