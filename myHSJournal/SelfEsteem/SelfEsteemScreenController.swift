@@ -49,7 +49,7 @@ class SelfEsteemScreenController: UIViewController {
         case 0:
             performSegue(withIdentifier: "gotoBooster", sender: self)
         case 1:
-            performSegue(withIdentifier: "gotoFeltGood", sender: self)
+            performSegue(withIdentifier: "gotoFeelList", sender: self)
         case 2:
             performSegue(withIdentifier: "gotoAngryList", sender: self)
         case 3:

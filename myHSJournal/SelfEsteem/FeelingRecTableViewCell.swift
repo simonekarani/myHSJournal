@@ -10,6 +10,10 @@ import UIKit
 
 class FeelingRecTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var feelingTitle: UILabel!
+    @IBOutlet weak var feelingDate: UILabel!
+    @IBOutlet weak var feelingDetails: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,8 +21,20 @@ class FeelingRecTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    func configureCell(recItem: EsteemRecItem, count: Int) {
+        feelingTitle.text = recItem.feelingType! + ":" + recItem.msgTitle!
+        feelingDate.text = recItem.date
+        feelingDetails.text = recItem.message
+        
+        setupCellDetails()
+    }
+    
+    func setupCellDetails() {
+        layer.borderColor = UIColor.black.cgColor
+        layer.borderWidth = 2
+        layer.cornerRadius = 8
+        clipsToBounds = true
+    }
 }

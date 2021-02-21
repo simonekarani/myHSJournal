@@ -60,7 +60,7 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
     
     @objc private func addTapped() {
         editHSRec = nil
-        performSegue(withIdentifier: "gotoBeforeHsRec", sender: self)
+        performSegue(withIdentifier: "gotoYear8HsRec", sender: self)
     }
 
     func loadHSRecords() {
@@ -163,7 +163,7 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
         }
         editHSRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.performSegue(withIdentifier:"gotoBeforeHsRec", sender: self.beforeHSTableView.cellForRow(at: indexPath))
+            self.performSegue(withIdentifier:"gotoYear8HsRec", sender: self.beforeHSTableView.cellForRow(at: indexPath))
         })
         editAction.backgroundColor = UIColor.blue
         
@@ -202,7 +202,7 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
             return
         }
         self.editHSRec = getRecord(actionForRowAt: indexPath)!
-        performSegue(withIdentifier: "gotoBeforeHsRec", sender: self)
+        performSegue(withIdentifier: "gotoYear8HsRec", sender: self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
