@@ -16,8 +16,14 @@
         <attribute name="schoolyear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="QuoteRecItem" representedClassName="QuoteRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="quoteAuthor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quoteDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quoteMsg" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="HSRecItem" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="EsteemRecItem" positionX="-63" positionY="27" width="128" height="135"/>
+        <element name="HSRecItem" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="QuoteRecItem" positionX="-63" positionY="54" width="128" height="90"/>
     </elements>
 </model>

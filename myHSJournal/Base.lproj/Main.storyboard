@@ -194,28 +194,56 @@
                     </navigationItem>
                     <connections>
                         <outlet property="esteemTableView" destination="Xst-UI-Dr3" id="n5h-3h-VIs"/>
-                        <segue destination="CQI-1l-4nF" kind="show" identifier="gotoBooster" id="Dp8-q0-8ay"/>
                         <segue destination="aRp-Rk-99b" kind="show" identifier="gotoAngryList" id="rLG-xE-zss"/>
                         <segue destination="dZn-K0-Sb7" kind="show" identifier="gotoFriendList" id="TlE-3K-KsN"/>
                         <segue destination="Iqy-xX-fGW" kind="show" identifier="gotoFeelList" id="15s-3z-8JQ"/>
                         <segue destination="rw9-1A-PHE" kind="show" identifier="gotoStressReport" id="Skz-IA-tyw"/>
+                        <segue destination="viG-VJ-tDQ" kind="show" identifier="gotoBooster" id="ozC-O5-Ybk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hO-dC-NJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="314" y="-299"/>
         </scene>
-        <!--Mind Booster-->
+        <!--Today's Quote-->
         <scene sceneID="Kq0-9X-v1O">
             <objects>
-                <viewController id="viG-VJ-tDQ" sceneMemberID="viewController">
+                <viewController id="viG-VJ-tDQ" customClass="MoralQuoteScreenController" customModule="myHSJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1UB-CN-Q6B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quote" translatesAutoresizingMaskIntoConstraints="NO" id="RBD-9y-lXP">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A5h-Vl-Q9V">
+                                <rect key="frame" x="15" y="80" width="345" height="507"/>
+                                <color key="backgroundColor" red="0.97756282729999999" green="0.025873056870000001" blue="0.063999127079999996" alpha="0.17334653258493149" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="23"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="A5h-Vl-Q9V" firstAttribute="leading" secondItem="Ihs-ae-eKZ" secondAttribute="leading" constant="15" id="8fF-MK-0I7"/>
+                            <constraint firstItem="A5h-Vl-Q9V" firstAttribute="top" secondItem="Ihs-ae-eKZ" secondAttribute="top" constant="60" id="DxT-Vt-697"/>
+                            <constraint firstItem="RBD-9y-lXP" firstAttribute="top" secondItem="Ihs-ae-eKZ" secondAttribute="top" id="IRo-At-Aut"/>
+                            <constraint firstItem="RBD-9y-lXP" firstAttribute="leading" secondItem="Ihs-ae-eKZ" secondAttribute="leading" id="RZd-d8-6Q5"/>
+                            <constraint firstItem="Ihs-ae-eKZ" firstAttribute="trailing" secondItem="RBD-9y-lXP" secondAttribute="trailing" id="ZKY-Zo-qlJ"/>
+                            <constraint firstItem="A5h-Vl-Q9V" firstAttribute="centerY" secondItem="1UB-CN-Q6B" secondAttribute="centerY" id="a9p-KJ-U0L"/>
+                            <constraint firstItem="Ihs-ae-eKZ" firstAttribute="bottom" secondItem="RBD-9y-lXP" secondAttribute="bottom" id="mv0-5H-w7F"/>
+                            <constraint firstItem="Ihs-ae-eKZ" firstAttribute="trailing" secondItem="A5h-Vl-Q9V" secondAttribute="trailing" constant="15" id="tRH-kE-Pzk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ihs-ae-eKZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Mind Booster" id="IgY-sq-ZKO"/>
+                    <navigationItem key="navigationItem" title="Today's Quote" id="IgY-sq-ZKO">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="FDC-L9-uM5"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="quoteDetail" destination="A5h-Vl-Q9V" id="tBO-e8-OrW"/>
+                        <segue destination="lhQ-a1-Fbb" kind="show" identifier="gotoPastQuotes" id="R0S-NX-e9b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSH-rK-GWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -253,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYL-Io-RnQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5519.1999999999998" y="-611.24437781109452"/>
+            <point key="canvasLocation" x="6458.3999999999996" y="-611.24437781109452"/>
         </scene>
         <!--How I Feel ...-->
         <scene sceneID="oVC-kZ-UTc">
@@ -366,7 +394,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWY-GR-XdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6807.1999999999998" y="-611.24437781109452"/>
+            <point key="canvasLocation" x="7746.3999999999996" y="-611.24437781109452"/>
         </scene>
         <!--Anxiety Report-->
         <scene sceneID="f8A-rd-9A2">
@@ -1015,20 +1043,38 @@
             </objects>
             <point key="canvasLocation" x="14501.6" y="223.53823088455775"/>
         </scene>
-        <!--View Controller-->
+        <!--Past Quotes-->
         <scene sceneID="hy9-zP-UQ8">
             <objects>
-                <viewController id="lhQ-a1-Fbb" sceneMemberID="viewController">
+                <viewController id="lhQ-a1-Fbb" customClass="QuoteListScreenController" customModule="myHSJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GxX-AK-c5Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XLc-Q5-Nz4">
+                                <rect key="frame" x="5" y="20" width="365" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XLc-Q5-Nz4" firstAttribute="top" secondItem="l1V-3g-s6m" secondAttribute="top" id="0fl-GQ-0zu"/>
+                            <constraint firstItem="XLc-Q5-Nz4" firstAttribute="leading" secondItem="l1V-3g-s6m" secondAttribute="leading" constant="5" id="Lcs-Jn-ox6"/>
+                            <constraint firstItem="l1V-3g-s6m" firstAttribute="trailing" secondItem="XLc-Q5-Nz4" secondAttribute="trailing" constant="5" id="aWe-KO-b15"/>
+                            <constraint firstItem="XLc-Q5-Nz4" firstAttribute="bottom" secondItem="l1V-3g-s6m" secondAttribute="bottom" id="oYw-51-xpg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="l1V-3g-s6m"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Past Quotes" id="6Vs-x0-byv">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="4jd-QT-dzm"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="quoteTableViewList" destination="XLc-Q5-Nz4" id="9ka-gy-1Wl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LwD-Bd-gtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15584.799999999999" y="292.80359820089956"/>
+            <point key="canvasLocation" x="3438" y="-837"/>
         </scene>
         <!--Junior Year Records-->
         <scene sceneID="KJX-9H-RQ6">
@@ -1130,7 +1176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVG-us-hew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15615.200000000001" y="-365.66716641679164"/>
+            <point key="canvasLocation" x="16524" y="-611.24437781109452"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gmB-4r-iYX">
@@ -1182,7 +1228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahR-ar-i6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10450.4" y="-1156.3718140929536"/>
+            <point key="canvasLocation" x="11389.6" y="-1156.3718140929536"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EYy-TC-GKR">
@@ -1290,7 +1336,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulE-9J-DPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10288.799999999999" y="-1156.3718140929536"/>
+            <point key="canvasLocation" x="11228" y="-1156.3718140929536"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Zk-rF-P3y">
@@ -1464,29 +1510,12 @@
             </objects>
             <point key="canvasLocation" x="5440.8000000000002" y="1009.7451274362819"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="d9i-A1-GIe">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CQI-1l-4nF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hOt-E1-5pn">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="viG-VJ-tDQ" kind="relationship" relationship="rootViewController" id="Aui-5B-6yW"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9VM-Si-r4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2246" y="-806"/>
-        </scene>
     </scenes>
     <resources>
         <image name="letterfeeling" width="153" height="198"/>
         <image name="letterfriend" width="600" height="862.5"/>
         <image name="letterpad" width="180.5" height="225"/>
+        <image name="quote" width="323" height="324.5"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Y9S-Ce-8Pq"/>
@@ -1494,7 +1523,7 @@
         <segue reference="eTH-4E-Z8h"/>
         <segue reference="0ST-q6-GRV"/>
         <segue reference="gLd-hh-InF"/>
-        <segue reference="4kW-CC-Mub"/>
+        <segue reference="fs1-pW-8og"/>
         <segue reference="lhj-l7-2zB"/>
         <segue reference="rqY-r1-QTj"/>
         <segue reference="Ax5-T9-aqf"/>
