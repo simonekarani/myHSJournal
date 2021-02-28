@@ -11,12 +11,12 @@ import UIKit
 
 class MainScreenController: UICollectionViewController {
     
-    let frontLabelArray = ["Self-Esteem", "Plan Your School", "School Goals",
+    let frontLabelArray = ["Self-Esteem", "School Goals", "Plan Your School",
                            "School Records", "School Report",  "Self-Help Resources"]
     let frontImageArray = [
         UIImage(named: "esteem"),
-        UIImage(named: "plan"),
         UIImage(named: "goals"),
+        UIImage(named: "plan"),
         UIImage(named: "records"),
         UIImage(named: "mainreport"),
         UIImage(named: "resource")
@@ -65,11 +65,11 @@ class MainScreenController: UICollectionViewController {
             performSegue(withIdentifier: "gotoEsteem", sender: self)
             
         case 1:
-            performSegue(withIdentifier: "gotoPlan", sender: self)
+            performSegue(withIdentifier: "gotoGoals", sender: self)
             
         case 2:
-            performSegue(withIdentifier: "gotoGoals", sender: self)
-
+            performSegue(withIdentifier: "gotoPlan", sender: self)
+            
         case 3:
             performSegue(withIdentifier: "gotoRecords", sender: self)
             

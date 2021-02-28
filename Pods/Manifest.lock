@@ -5,10 +5,12 @@ PODS:
   - Tabman (2.5.0):
     - AutoInsetter (~> 1.7.2)
     - Pageboy (~> 3.2.3)
+  - UICheckbox (0.0.2)
 
 DEPENDENCIES:
   - DropDown
   - Tabman (~> 2.5.0)
+  - UICheckbox
 
 SPEC REPOS:
   trunk:
@@ -16,13 +18,15 @@ SPEC REPOS:
     - DropDown
     - Pageboy
     - Tabman
+    - UICheckbox
 
 SPEC CHECKSUMS:
   AutoInsetter: 176c5c069b40bf6afa51bf7081be346ab70ca315
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Pageboy: 347c49b3a7f15aa78ddb6bf5c6c3b113e382fe52
   Tabman: 35f741ff663fb6654ed0a33870466b3c40668e35
+  UICheckbox: 54af9bc308c8c2b18404f4c360172115c0daea36
 
-PODFILE CHECKSUM: b41cbdab9028e349a4e948c4b61ca3acdf60f786
+PODFILE CHECKSUM: dbc1c25049d640934422be03976a085a5e443803
 
 COCOAPODS: 1.8.4

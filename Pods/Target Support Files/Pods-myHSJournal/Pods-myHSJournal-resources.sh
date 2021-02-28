@@ -98,9 +98,17 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/DropDown/DropDown/resources/DropDownCell.xib"
+  install_resource "${PODS_ROOT}/UICheckbox/UICheckbox/Resources/uicheckbox_checked.png"
+  install_resource "${PODS_ROOT}/UICheckbox/UICheckbox/Resources/uicheckbox_checked@2x.png"
+  install_resource "${PODS_ROOT}/UICheckbox/UICheckbox/Resources/uicheckbox_unchecked.png"
+  install_resource "${PODS_ROOT}/UICheckbox/UICheckbox/Resources/uicheckbox_unchecked@2x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/DropDown/DropDown/resources/DropDownCell.xib"
+  install_resource "${PODS_ROOT}/UICheckbox/UICheckbox/Resources/uicheckbox_checked.png"
+  install_resource "${PODS_ROOT}/UICheckbox/UICheckbox/Resources/uicheckbox_checked@2x.png"
+  install_resource "${PODS_ROOT}/UICheckbox/UICheckbox/Resources/uicheckbox_unchecked.png"
+  install_resource "${PODS_ROOT}/UICheckbox/UICheckbox/Resources/uicheckbox_unchecked@2x.png"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
