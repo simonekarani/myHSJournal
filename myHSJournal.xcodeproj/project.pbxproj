@@ -31,6 +31,7 @@
 		2C56A2B325E39E5900048D32 /* QuotePastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56A2B125E39E5900048D32 /* QuotePastTableViewCell.swift */; };
 		2C56A2B425E39E5900048D32 /* QuotePastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C56A2B225E39E5900048D32 /* QuotePastTableViewCell.xib */; };
 		2C6971F825E2598000E1FD28 /* AnxietyListScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6971F725E2598000E1FD28 /* AnxietyListScreenController.swift */; };
+		2C6A037925EB86A500D6E64D /* PlansMainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A037825EB86A500D6E64D /* PlansMainScreenController.swift */; };
 		2C6BF4AC259341D6002641EC /* SchoolYearType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4AB259341D6002641EC /* SchoolYearType.swift */; };
 		2C6BF4B72596EFBE002641EC /* HSRecTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */; };
 		2C6BF4B82596EFBE002641EC /* HSRecTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */; };
@@ -49,6 +50,12 @@
 		2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */; };
 		2CA1AFC425908A9900147769 /* HSRecType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1AFC325908A9900147769 /* HSRecType.swift */; };
 		2CC463ED25C8111100CC4116 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC463EC25C8111100CC4116 /* RecordsViewController.swift */; };
+		2CCA89AA25EC13AC00370F65 /* PlansMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA89A925EC13AC00370F65 /* PlansMainTableViewCell.swift */; };
+		2CCA89AC25EC152F00370F65 /* DailyPlanListScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA89AB25EC152F00370F65 /* DailyPlanListScreenController.swift */; };
+		2CCA89AE25EC154F00370F65 /* YearlyPlanListScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA89AD25EC154F00370F65 /* YearlyPlanListScreenController.swift */; };
+		2CCA89B025EC156600370F65 /* GoalPlanListScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA89AF25EC156600370F65 /* GoalPlanListScreenController.swift */; };
+		2CCA89B325EC29D500370F65 /* DailyTodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA89B125EC29D400370F65 /* DailyTodoTableViewCell.swift */; };
+		2CCA89B425EC29D500370F65 /* DailyTodoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCA89B225EC29D500370F65 /* DailyTodoTableViewCell.xib */; };
 		2CE112DD25EA1E72003FA18F /* GoalsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE112DC25EA1E72003FA18F /* GoalsScreenController.swift */; };
 		2CE112E025EA1EA5003FA18F /* GoalsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE112DE25EA1EA5003FA18F /* GoalsListTableViewCell.swift */; };
 		2CE112E125EA1EA5003FA18F /* GoalsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CE112DF25EA1EA5003FA18F /* GoalsListTableViewCell.xib */; };
@@ -90,6 +97,7 @@
 		2C56A2B125E39E5900048D32 /* QuotePastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotePastTableViewCell.swift; sourceTree = "<group>"; };
 		2C56A2B225E39E5900048D32 /* QuotePastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuotePastTableViewCell.xib; sourceTree = "<group>"; };
 		2C6971F725E2598000E1FD28 /* AnxietyListScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnxietyListScreenController.swift; sourceTree = "<group>"; };
+		2C6A037825EB86A500D6E64D /* PlansMainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansMainScreenController.swift; sourceTree = "<group>"; };
 		2C6BF4AB259341D6002641EC /* SchoolYearType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolYearType.swift; sourceTree = "<group>"; };
 		2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecTitleTableViewCell.swift; sourceTree = "<group>"; };
 		2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSRecTitleTableViewCell.xib; sourceTree = "<group>"; };
@@ -108,6 +116,12 @@
 		2C9FBA0C2550135A00D9F4BD /* BeforeHSScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeHSScreenController.swift; sourceTree = "<group>"; };
 		2CA1AFC325908A9900147769 /* HSRecType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecType.swift; sourceTree = "<group>"; };
 		2CC463EC25C8111100CC4116 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		2CCA89A925EC13AC00370F65 /* PlansMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansMainTableViewCell.swift; sourceTree = "<group>"; };
+		2CCA89AB25EC152F00370F65 /* DailyPlanListScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlanListScreenController.swift; sourceTree = "<group>"; };
+		2CCA89AD25EC154F00370F65 /* YearlyPlanListScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyPlanListScreenController.swift; sourceTree = "<group>"; };
+		2CCA89AF25EC156600370F65 /* GoalPlanListScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPlanListScreenController.swift; sourceTree = "<group>"; };
+		2CCA89B125EC29D400370F65 /* DailyTodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTodoTableViewCell.swift; sourceTree = "<group>"; };
+		2CCA89B225EC29D500370F65 /* DailyTodoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyTodoTableViewCell.xib; sourceTree = "<group>"; };
 		2CE112DC25EA1E72003FA18F /* GoalsScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsScreenController.swift; sourceTree = "<group>"; };
 		2CE112DE25EA1EA5003FA18F /* GoalsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsListTableViewCell.swift; sourceTree = "<group>"; };
 		2CE112DF25EA1EA5003FA18F /* GoalsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalsListTableViewCell.xib; sourceTree = "<group>"; };
@@ -221,6 +235,13 @@
 		2CE112E425EAD51E003FA18F /* Plans */ = {
 			isa = PBXGroup;
 			children = (
+				2C6A037825EB86A500D6E64D /* PlansMainScreenController.swift */,
+				2CCA89A925EC13AC00370F65 /* PlansMainTableViewCell.swift */,
+				2CCA89AB25EC152F00370F65 /* DailyPlanListScreenController.swift */,
+				2CCA89AD25EC154F00370F65 /* YearlyPlanListScreenController.swift */,
+				2CCA89AF25EC156600370F65 /* GoalPlanListScreenController.swift */,
+				2CCA89B125EC29D400370F65 /* DailyTodoTableViewCell.swift */,
+				2CCA89B225EC29D500370F65 /* DailyTodoTableViewCell.xib */,
 			);
 			path = Plans;
 			sourceTree = "<group>";
@@ -369,6 +390,7 @@
 				2C239B3E25DBB40D003CE4BD /* FeelingRecTableViewCell.xib in Resources */,
 				2C25E2802599E0F400E38467 /* HSRecNoValueTableViewCell.xib in Resources */,
 				2CE112E125EA1EA5003FA18F /* GoalsListTableViewCell.xib in Resources */,
+				2CCA89B425EC29D500370F65 /* DailyTodoTableViewCell.xib in Resources */,
 				2CF710C32546366800D5FFE6 /* Assets.xcassets in Resources */,
 				2CE204B525E0D32400E53587 /* AngryRecTableViewCell.xib in Resources */,
 				2C6BF4B82596EFBE002641EC /* HSRecTitleTableViewCell.xib in Resources */,
@@ -439,22 +461,28 @@
 				2CE112E025EA1EA5003FA18F /* GoalsListTableViewCell.swift in Sources */,
 				2C239B3D25DBB40D003CE4BD /* FeelingRecTableViewCell.swift in Sources */,
 				2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */,
+				2CCA89AC25EC152F00370F65 /* DailyPlanListScreenController.swift in Sources */,
 				2C239B3025DB8E7F003CE4BD /* EsteemFeelingType.swift in Sources */,
 				2C95564425E1E02A00A319C4 /* FeelingNoteScreenController.swift in Sources */,
 				2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */,
 				2C239B3225DB8EA0003CE4BD /* EsteemType.swift in Sources */,
 				2C75F8F325D7B00700973708 /* SelfEsteemScreenController.swift in Sources */,
+				2CCA89AA25EC13AC00370F65 /* PlansMainTableViewCell.swift in Sources */,
 				2C75F8F525D7BFD100973708 /* EsteemMainTableViewCell.swift in Sources */,
 				2C093E032557B8FF008F7659 /* RoundButton.swift in Sources */,
 				2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */,
 				2CE112DD25EA1E72003FA18F /* GoalsScreenController.swift in Sources */,
 				2C6971F825E2598000E1FD28 /* AnxietyListScreenController.swift in Sources */,
 				2C56A2AC25E32A4900048D32 /* MoralQuoteScreenController.swift in Sources */,
+				2CCA89B025EC156600370F65 /* GoalPlanListScreenController.swift in Sources */,
 				2C25E27F2599E0F400E38467 /* HSRecNoValueTableViewCell.swift in Sources */,
 				2CE204B725E0D4D700E53587 /* AngryNoteScreenController.swift in Sources */,
 				2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */,
 				2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */,
+				2C6A037925EB86A500D6E64D /* PlansMainScreenController.swift in Sources */,
+				2CCA89AE25EC154F00370F65 /* YearlyPlanListScreenController.swift in Sources */,
 				2C239B2C25DB277B003CE4BD /* PersonalMessageData.swift in Sources */,
+				2CCA89B325EC29D500370F65 /* DailyTodoTableViewCell.swift in Sources */,
 				2C95564225E1E00600A319C4 /* FeelingListScreenController.swift in Sources */,
 				2C239B2A25DA47E4003CE4BD /* LetterFriendScreenController.swift in Sources */,
 				2C239B2625D9FD5F003CE4BD /* RecordsTableViewCell.swift in Sources */,

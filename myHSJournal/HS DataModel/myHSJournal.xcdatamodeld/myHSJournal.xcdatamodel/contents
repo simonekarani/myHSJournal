@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G9013" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DailyPlanRecItem" representedClassName="DailyPlanRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="EsteemRecItem" representedClassName="EsteemRecItem" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="esteemType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feelingType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="msgTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="GoalPlanRecItem" representedClassName="GoalPlanRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="goalStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskDetails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="GoalsRecItem" representedClassName="GoalsRecItem" syncable="YES" codeGenerationType="class">
@@ -28,10 +42,21 @@
         <attribute name="quoteDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quoteMsg" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="YearlyPlanRecItem" representedClassName="YearlyPlanRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="yearlyDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="yearType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="EsteemRecItem" positionX="-63" positionY="27" width="128" height="135"/>
         <element name="GoalsRecItem" positionX="-63" positionY="54" width="128" height="120"/>
         <element name="HSRecItem" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="QuoteRecItem" positionX="-63" positionY="54" width="128" height="90"/>
+        <element name="DailyPlanRecItem" positionX="-63" positionY="54" width="128" height="120"/>
+        <element name="YearlyPlanRecItem" positionX="-54" positionY="81" width="128" height="135"/>
+        <element name="GoalPlanRecItem" positionX="-36" positionY="90" width="128" height="120"/>
     </elements>
 </model>

@@ -157,7 +157,7 @@ class GoalsScreenController: UIViewController, UITableViewDataSource, UITableVie
     
     func deleteGoalsRecord(deleteActionForRowAt indexPath: IndexPath, recitem: GoalsRecItem) {
         if (indexPath.section == 0) {
-            goalsItemArray.remove(at: indexPath.row-1)
+            goalsItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
             DispatchQueue.main.async {
                 self.goalsTableView.reloadData() }

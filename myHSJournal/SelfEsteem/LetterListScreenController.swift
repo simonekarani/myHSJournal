@@ -158,7 +158,7 @@ class LetterListScreenController: UIViewController, UITableViewDataSource, UITab
     
     func deleteEsteemRecord(deleteActionForRowAt indexPath: IndexPath, recitem: EsteemRecItem) {
         if (indexPath.section == 0) {
-            letterItemArray.remove(at: indexPath.row-1)
+            letterItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
             DispatchQueue.main.async {
                 self.letterListTableView.reloadData() }

@@ -158,7 +158,7 @@ class FeelingListScreenController: UIViewController, UITableViewDataSource, UITa
     
     func deleteEsteemRecord(deleteActionForRowAt indexPath: IndexPath, recitem: EsteemRecItem) {
         if (indexPath.section == 0) {
-            feelingItemArray.remove(at: indexPath.row-1)
+            feelingItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
             DispatchQueue.main.async {
                 self.feelingTableViewList.reloadData() }

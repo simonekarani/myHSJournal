@@ -173,7 +173,7 @@ class AnxietyListScreenController: UIViewController, UITableViewDataSource, UITa
     
     func deleteEsteemRecord(deleteActionForRowAt indexPath: IndexPath, recitem: EsteemRecItem) {
         if (indexPath.section == 0) {
-            anxietyItemArray.remove(at: indexPath.row-1)
+            anxietyItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
             DispatchQueue.main.async {
                 self.anxietyListTableView.reloadData() }

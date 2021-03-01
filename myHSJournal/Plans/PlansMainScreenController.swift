@@ -1,29 +1,27 @@
 //
-//  SelfEsteemScreenController.swift
+//  PlansMainScreenController.swift
 //  myHSJournal
 //
-//  Created by Simone Karani on 2/12/21.
+//  Created by Simone Karani on 2/28/21.
 //  Copyright © 2021 Simone Karani. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class SelfEsteemScreenController: UIViewController {
-
-    @IBOutlet weak var esteemTableView: UITableView!
+class PlansMainScreenController: UIViewController {
+    
+    @IBOutlet weak var plansMainTableView: UITableView!
     
     let devCourses = [
-        ("Today's Affirmation"), ("Rate Your Feelings"),
-        ("What Made Me Anxious?"), ("Write Note To a Friend"),
-        ("Anxiety Report!")
+        ("Goal Based Plans"), ("Yearly Plans"),
+        ("Daily Todo")
     ]
     let devCousesImages = [
-        UIImage(named: "booster"), UIImage(named: "feeling"),
-        UIImage(named: "angry"), UIImage(named: "friends"),
-        UIImage(named: "stressreport"),
+        UIImage(named: "goalPlan"), UIImage(named: "yearlyPlan"),
+        UIImage(named: "dailyPlan")
     ]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,39 +34,35 @@ class SelfEsteemScreenController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     func setupTableView() {
-        esteemTableView.delegate = self
-        esteemTableView.dataSource = self
+        plansMainTableView.delegate = self
+        plansMainTableView.dataSource = self
         
-        esteemTableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        plansMainTableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.row) {
         case 0:
-            performSegue(withIdentifier: "gotoBooster", sender: self)
+            performSegue(withIdentifier: "gotoGoalPlan", sender: self)
         case 1:
-            performSegue(withIdentifier: "gotoFeelList", sender: self)
+            performSegue(withIdentifier: "gotoYearlyPlan", sender: self)
         case 2:
-            performSegue(withIdentifier: "gotoAngryList", sender: self)
-        case 3:
-            performSegue(withIdentifier: "gotoFriendList", sender: self)
-        case 4:
-            performSegue(withIdentifier: "gotoStressReport", sender: self)
+            performSegue(withIdentifier: "gotoDailyPlan", sender: self)
         default:
-            performSegue(withIdentifier: "gotoBooster", sender: self)
+            performSegue(withIdentifier: "gotoDailyPlan", sender: self)
             
         }
     }
 }
 
-extension SelfEsteemScreenController: UITableViewDelegate {
+extension PlansMainScreenController: UITableViewDelegate {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
@@ -84,17 +78,17 @@ extension SelfEsteemScreenController: UITableViewDelegate {
     }
 }
 
-extension SelfEsteemScreenController: UITableViewDataSource {
+extension PlansMainScreenController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devCourses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "esteemCell", for: indexPath as IndexPath) as! EsteemMainTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "plansMainCell", for: indexPath as IndexPath) as! PlansMainTableViewCell
         
-        cell.esteemImg.image = self.devCousesImages[indexPath .row]
-        cell.esteemLabel.text  = self.devCourses[indexPath .row]
+        cell.plansImg.image = self.devCousesImages[indexPath .row]
+        cell.plansTitle.text  = self.devCourses[indexPath .row]
         
         return cell
     }

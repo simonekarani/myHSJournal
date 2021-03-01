@@ -1,24 +1,27 @@
 //
-//  EsteemMainTableViewCell.swift
+//  PlansMainTableViewCell.swift
 //  myHSJournal
 //
-//  Created by Simone Karani on 2/13/21.
+//  Created by Simone Karani on 2/28/21.
 //  Copyright © 2021 Simone Karani. All rights reserved.
 //
 
 import UIKit
 
-class EsteemMainTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var esteemImg: UIImageView!
+class PlansMainTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var esteemLabel: UILabel!
+    @IBOutlet weak var plansTitle: UILabel!
+    @IBOutlet weak var plansImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
+
 }
