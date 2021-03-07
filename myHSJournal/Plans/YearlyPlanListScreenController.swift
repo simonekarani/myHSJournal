@@ -24,6 +24,7 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     var editYearlyTodoRec: YearlyPlanRecItem!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var yearlyTodoAllItemArray = [YearlyPlanRecItem]()
     var yearlyItemArray = [YearlyPlanRecItem]()
     var todoView: TodoViewType!
     var todoStr: String!
@@ -89,7 +90,7 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     
     func addTodoDialog(msg: String) {
         var recExists = false
-        let alert = UIAlertController(title: "Daily Todo", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Yearly Todo", message: nil, preferredStyle: .alert)
         if msg == "" {
             alert.addTextField { (textField) in
                 textField.placeholder = "Default placeholder text"
@@ -140,10 +141,25 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     }
     
     func loadYearlyRecords() {
+        yearlyTodoAllItemArray.removeAll()
         yearlyItemArray.removeAll()
         let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
         do {
-            yearlyItemArray = try context.fetch(request)
+            yearlyTodoAllItemArray = try context.fetch(request)
+            for (_, element) in yearlyTodoAllItemArray.enumerated() {
+                if todoView == TodoViewType.TODO_ALL {
+                    yearlyItemArray.append(element)
+                }
+                else if todoView == TodoViewType.TODO_ACTIVE {
+                    if element.completed == false {
+                        yearlyItemArray.append(element)
+                    }
+                } else {
+                    if element.completed {
+                        yearlyItemArray.append(element)
+                    }
+                }
+            }
         } catch {
             print("Error in loading \(error)")
         }
@@ -184,7 +200,7 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
         }
         editYearlyTodoRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.performSegue(withIdentifier:"gotoAchievementsRec", sender: self.yearlyTodoTableView.cellForRow(at: indexPath))
+            self.addTodoDialog(msg: self.editYearlyTodoRec.yearlyDetails!) 
         })
         editAction.backgroundColor = UIColor.blue
         
@@ -290,7 +306,6 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     
     func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: YearlyPlanRecItem) {
         if (indexPath.section == 0) {
-            yearlyItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
             loadYearlyRecords()
             DispatchQueue.main.async {
@@ -341,14 +356,14 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     }
     
     func updateRecord() {
-        var updtItemArray = [DailyPlanRecItem]()
-        let request: NSFetchRequest<DailyPlanRecItem> = DailyPlanRecItem.fetchRequest()
+        var updtItemArray = [YearlyPlanRecItem]()
+        let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
         do {
             updtItemArray = try context.fetch(request)
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
                 if (element.timeMillis == editYearlyTodoRec.timeMillis) {
-                    element.taskDetails = todoStr
+                    element.yearlyDetails = todoStr
                     saveContext()
                     isFound = true
                     loadYearlyRecords()
