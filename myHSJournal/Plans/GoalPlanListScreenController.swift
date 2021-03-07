@@ -13,7 +13,11 @@ import UIKit
 
 class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var letterListTableView: UITableView!
+    @IBOutlet weak var goalListTableView: UITableView!
+    
+    @IBOutlet weak var todoBtn: RoundButton!
+    @IBOutlet weak var completedBtn: RoundButton!
+    @IBOutlet weak var allBtn: RoundButton!
     
     var editLetterRec: EsteemRecItem!
     var letterRecCount: Int!
@@ -45,25 +49,32 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     override func viewWillAppear(_ animated: Bool) {
         loadLetterRecords()
         DispatchQueue.main.async {
-            self.letterListTableView.reloadData() }
+            self.goalListTableView.reloadData() }
+    }
+    @IBAction func completedBtnClicked(_ sender: Any) {
+    }
+    
+    @IBAction func allBtnClicked(_ sender: Any) {
+    }
+    @IBAction func todoBtnClicked(_ sender: Any) {
     }
     
     func setupTableView() {
-        letterListTableView.allowsSelection = true
-        letterListTableView.allowsSelectionDuringEditing = true
+        goalListTableView.allowsSelection = true
+        goalListTableView.allowsSelectionDuringEditing = true
         
-        letterListTableView.delegate = self
-        letterListTableView.dataSource = self
+        goalListTableView.delegate = self
+        goalListTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        letterListTableView.rowHeight = UITableView.automaticDimension
-        letterListTableView.estimatedRowHeight = UITableView.automaticDimension
+        goalListTableView.rowHeight = UITableView.automaticDimension
+        goalListTableView.estimatedRowHeight = UITableView.automaticDimension
         
-        self.letterListTableView.register(UINib.init(nibName: "LetterRecTableViewCell", bundle: .main), forCellReuseIdentifier: "LetterRecTableViewCell")
+        self.goalListTableView.register(UINib.init(nibName: "LetterRecTableViewCell", bundle: .main), forCellReuseIdentifier: "LetterRecTableViewCell")
         
-        letterListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        goalListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
-    
+
     @IBAction func addTapped(_ sender: Any) {
         editLetterRec = nil
         performSegue(withIdentifier: "gotoFriendNote", sender: self)
@@ -90,7 +101,7 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: LetterRecTableViewCell = letterListTableView.dequeueReusableCell(withIdentifier: "LetterRecTableViewCell", for: indexPath) as! LetterRecTableViewCell
+        let cell: LetterRecTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "LetterRecTableViewCell", for: indexPath) as! LetterRecTableViewCell
         cell.configureCell(recItem: letterItemArray[indexPath.row], count: letterItemArray.count)
         return cell
     }
@@ -101,7 +112,7 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
         }
         editLetterRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.performSegue(withIdentifier:"gotoFriendNote", sender: self.letterListTableView.cellForRow(at: indexPath))
+            self.performSegue(withIdentifier:"gotoFriendNote", sender: self.goalListTableView.cellForRow(at: indexPath))
         })
         editAction.backgroundColor = UIColor.blue
         
@@ -161,7 +172,7 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
             letterItemArray.remove(at: indexPath.row-1)
             deleteRecord(timeMillis: recitem.timeMillis)
             DispatchQueue.main.async {
-                self.letterListTableView.reloadData() }
+                self.goalListTableView.reloadData() }
         }
     }
     
@@ -204,16 +215,16 @@ extension GoalPlanListScreenController: GrowingCellProtocol {
     // Update height of UITextView based on string height
     func updateHeightOfRow(_ cell: HSRecDetailTableViewCell, _ textView: UITextView) {
         let size = textView.bounds.size
-        let newSize = letterListTableView.sizeThatFits(CGSize(width: size.width,
+        let newSize = goalListTableView.sizeThatFits(CGSize(width: size.width,
                                                               height: CGFloat.greatestFiniteMagnitude))
         if size.height != newSize.height {
             UIView.setAnimationsEnabled(false)
-            letterListTableView?.beginUpdates()
-            letterListTableView?.endUpdates()
+            goalListTableView?.beginUpdates()
+            goalListTableView?.endUpdates()
             UIView.setAnimationsEnabled(true)
             // Scoll up your textview if required
-            if let thisIndexPath = letterListTableView.indexPath(for: cell) {
-                letterListTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            if let thisIndexPath = goalListTableView.indexPath(for: cell) {
+                goalListTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
     }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YearlySchoolYearTableViewCell" id="KGk-i7-Jjw" customClass="YearlySchoolYearTableViewCell" customModule="myHSJournal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RK0-QM-LtZ">
+                        <rect key="frame" x="250" y="5" width="60" height="36"/>
+                        <color key="backgroundColor" white="0.75193528824200906" alpha="0.88294627568493156" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="0Ji-e7-BSi"/>
+                            <constraint firstAttribute="width" constant="60" id="eG4-2V-eyV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <state key="normal" title="+">
+                            <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="addBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5cY-dY-w7c"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xq-KJ-x9o">
+                        <rect key="frame" x="10" y="10" width="230" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="230" id="21o-0a-L1Q"/>
+                            <constraint firstAttribute="height" constant="21" id="qa2-UH-88K"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2xq-KJ-x9o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="HFK-6k-3Xs"/>
+                    <constraint firstAttribute="bottom" secondItem="RK0-QM-LtZ" secondAttribute="bottom" constant="5" id="INj-QL-JYB"/>
+                    <constraint firstAttribute="trailing" secondItem="RK0-QM-LtZ" secondAttribute="trailing" constant="10" id="Jbi-KI-bH3"/>
+                    <constraint firstAttribute="bottom" secondItem="2xq-KJ-x9o" secondAttribute="bottom" constant="10" id="NnR-AX-Cc4"/>
+                    <constraint firstItem="RK0-QM-LtZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="W8W-FV-l3x"/>
+                    <constraint firstItem="2xq-KJ-x9o" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aJg-5u-dpw"/>
+                    <constraint firstItem="2xq-KJ-x9o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="jBx-6j-Wfs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addBtn" destination="RK0-QM-LtZ" id="YlO-VU-9Jx"/>
+                <outlet property="yearLabel" destination="2xq-KJ-x9o" id="rTo-dV-csE"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="85.714285714285708"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -144,6 +144,9 @@ class DailyPlanListScreenController: UIViewController, UITableViewDataSource, UI
             }
         }))
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)        
+        alert.addAction(cancelAction)
+        
         self.present(alert, animated: true, completion: nil)
     }
     

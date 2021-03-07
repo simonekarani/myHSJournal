@@ -13,8 +13,10 @@ class DailyTodoTableViewCell: UITableViewCell {
     @IBOutlet weak var todoBtn: UIButton!
     @IBOutlet weak var todoTask: UILabel!
     
+    var planRecType: Int = 0
     var planRecItem:DailyPlanRecItem!
-    
+    var yearlyPlanRecItem:YearlyPlanRecItem!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         todoBtn.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
@@ -28,6 +30,7 @@ class DailyTodoTableViewCell: UITableViewCell {
     }
     
     func configureCell(recItem: DailyPlanRecItem) {
+        planRecType = 1
         todoTask.text = recItem.taskDetails!
         if recItem.completed {
             todoBtn.isSelected = true
@@ -40,6 +43,20 @@ class DailyTodoTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(recItem: YearlyPlanRecItem) {
+        planRecType = 2
+        todoTask.text = recItem.yearlyDetails!
+        if recItem.completed {
+            todoBtn.isSelected = true
+        } else {
+            todoBtn.isSelected = false
+        }
+        todoBtn.transform = .identity
+        yearlyPlanRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
@@ -48,7 +65,11 @@ class DailyTodoTableViewCell: UITableViewCell {
     }
 
     @IBAction func todoSelected(_ sender: UIButton) {
-        planRecItem.completed = !sender.isSelected
+        if planRecType == 1 {
+            planRecItem.completed = !sender.isSelected
+        } else {
+            yearlyPlanRecItem.completed = !sender.isSelected
+        }
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             

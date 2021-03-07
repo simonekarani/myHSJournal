@@ -40,6 +40,8 @@
 		2C75F8F325D7B00700973708 /* SelfEsteemScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C75F8F225D7B00700973708 /* SelfEsteemScreenController.swift */; };
 		2C75F8F525D7BFD100973708 /* EsteemMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C75F8F425D7BFD100973708 /* EsteemMainTableViewCell.swift */; };
 		2C76DE7025A15D710065A84D /* HSRecState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C76DE6F25A15D710065A84D /* HSRecState.swift */; };
+		2C8AC1E425F2E6C9009150D8 /* YearlySchoolYearTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AC1E225F2E6C9009150D8 /* YearlySchoolYearTableViewCell.swift */; };
+		2C8AC1E525F2E6C9009150D8 /* YearlySchoolYearTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8AC1E325F2E6C9009150D8 /* YearlySchoolYearTableViewCell.xib */; };
 		2C95564225E1E00600A319C4 /* FeelingListScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95564125E1E00600A319C4 /* FeelingListScreenController.swift */; };
 		2C95564425E1E02A00A319C4 /* FeelingNoteScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95564325E1E02A00A319C4 /* FeelingNoteScreenController.swift */; };
 		2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */; };
@@ -106,6 +108,8 @@
 		2C75F8F225D7B00700973708 /* SelfEsteemScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfEsteemScreenController.swift; sourceTree = "<group>"; };
 		2C75F8F425D7BFD100973708 /* EsteemMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsteemMainTableViewCell.swift; sourceTree = "<group>"; };
 		2C76DE6F25A15D710065A84D /* HSRecState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecState.swift; sourceTree = "<group>"; };
+		2C8AC1E225F2E6C9009150D8 /* YearlySchoolYearTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySchoolYearTableViewCell.swift; sourceTree = "<group>"; };
+		2C8AC1E325F2E6C9009150D8 /* YearlySchoolYearTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearlySchoolYearTableViewCell.xib; sourceTree = "<group>"; };
 		2C95564125E1E00600A319C4 /* FeelingListScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingListScreenController.swift; sourceTree = "<group>"; };
 		2C95564325E1E02A00A319C4 /* FeelingNoteScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingNoteScreenController.swift; sourceTree = "<group>"; };
 		2C9FBA0225500D5100D9F4BD /* FreshmenScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshmenScreenController.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				2CCA89AF25EC156600370F65 /* GoalPlanListScreenController.swift */,
 				2CCA89B125EC29D400370F65 /* DailyTodoTableViewCell.swift */,
 				2CCA89B225EC29D500370F65 /* DailyTodoTableViewCell.xib */,
+				2C8AC1E225F2E6C9009150D8 /* YearlySchoolYearTableViewCell.swift */,
+				2C8AC1E325F2E6C9009150D8 /* YearlySchoolYearTableViewCell.xib */,
 			);
 			path = Plans;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 				2C239B3A25DBB3EF003CE4BD /* LetterRecTableViewCell.xib in Resources */,
 				2C56A2B425E39E5900048D32 /* QuotePastTableViewCell.xib in Resources */,
 				2C6BF4BC2596EFEB002641EC /* HSRecDetailTableViewCell.xib in Resources */,
+				2C8AC1E525F2E6C9009150D8 /* YearlySchoolYearTableViewCell.xib in Resources */,
 				2C239B3E25DBB40D003CE4BD /* FeelingRecTableViewCell.xib in Resources */,
 				2C25E2802599E0F400E38467 /* HSRecNoValueTableViewCell.xib in Resources */,
 				2CE112E125EA1EA5003FA18F /* GoalsListTableViewCell.xib in Resources */,
@@ -476,6 +483,7 @@
 				2C56A2AC25E32A4900048D32 /* MoralQuoteScreenController.swift in Sources */,
 				2CCA89B025EC156600370F65 /* GoalPlanListScreenController.swift in Sources */,
 				2C25E27F2599E0F400E38467 /* HSRecNoValueTableViewCell.swift in Sources */,
+				2C8AC1E425F2E6C9009150D8 /* YearlySchoolYearTableViewCell.swift in Sources */,
 				2CE204B725E0D4D700E53587 /* AngryNoteScreenController.swift in Sources */,
 				2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */,
 				2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */,

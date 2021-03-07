@@ -13,106 +13,189 @@ import UIKit
 
 class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var letterListTableView: UITableView!
+    @IBOutlet weak var yearlyTodoTableView: UITableView!
     
-    var editLetterRec: EsteemRecItem!
-    var letterRecCount: Int!
+    @IBOutlet weak var allYearlyButton: RoundButton!
+    @IBOutlet weak var completedYearlyButton: RoundButton!
+    @IBOutlet weak var todoYearlyButton: RoundButton!
+    
+    var selectedSchoolYear: SchoolYearType = SchoolYearType.NINETH
+    var selectedBtnTag: Int!
+    var editYearlyTodoRec: YearlyPlanRecItem!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var esteemItemArray = [EsteemRecItem]()
-    var letterItemArray = [EsteemRecItem]()
-    
+    var yearlyItemArray = [YearlyPlanRecItem]()
+    var todoView: TodoViewType!
+    var todoStr: String!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadLetterRecords()
+        todoView = .TODO_ACTIVE
+        loadYearlyRecords()
         setupTableView()
-        
-        if letterItemArray.count == 0 {
-            editLetterRec = nil
-            performSegue(withIdentifier: "gotoFriendNote", sender: self)
-        }
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(addTapped)
-        )
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        loadLetterRecords()
+        loadYearlyRecords()
         DispatchQueue.main.async {
-            self.letterListTableView.reloadData() }
+            self.yearlyTodoTableView.reloadData() }
+    }
+
+    @objc func onPlusClickedMapButton(_ sender: UIButton) {
+        selectedBtnTag = sender.tag
+        addTodoDialog(msg: "")
+    }
+    
+    @objc func onClickedMapButton(_ sender: UIButton) {
+        saveContext()
+    }
+    
+    @IBAction func allButtonClicked(_ sender: Any) {
+        todoView = .TODO_ALL
+        todoYearlyButton.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        completedYearlyButton.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        allYearlyButton.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
+        loadYearlyRecords()
+        DispatchQueue.main.async {
+            self.yearlyTodoTableView.reloadData() }
+    }
+
+    @IBAction func completedButtonClicked(_ sender: Any) {
+        todoView = .TODO_COMPLETED
+        todoYearlyButton.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        completedYearlyButton.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
+        allYearlyButton.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        loadYearlyRecords()
+        DispatchQueue.main.async {
+            self.yearlyTodoTableView.reloadData() }
+    }
+
+    @IBAction func todoButtonClicked(_ sender: Any) {
+        todoView = .TODO_ACTIVE
+        todoYearlyButton.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
+        completedYearlyButton.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        allYearlyButton.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        loadYearlyRecords()
+        DispatchQueue.main.async {
+            self.yearlyTodoTableView.reloadData() }
+    }
+    
+    func addTodoDialog(msg: String) {
+        var recExists = false
+        let alert = UIAlertController(title: "Daily Todo", message: nil, preferredStyle: .alert)
+        if msg == "" {
+            alert.addTextField { (textField) in
+                textField.placeholder = "Default placeholder text"
+            }
+        } else {
+            alert.addTextField { (textField) in
+                textField.text = msg
+                recExists = true
+            }
+        }
+        
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak alert] (_) in
+            guard let textField = alert?.textFields?[0], let userText = textField.text else { return }
+            self.todoStr = userText
+            if recExists {
+                self.updateRecord()
+            } else {
+                self.createRecord()
+            }
+        }))
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func setupTableView() {
-        letterListTableView.allowsSelection = true
-        letterListTableView.allowsSelectionDuringEditing = true
+        yearlyTodoTableView.allowsSelection = true
+        yearlyTodoTableView.allowsSelectionDuringEditing = true
         
-        letterListTableView.delegate = self
-        letterListTableView.dataSource = self
+        yearlyTodoTableView.delegate = self
+        yearlyTodoTableView.dataSource = self
         
         // Set automatic dimensions for row height
-        letterListTableView.rowHeight = UITableView.automaticDimension
-        letterListTableView.estimatedRowHeight = UITableView.automaticDimension
+        yearlyTodoTableView.rowHeight = UITableView.automaticDimension
+        yearlyTodoTableView.estimatedRowHeight = UITableView.automaticDimension
         
-        self.letterListTableView.register(UINib.init(nibName: "LetterRecTableViewCell", bundle: .main), forCellReuseIdentifier: "LetterRecTableViewCell")
-        
-        letterListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.yearlyTodoTableView.register(UINib.init(nibName: "YearlySchoolYearTableViewCell", bundle: .main), forCellReuseIdentifier: "YearlySchoolYearTableViewCell")
+        self.yearlyTodoTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
+
+        yearlyTodoTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        editLetterRec = nil
-        performSegue(withIdentifier: "gotoFriendNote", sender: self)
+        editYearlyTodoRec = nil
+        performSegue(withIdentifier: "gotoAchievementsRec", sender: self)
     }
     
-    func loadLetterRecords() {
-        esteemItemArray.removeAll()
-        letterItemArray.removeAll()
-        let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
+    func loadYearlyRecords() {
+        yearlyItemArray.removeAll()
+        let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
         do {
-            esteemItemArray = try context.fetch(request)
-            for (_, element) in esteemItemArray.enumerated() {
-                if element.esteemType == EsteemType.LETTER.description {
-                    letterItemArray.append(element)
-                }
-            }
+            yearlyItemArray = try context.fetch(request)
         } catch {
             print("Error in loading \(error)")
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getRecordCount()
+        return getRecordCount(numberOfRowsInSection: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: LetterRecTableViewCell = letterListTableView.dequeueReusableCell(withIdentifier: "LetterRecTableViewCell", for: indexPath) as! LetterRecTableViewCell
-        cell.configureCell(recItem: letterItemArray[indexPath.row], count: letterItemArray.count)
-        return cell
+        print("** row = \(indexPath.row) section = \(indexPath.section) count=\(indexPath.count)")
+        if (indexPath.row == 0) {
+            let cell: YearlySchoolYearTableViewCell = yearlyTodoTableView.dequeueReusableCell(withIdentifier: "YearlySchoolYearTableViewCell", for: indexPath) as! YearlySchoolYearTableViewCell
+            cell.configureCell(section: indexPath.section)
+            cell.addBtn.addTarget(self, action: #selector(YearlyPlanListScreenController.onPlusClickedMapButton(_:)), for: .touchUpInside)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            return cell
+        } else {
+            let recCount: Int = getRecordCount(numberOfRowsInSection: indexPath.section)
+            if recCount > 0 {
+                let cell: DailyTodoTableViewCell = yearlyTodoTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
+                let yearlyItem: YearlyPlanRecItem = getRecord(actionForRowAt: indexPath)!
+                cell.configureCell(recItem: yearlyItem)
+                cell.todoBtn.addTarget(self, action: #selector(DailyPlanListScreenController.onClickedMapButton(_:)), for: .touchUpInside)
+                return cell
+            }
+            else {
+                let cell: DailyTodoTableViewCell = yearlyTodoTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
+                cell.todoBtn.addTarget(self, action: #selector(DailyPlanListScreenController.onClickedMapButton(_:)), for: .touchUpInside)
+                return cell
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if letterItemArray.count == 0 {
+        if (indexPath.row == 0) {
             return []
         }
-        editLetterRec = getRecord(actionForRowAt: indexPath)!
+        editYearlyTodoRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.performSegue(withIdentifier:"gotoFriendNote", sender: self.letterListTableView.cellForRow(at: indexPath))
+            self.performSegue(withIdentifier:"gotoAchievementsRec", sender: self.yearlyTodoTableView.cellForRow(at: indexPath))
         })
         editAction.backgroundColor = UIColor.blue
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             // Declare Alert message
-            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record \(self.editLetterRec.msgTitle!)?", preferredStyle: .alert)
+            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record\n\(self.editYearlyTodoRec.yearlyDetails!)?", preferredStyle: .alert)
             
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 print("Ok button tapped")
-                self.deleteEsteemRecord(deleteActionForRowAt: indexPath, recitem: self.editLetterRec)
+                self.deletePlanRecord(deleteActionForRowAt: indexPath, recitem: self.editYearlyTodoRec)
             })
             
             // Create Cancel button with action handlder
@@ -132,49 +215,150 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if letterItemArray.count == 0 {
+        if yearlyItemArray.count == 0 {
             return
         }
-        self.editLetterRec = getRecord(actionForRowAt: indexPath)!
-        performSegue(withIdentifier: "gotoFriendNote", sender: self)
+        self.editYearlyTodoRec = getRecord(actionForRowAt: indexPath)!
+        self.addTodoDialog(msg: self.editYearlyTodoRec.yearlyDetails!)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 4
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 5
     }
     
-    func getRecordCount() -> Int {
-        letterRecCount = letterItemArray.count
-        return letterRecCount
+    func getRecordCount(numberOfRowsInSection section: Int) -> Int {
+        // add 1 for each section heading
+        var sec0Count: Int = 1
+        var sec1Count: Int = 1
+        var sec2Count: Int = 1
+        var sec3Count: Int = 1
+        for (_, element) in yearlyItemArray.enumerated() {
+            if section == 0 && element.yearType == SchoolYearType.NINETH.description {
+                sec0Count += 1
+            } else if section == 1 && element.yearType == SchoolYearType.TENTH.description {
+                sec1Count += 1
+            } else if section == 2 && element.yearType == SchoolYearType.ELEVENTH.description {
+                sec2Count += 1
+            } else if section == 3 && element.yearType == SchoolYearType.TWELVETH.description {
+                sec3Count += 1
+            }
+        }
+        
+        if section == 0 {
+            return sec0Count
+        } else if section == 1 {
+            return sec1Count
+        } else if section == 2 {
+            return sec2Count
+        } else {
+            return sec3Count
+        }
     }
     
-    func getRecord(actionForRowAt indexPath: IndexPath) -> EsteemRecItem? {
-        return letterItemArray[indexPath.row]
+    func getRecord(actionForRowAt indexPath: IndexPath) -> YearlyPlanRecItem? {
+        var recItem: YearlyPlanRecItem!
+        var idxCount: Int = 1
+        for (_, element) in yearlyItemArray.enumerated() {
+            if indexPath.section == 0 && element.yearType == SchoolYearType.NINETH.description {
+                if indexPath.row == idxCount {
+                    return element
+                }
+                idxCount += 1
+            } else if indexPath.section == 1 && element.yearType == SchoolYearType.TENTH.description {
+                if indexPath.row == idxCount {
+                    return element
+                }
+                idxCount += 1
+            } else if indexPath.section == 2 && element.yearType == SchoolYearType.ELEVENTH.description {
+                if indexPath.row == idxCount {
+                    return element
+                }
+                idxCount += 1
+            } else if indexPath.section == 3 && element.yearType == SchoolYearType.TWELVETH.description {
+                if indexPath.row == idxCount {
+                    return element
+                }
+                idxCount += 1
+            }
+        }
+        return recItem
     }
     
-    func deleteEsteemRecord(deleteActionForRowAt indexPath: IndexPath, recitem: EsteemRecItem) {
+    func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: YearlyPlanRecItem) {
         if (indexPath.section == 0) {
-            letterItemArray.remove(at: indexPath.row-1)
+            yearlyItemArray.remove(at: indexPath.row)
             deleteRecord(timeMillis: recitem.timeMillis)
+            loadYearlyRecords()
             DispatchQueue.main.async {
-                self.letterListTableView.reloadData() }
+                self.yearlyTodoTableView.reloadData() }
         }
     }
     
     func deleteRecord(timeMillis: Int64) {
-        let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
+        let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
         do {
-            esteemItemArray = try context.fetch(request)
-            for (_, element) in esteemItemArray.enumerated() {
+            yearlyItemArray = try context.fetch(request)
+            for (_, element) in yearlyItemArray.enumerated() {
                 if (element.timeMillis == timeMillis) {
                     context.delete(element)
                     saveContext()
                     return
                 }
+            }
+        } catch {
+            print("Error in loading \(error)")
+        }
+    }
+    
+    func createRecord() {
+        if todoStr == "" {
+            return
+        }
+        
+        let plansRecItem = YearlyPlanRecItem(context: self.context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
+        if (selectedBtnTag == 1001) {
+            plansRecItem.yearType = SchoolYearType.NINETH.description
+        } else if (selectedBtnTag == 1002) {
+            plansRecItem.yearType = SchoolYearType.TENTH.description
+        } else if (selectedBtnTag == 1003) {
+            plansRecItem.yearType = SchoolYearType.ELEVENTH.description
+        } else {
+            plansRecItem.yearType = SchoolYearType.TWELVETH.description
+        }
+        plansRecItem.yearlyDetails = todoStr
+        plansRecItem.completed = false
+        saveContext()
+        
+        loadYearlyRecords()
+        DispatchQueue.main.async {
+            self.yearlyTodoTableView.reloadData() }
+    }
+    
+    func updateRecord() {
+        var updtItemArray = [DailyPlanRecItem]()
+        let request: NSFetchRequest<DailyPlanRecItem> = DailyPlanRecItem.fetchRequest()
+        do {
+            updtItemArray = try context.fetch(request)
+            var isFound: Bool = false
+            for (_, element) in updtItemArray.enumerated() {
+                if (element.timeMillis == editYearlyTodoRec.timeMillis) {
+                    element.taskDetails = todoStr
+                    saveContext()
+                    isFound = true
+                    loadYearlyRecords()
+                    DispatchQueue.main.async {
+                        self.yearlyTodoTableView.reloadData() }
+                    return
+                }
+            }
+            if !isFound {
+                createRecord()
             }
         } catch {
             print("Error in loading \(error)")
@@ -189,14 +373,8 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is LetterFriendScreenController {
-            let vc = segue.destination as? LetterFriendScreenController
-            if sender != nil {
-                vc?.editEsteemRec = self.editLetterRec
-                vc?.esteemRecCount = self.getRecordCount()
-            }
-        }
+    func getCurrentMillis()->Int64{
+        return  Int64(NSDate().timeIntervalSince1970 * 1000)
     }
 }
 
@@ -204,16 +382,16 @@ extension YearlyPlanListScreenController: GrowingCellProtocol {
     // Update height of UITextView based on string height
     func updateHeightOfRow(_ cell: HSRecDetailTableViewCell, _ textView: UITextView) {
         let size = textView.bounds.size
-        let newSize = letterListTableView.sizeThatFits(CGSize(width: size.width,
-                                                              height: CGFloat.greatestFiniteMagnitude))
+        let newSize = yearlyTodoTableView.sizeThatFits(CGSize(width: size.width,
+                                                                 height: CGFloat.greatestFiniteMagnitude))
         if size.height != newSize.height {
             UIView.setAnimationsEnabled(false)
-            letterListTableView?.beginUpdates()
-            letterListTableView?.endUpdates()
+            yearlyTodoTableView?.beginUpdates()
+            yearlyTodoTableView?.endUpdates()
             UIView.setAnimationsEnabled(true)
             // Scoll up your textview if required
-            if let thisIndexPath = letterListTableView.indexPath(for: cell) {
-                letterListTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            if let thisIndexPath = yearlyTodoTableView.indexPath(for: cell) {
+                yearlyTodoTableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
     }
