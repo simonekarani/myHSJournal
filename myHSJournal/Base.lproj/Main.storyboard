@@ -403,7 +403,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-3b-DrH">
-                                <rect key="frame" x="98.5" y="35" width="261.5" height="30"/>
+                                <rect key="frame" x="105" y="35" width="255" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="20T-uA-geL"/>
                                 </constraints>
@@ -423,7 +423,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeling:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNK-Sa-4el">
-                                <rect key="frame" x="15" y="35" width="68.5" height="24"/>
+                                <rect key="frame" x="15" y="35" width="75" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="cAj-S8-dFX"/>
                                 </constraints>
@@ -863,24 +863,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QDD-Ry-4Mn">
-                                <rect key="frame" x="0.0" y="116" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="73" width="375" height="596"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPd-v3-lPA" customClass="RoundButton" customModule="myHSJournal" customModuleProvider="target">
-                                <rect key="frame" x="137.5" y="68" width="100" height="40"/>
-                                <color key="backgroundColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="IeP-9N-vng"/>
-                                    <constraint firstAttribute="height" constant="40" id="PB9-gq-ytC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Completed">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="completedBtnClicked:" destination="8Gd-rf-oLN" eventType="touchUpInside" id="3cp-jR-nen"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BN-rd-jFo" customClass="RoundButton" customModule="myHSJournal" customModuleProvider="target">
                                 <rect key="frame" x="262.5" y="25" width="100" height="40"/>
                                 <color key="backgroundColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -892,7 +877,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="allBtnClicked:" destination="8Gd-rf-oLN" eventType="touchUpInside" id="Yhs-fa-Eba"/>
+                                    <action selector="allBtnClicked:" destination="8Gd-rf-oLN" eventType="touchUpInside" id="uwf-BQ-QFJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFh-9M-a1V" customClass="RoundButton" customModule="myHSJournal" customModuleProvider="target">
@@ -907,15 +892,30 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="todoBtnClicked:" destination="8Gd-rf-oLN" eventType="touchUpInside" id="hHf-2I-isf"/>
+                                    <action selector="todoBtnClicked:" destination="8Gd-rf-oLN" eventType="touchUpInside" id="ci1-Va-76w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPd-v3-lPA" customClass="RoundButton" customModule="myHSJournal" customModuleProvider="target">
+                                <rect key="frame" x="137.5" y="25" width="100" height="40"/>
+                                <color key="backgroundColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="IeP-9N-vng"/>
+                                    <constraint firstAttribute="height" constant="40" id="PB9-gq-ytC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Completed">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="completedBtnClicked:" destination="8Gd-rf-oLN" eventType="touchUpInside" id="DIS-Cf-zua"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="PPd-v3-lPA" firstAttribute="top" secondItem="3o0-eu-lFE" secondAttribute="top" constant="5" id="3VA-Mt-YD0"/>
                             <constraint firstItem="QDD-Ry-4Mn" firstAttribute="trailing" secondItem="3o0-eu-lFE" secondAttribute="trailing" id="FS1-lm-MmF"/>
                             <constraint firstItem="QDD-Ry-4Mn" firstAttribute="leading" secondItem="3o0-eu-lFE" secondAttribute="leading" id="MGT-mV-kEc"/>
-                            <constraint firstItem="PPd-v3-lPA" firstAttribute="top" secondItem="trN-zb-fks" secondAttribute="top" constant="68" id="Mmk-RG-Cn7"/>
                             <constraint firstItem="1BN-rd-jFo" firstAttribute="top" secondItem="3o0-eu-lFE" secondAttribute="top" constant="5" id="NgE-gC-JXf"/>
                             <constraint firstItem="PPd-v3-lPA" firstAttribute="centerX" secondItem="trN-zb-fks" secondAttribute="centerX" id="PaD-Pm-jlW"/>
                             <constraint firstItem="1BN-rd-jFo" firstAttribute="leading" secondItem="PPd-v3-lPA" secondAttribute="trailing" constant="25" id="bZX-hy-J6N"/>
@@ -1066,7 +1066,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEX-qM-2DO" customClass="RoundButton" customModule="myHSJournal" customModuleProvider="target">
-                                <rect key="frame" x="262.5" y="71" width="100" height="40"/>
+                                <rect key="frame" x="259" y="25" width="100" height="40"/>
                                 <color key="backgroundColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="AXC-ku-iSE"/>

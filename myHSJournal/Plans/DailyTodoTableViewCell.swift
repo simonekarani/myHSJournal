@@ -16,6 +16,7 @@ class DailyTodoTableViewCell: UITableViewCell {
     var planRecType: Int = 0
     var planRecItem:DailyPlanRecItem!
     var yearlyPlanRecItem:YearlyPlanRecItem!
+    var goalPlanRecItem:GoalPlanRecItem!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,6 +58,20 @@ class DailyTodoTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(recItem: GoalPlanRecItem) {
+        planRecType = 3
+        todoTask.text = recItem.taskDetails!
+        if recItem.completed {
+            todoBtn.isSelected = true
+        } else {
+            todoBtn.isSelected = false
+        }
+        todoBtn.transform = .identity
+        goalPlanRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
@@ -67,8 +82,10 @@ class DailyTodoTableViewCell: UITableViewCell {
     @IBAction func todoSelected(_ sender: UIButton) {
         if planRecType == 1 {
             planRecItem.completed = !sender.isSelected
-        } else {
+        } else if planRecType == 2 {
             yearlyPlanRecItem.completed = !sender.isSelected
+        } else {
+            goalPlanRecItem.completed = !sender.isSelected
         }
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

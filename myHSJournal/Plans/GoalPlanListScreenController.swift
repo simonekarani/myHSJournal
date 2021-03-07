@@ -13,50 +13,111 @@ import UIKit
 
 class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let NoGoalMessage: String = "\nNo Goals Found.\nPlease setup Goals using the screen option - Goals"
+    
     @IBOutlet weak var goalListTableView: UITableView!
     
     @IBOutlet weak var todoBtn: RoundButton!
     @IBOutlet weak var completedBtn: RoundButton!
     @IBOutlet weak var allBtn: RoundButton!
     
-    var editLetterRec: EsteemRecItem!
-    var letterRecCount: Int!
+    var selectedSchoolYear: SchoolYearType = SchoolYearType.NINETH
+    var selectedBtnTag: Int!
+    var editGoalsTodoRec: GoalPlanRecItem!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var esteemItemArray = [EsteemRecItem]()
-    var letterItemArray = [EsteemRecItem]()
+    var goalsTodoAllItemArray = [GoalPlanRecItem]()
+    var goalsItemArray = [GoalPlanRecItem]()
+    var todoView: TodoViewType!
+    var todoStr: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadLetterRecords()
+        todoView = .TODO_ACTIVE
+        loadGoalsRecords()
         setupTableView()
-        
-        if letterItemArray.count == 0 {
-            editLetterRec = nil
-            performSegue(withIdentifier: "gotoFriendNote", sender: self)
-        }
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(addTapped)
-        )
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        loadLetterRecords()
+        loadGoalsRecords()
         DispatchQueue.main.async {
             self.goalListTableView.reloadData() }
     }
-    @IBAction func completedBtnClicked(_ sender: Any) {
+    
+    @objc func onPlusClickedMapButton(_ sender: UIButton) {
+        selectedBtnTag = sender.tag
+        addTodoDialog(msg: "")
+    }
+    
+    @objc func onClickedMapButton(_ sender: UIButton) {
+        saveContext()
     }
     
     @IBAction func allBtnClicked(_ sender: Any) {
+        todoView = .TODO_ALL
+        todoBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        completedBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        allBtn.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
+        loadGoalsRecords()
+        DispatchQueue.main.async {
+            self.goalListTableView.reloadData() }
     }
+    
+    @IBAction func completedBtnClicked(_ sender: Any) {
+        todoView = .TODO_COMPLETED
+        todoBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        completedBtn.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
+        allBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        loadGoalsRecords()
+        DispatchQueue.main.async {
+            self.goalListTableView.reloadData() }
+    }
+    
     @IBAction func todoBtnClicked(_ sender: Any) {
+        todoView = .TODO_ACTIVE
+        todoBtn.backgroundColor = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.8)
+        completedBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        allBtn.backgroundColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        loadGoalsRecords()
+        DispatchQueue.main.async {
+            self.goalListTableView.reloadData() }
+    }
+    
+    func addTodoDialog(msg: String) {
+        var recExists = false
+        let alert = UIAlertController(title: "Goals Todo", message: nil, preferredStyle: .alert)
+        if msg == "" {
+            alert.addTextField { (textField) in
+                textField.placeholder = "Default placeholder text"
+            }
+        } else {
+            alert.addTextField { (textField) in
+                textField.text = msg
+                recExists = true
+            }
+        }
+        
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak alert] (_) in
+            guard let textField = alert?.textFields?[0], let userText = textField.text else { return }
+            self.todoStr = userText
+            if recExists {
+                self.updateRecord()
+            } else {
+                self.createRecord()
+            }
+        }))
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func setupTableView() {
@@ -70,25 +131,41 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
         goalListTableView.rowHeight = UITableView.automaticDimension
         goalListTableView.estimatedRowHeight = UITableView.automaticDimension
         
-        self.goalListTableView.register(UINib.init(nibName: "LetterRecTableViewCell", bundle: .main), forCellReuseIdentifier: "LetterRecTableViewCell")
+        self.goalListTableView.register(UINib.init(nibName: "YearlySchoolYearTableViewCell", bundle: .main), forCellReuseIdentifier: "YearlySchoolYearTableViewCell")
+        self.goalListTableView.register(UINib.init(nibName: "DailyTodoTableViewCell", bundle: .main), forCellReuseIdentifier: "DailyTodoTableViewCell")
         
         goalListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
-
-    @IBAction func addTapped(_ sender: Any) {
-        editLetterRec = nil
-        performSegue(withIdentifier: "gotoFriendNote", sender: self)
-    }
     
-    func loadLetterRecords() {
-        esteemItemArray.removeAll()
-        letterItemArray.removeAll()
-        let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
+    func loadGoalsRecords() {
+        var gItemArray = [GoalsRecItem]()
+        let gRequest: NSFetchRequest<GoalsRecItem> = GoalsRecItem.fetchRequest()
         do {
-            esteemItemArray = try context.fetch(request)
-            for (_, element) in esteemItemArray.enumerated() {
-                if element.esteemType == EsteemType.LETTER.description {
-                    letterItemArray.append(element)
+            gItemArray = try context.fetch(gRequest)
+        } catch {
+            print("Error in loading \(error)")
+        }
+        if gItemArray.count == 0 {
+            createNoGoalAlertAction(message: NoGoalMessage)
+        }
+
+        goalsTodoAllItemArray.removeAll()
+        goalsItemArray.removeAll()
+        let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
+        do {
+            goalsTodoAllItemArray = try context.fetch(request)
+            for (_, element) in goalsTodoAllItemArray.enumerated() {
+                if todoView == TodoViewType.TODO_ALL {
+                    goalsItemArray.append(element)
+                }
+                else if todoView == TodoViewType.TODO_ACTIVE {
+                    if element.completed == false {
+                        goalsItemArray.append(element)
+                    }
+                } else {
+                    if element.completed {
+                        goalsItemArray.append(element)
+                    }
                 }
             }
         } catch {
@@ -97,33 +174,52 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getRecordCount()
+        return getRecordCount(numberOfRowsInSection: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: LetterRecTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "LetterRecTableViewCell", for: indexPath) as! LetterRecTableViewCell
-        cell.configureCell(recItem: letterItemArray[indexPath.row], count: letterItemArray.count)
-        return cell
+        print("** row = \(indexPath.row) section = \(indexPath.section) count=\(indexPath.count)")
+        if (indexPath.row == 0) {
+            let cell: YearlySchoolYearTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "YearlySchoolYearTableViewCell", for: indexPath) as! YearlySchoolYearTableViewCell
+            cell.configureCell(section: indexPath.section)
+            cell.addBtn.addTarget(self, action: #selector(YearlyPlanListScreenController.onPlusClickedMapButton(_:)), for: .touchUpInside)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            return cell
+        } else {
+            let recCount: Int = getRecordCount(numberOfRowsInSection: indexPath.section)
+            if recCount > 0 {
+                let cell: DailyTodoTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
+                let yearlyItem: GoalPlanRecItem = getRecord(actionForRowAt: indexPath)!
+                cell.configureCell(recItem: yearlyItem)
+                cell.todoBtn.addTarget(self, action: #selector(DailyPlanListScreenController.onClickedMapButton(_:)), for: .touchUpInside)
+                return cell
+            }
+            else {
+                let cell: DailyTodoTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "DailyTodoTableViewCell", for: indexPath) as! DailyTodoTableViewCell
+                cell.todoBtn.addTarget(self, action: #selector(DailyPlanListScreenController.onClickedMapButton(_:)), for: .touchUpInside)
+                return cell
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if letterItemArray.count == 0 {
+        if (indexPath.row == 0) {
             return []
         }
-        editLetterRec = getRecord(actionForRowAt: indexPath)!
+        editGoalsTodoRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.performSegue(withIdentifier:"gotoFriendNote", sender: self.goalListTableView.cellForRow(at: indexPath))
+            self.addTodoDialog(msg: self.editGoalsTodoRec.taskDetails!)
         })
         editAction.backgroundColor = UIColor.blue
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             // Declare Alert message
-            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record \(self.editLetterRec.msgTitle!)?", preferredStyle: .alert)
+            let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the record\n\(self.editGoalsTodoRec.taskDetails!)?", preferredStyle: .alert)
             
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 print("Ok button tapped")
-                self.deleteEsteemRecord(deleteActionForRowAt: indexPath, recitem: self.editLetterRec)
+                self.deletePlanRecord(deleteActionForRowAt: indexPath, recitem: self.editGoalsTodoRec)
             })
             
             // Create Cancel button with action handlder
@@ -142,12 +238,23 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
         return [editAction, deleteAction]
     }
     
+    func createNoGoalAlertAction(message: String) {
+        let alert = UIAlertController(title: "Plans for Goals!", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            alert.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+
+        })))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if letterItemArray.count == 0 {
+        if goalsItemArray.count == 0 {
             return
         }
-        self.editLetterRec = getRecord(actionForRowAt: indexPath)!
-        performSegue(withIdentifier: "gotoFriendNote", sender: self)
+        self.editGoalsTodoRec = getRecord(actionForRowAt: indexPath)!
+        self.addTodoDialog(msg: self.editGoalsTodoRec.taskDetails!)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -158,34 +265,134 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
         return 5
     }
     
-    func getRecordCount() -> Int {
-        letterRecCount = letterItemArray.count
-        return letterRecCount
+    func getRecordCount(numberOfRowsInSection section: Int) -> Int {
+        // add 1 for each section heading
+        var sec0Count: Int = 0
+        var sec1Count: Int = 0
+        var sec2Count: Int = 0
+        var sec3Count: Int = 0
+        for (_, element) in goalsItemArray.enumerated() {
+            if section == 0 {
+                sec0Count += 1
+            } else if section == 1 {
+                sec1Count += 1
+            } else if section == 2 {
+                sec2Count += 1
+            } else if section == 3 {
+                sec3Count += 1
+            }
+        }
+        
+        if section == 0 {
+            return sec0Count
+        } else if section == 1 {
+            return sec1Count
+        } else if section == 2 {
+            return sec2Count
+        } else {
+            return sec3Count
+        }
     }
     
-    func getRecord(actionForRowAt indexPath: IndexPath) -> EsteemRecItem? {
-        return letterItemArray[indexPath.row]
+    func getRecord(actionForRowAt indexPath: IndexPath) -> GoalPlanRecItem? {
+        var recItem: GoalPlanRecItem!
+        var idxCount: Int = 0
+        for (_, element) in goalsItemArray.enumerated() {
+            if indexPath.section == 0 {
+                if indexPath.row == idxCount {
+                    return element
+                }
+                idxCount += 1
+            } else if indexPath.section == 1 {
+                if indexPath.row == idxCount {
+                    return element
+                }
+                idxCount += 1
+            } else if indexPath.section == 2 {
+                if indexPath.row == idxCount {
+                    return element
+                }
+                idxCount += 1
+            } else if indexPath.section == 3 {
+                if indexPath.row == idxCount {
+                    return element
+                }
+                idxCount += 1
+            }
+        }
+        return recItem
     }
     
-    func deleteEsteemRecord(deleteActionForRowAt indexPath: IndexPath, recitem: EsteemRecItem) {
+    func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: GoalPlanRecItem) {
         if (indexPath.section == 0) {
-            letterItemArray.remove(at: indexPath.row-1)
             deleteRecord(timeMillis: recitem.timeMillis)
+            loadGoalsRecords()
             DispatchQueue.main.async {
                 self.goalListTableView.reloadData() }
         }
     }
     
     func deleteRecord(timeMillis: Int64) {
-        let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
+        let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
         do {
-            esteemItemArray = try context.fetch(request)
-            for (_, element) in esteemItemArray.enumerated() {
+            goalsItemArray = try context.fetch(request)
+            for (_, element) in goalsItemArray.enumerated() {
                 if (element.timeMillis == timeMillis) {
                     context.delete(element)
                     saveContext()
                     return
                 }
+            }
+        } catch {
+            print("Error in loading \(error)")
+        }
+    }
+    
+    func createRecord() {
+        if todoStr == "" {
+            return
+        }
+        
+        let plansRecItem = YearlyPlanRecItem(context: self.context)
+        plansRecItem.timeMillis = getCurrentMillis()
+        plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
+        if (selectedBtnTag == 1001) {
+            plansRecItem.yearType = SchoolYearType.NINETH.description
+        } else if (selectedBtnTag == 1002) {
+            plansRecItem.yearType = SchoolYearType.TENTH.description
+        } else if (selectedBtnTag == 1003) {
+            plansRecItem.yearType = SchoolYearType.ELEVENTH.description
+        } else {
+            plansRecItem.yearType = SchoolYearType.TWELVETH.description
+        }
+        plansRecItem.yearlyDetails = todoStr
+        plansRecItem.completed = false
+        saveContext()
+        
+        loadGoalsRecords()
+        DispatchQueue.main.async {
+            self.goalListTableView.reloadData() }
+    }
+    
+    func updateRecord() {
+        var updtItemArray = [YearlyPlanRecItem]()
+        let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
+        do {
+            updtItemArray = try context.fetch(request)
+            var isFound: Bool = false
+            for (_, element) in updtItemArray.enumerated() {
+                if (element.timeMillis == editGoalsTodoRec.timeMillis) {
+                    element.yearlyDetails = todoStr
+                    saveContext()
+                    isFound = true
+                    loadGoalsRecords()
+                    DispatchQueue.main.async {
+                        self.goalListTableView.reloadData() }
+                    return
+                }
+            }
+            if !isFound {
+                createRecord()
             }
         } catch {
             print("Error in loading \(error)")
@@ -200,14 +407,8 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is LetterFriendScreenController {
-            let vc = segue.destination as? LetterFriendScreenController
-            if sender != nil {
-                vc?.editEsteemRec = self.editLetterRec
-                vc?.esteemRecCount = self.getRecordCount()
-            }
-        }
+    func getCurrentMillis()->Int64{
+        return  Int64(NSDate().timeIntervalSince1970 * 1000)
     }
 }
 
