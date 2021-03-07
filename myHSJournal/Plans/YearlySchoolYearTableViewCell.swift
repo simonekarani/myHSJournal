@@ -44,6 +44,13 @@ class YearlySchoolYearTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(section: Int, lblText: String) {
+        yearLabel.font = yearLabel.font.withSize(18)
+        addBtn.tag = 2000 + section
+        yearLabel.text = lblText
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 1

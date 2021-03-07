@@ -26,6 +26,7 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     var editGoalsTodoRec: GoalPlanRecItem!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var goalListItemArray = [GoalsRecItem]()
     var goalsTodoAllItemArray = [GoalPlanRecItem]()
     var goalsItemArray = [GoalPlanRecItem]()
     var todoView: TodoViewType!
@@ -138,14 +139,13 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     }
     
     func loadGoalsRecords() {
-        var gItemArray = [GoalsRecItem]()
         let gRequest: NSFetchRequest<GoalsRecItem> = GoalsRecItem.fetchRequest()
         do {
-            gItemArray = try context.fetch(gRequest)
+            goalListItemArray = try context.fetch(gRequest)
         } catch {
             print("Error in loading \(error)")
         }
-        if gItemArray.count == 0 {
+        if goalListItemArray.count == 0 {
             createNoGoalAlertAction(message: NoGoalMessage)
         }
 
@@ -181,7 +181,7 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
         print("** row = \(indexPath.row) section = \(indexPath.section) count=\(indexPath.count)")
         if (indexPath.row == 0) {
             let cell: YearlySchoolYearTableViewCell = goalListTableView.dequeueReusableCell(withIdentifier: "YearlySchoolYearTableViewCell", for: indexPath) as! YearlySchoolYearTableViewCell
-            cell.configureCell(section: indexPath.section)
+            cell.configureCell(section: indexPath.section, lblText: getGoalTitle(section: indexPath.section))
             cell.addBtn.addTarget(self, action: #selector(YearlyPlanListScreenController.onPlusClickedMapButton(_:)), for: .touchUpInside)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
@@ -250,7 +250,7 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if goalsItemArray.count == 0 {
+        if goalsItemArray.count == 0 || indexPath.row == 0 {
             return
         }
         self.editGoalsTodoRec = getRecord(actionForRowAt: indexPath)!
@@ -258,62 +258,38 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return goalListItemArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 5
     }
     
+    func getGoalTitle(section: Int) -> String {
+        if goalListItemArray.count > 0 {
+            return goalListItemArray[section].title!
+        }
+        return ""
+    }
+    
     func getRecordCount(numberOfRowsInSection section: Int) -> Int {
         // add 1 for each section heading
-        var sec0Count: Int = 0
-        var sec1Count: Int = 0
-        var sec2Count: Int = 0
-        var sec3Count: Int = 0
+        let gItem: GoalsRecItem = goalListItemArray[section]
+        var rowCount: Int = 1
         for (_, element) in goalsItemArray.enumerated() {
-            if section == 0 {
-                sec0Count += 1
-            } else if section == 1 {
-                sec1Count += 1
-            } else if section == 2 {
-                sec2Count += 1
-            } else if section == 3 {
-                sec3Count += 1
-            }
+            if element.goalTimeMillis == gItem.timeMillis {
+                rowCount += 1
+            } 
         }
-        
-        if section == 0 {
-            return sec0Count
-        } else if section == 1 {
-            return sec1Count
-        } else if section == 2 {
-            return sec2Count
-        } else {
-            return sec3Count
-        }
+        return rowCount
     }
     
     func getRecord(actionForRowAt indexPath: IndexPath) -> GoalPlanRecItem? {
+        let gItem: GoalsRecItem = goalListItemArray[indexPath.section]
         var recItem: GoalPlanRecItem!
-        var idxCount: Int = 0
+        var idxCount: Int = 1
         for (_, element) in goalsItemArray.enumerated() {
-            if indexPath.section == 0 {
-                if indexPath.row == idxCount {
-                    return element
-                }
-                idxCount += 1
-            } else if indexPath.section == 1 {
-                if indexPath.row == idxCount {
-                    return element
-                }
-                idxCount += 1
-            } else if indexPath.section == 2 {
-                if indexPath.row == idxCount {
-                    return element
-                }
-                idxCount += 1
-            } else if indexPath.section == 3 {
+            if element.goalTimeMillis == gItem.timeMillis {
                 if indexPath.row == idxCount {
                     return element
                 }
@@ -324,12 +300,10 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     }
     
     func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: GoalPlanRecItem) {
-        if (indexPath.section == 0) {
-            deleteRecord(timeMillis: recitem.timeMillis)
-            loadGoalsRecords()
-            DispatchQueue.main.async {
-                self.goalListTableView.reloadData() }
-        }
+        deleteRecord(timeMillis: recitem.timeMillis)
+        loadGoalsRecords()
+        DispatchQueue.main.async {
+            self.goalListTableView.reloadData() }
     }
     
     func deleteRecord(timeMillis: Int64) {
@@ -353,19 +327,14 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
             return
         }
         
-        let plansRecItem = YearlyPlanRecItem(context: self.context)
+        let plansRecItem = GoalPlanRecItem(context: self.context)
         plansRecItem.timeMillis = getCurrentMillis()
         plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
-        if (selectedBtnTag == 1001) {
-            plansRecItem.yearType = SchoolYearType.NINETH.description
-        } else if (selectedBtnTag == 1002) {
-            plansRecItem.yearType = SchoolYearType.TENTH.description
-        } else if (selectedBtnTag == 1003) {
-            plansRecItem.yearType = SchoolYearType.ELEVENTH.description
-        } else {
-            plansRecItem.yearType = SchoolYearType.TWELVETH.description
-        }
-        plansRecItem.yearlyDetails = todoStr
+        let sectionIdx: Int = selectedBtnTag - 2000
+        let gItem: GoalsRecItem = goalListItemArray[sectionIdx]
+        plansRecItem.goalStr = gItem.title
+        plansRecItem.goalTimeMillis = gItem.timeMillis
+        plansRecItem.taskDetails = todoStr
         plansRecItem.completed = false
         saveContext()
         
@@ -375,14 +344,14 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     }
     
     func updateRecord() {
-        var updtItemArray = [YearlyPlanRecItem]()
-        let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
+        var updtItemArray = [GoalPlanRecItem]()
+        let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
         do {
             updtItemArray = try context.fetch(request)
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
                 if (element.timeMillis == editGoalsTodoRec.timeMillis) {
-                    element.yearlyDetails = todoStr
+                    element.taskDetails = todoStr
                     saveContext()
                     isFound = true
                     loadGoalsRecords()

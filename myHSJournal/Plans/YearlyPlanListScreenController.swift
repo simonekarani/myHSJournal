@@ -200,7 +200,7 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
         }
         editYearlyTodoRec = getRecord(actionForRowAt: indexPath)!
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.addTodoDialog(msg: self.editYearlyTodoRec.yearlyDetails!) 
+            self.addTodoDialog(msg: self.editYearlyTodoRec.yearlyDetails!)
         })
         editAction.backgroundColor = UIColor.blue
         
@@ -305,12 +305,10 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     }
     
     func deletePlanRecord(deleteActionForRowAt indexPath: IndexPath, recitem: YearlyPlanRecItem) {
-        if (indexPath.section == 0) {
-            deleteRecord(timeMillis: recitem.timeMillis)
-            loadYearlyRecords()
-            DispatchQueue.main.async {
-                self.yearlyTodoTableView.reloadData() }
-        }
+        deleteRecord(timeMillis: recitem.timeMillis)
+        loadYearlyRecords()
+        DispatchQueue.main.async {
+            self.yearlyTodoTableView.reloadData() }
     }
     
     func deleteRecord(timeMillis: Int64) {
