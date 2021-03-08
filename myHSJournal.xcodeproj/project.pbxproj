@@ -72,6 +72,7 @@
 		2CF710C12546366800D5FFE6 /* myHSJournal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CF710BF2546366800D5FFE6 /* myHSJournal.xcdatamodeld */; };
 		2CF710C32546366800D5FFE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CF710C22546366800D5FFE6 /* Assets.xcassets */; };
 		2CF710C62546366800D5FFE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CF710C42546366800D5FFE6 /* LaunchScreen.storyboard */; };
+		2CFCB4C125F5A0D500632C50 /* MentalHealthResourcesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCB4C025F5A0D500632C50 /* MentalHealthResourcesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +143,7 @@
 		2CF710C22546366800D5FFE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CF710C52546366800D5FFE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CF710C72546366800D5FFE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CFCB4C025F5A0D500632C50 /* MentalHealthResourcesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalHealthResourcesController.swift; sourceTree = "<group>"; };
 		4189BDB64A75809437BD9D22 /* Pods-myHSJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myHSJournal.debug.xcconfig"; path = "Target Support Files/Pods-myHSJournal/Pods-myHSJournal.debug.xcconfig"; sourceTree = "<group>"; };
 		94711D0EC626ADE7280B5B0B /* libPods-myHSJournal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myHSJournal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -273,6 +275,7 @@
 		2CF710B72546366800D5FFE6 /* myHSJournal */ = {
 			isa = PBXGroup;
 			children = (
+				2CFCB4BF25F5A0AD00632C50 /* Resources */,
 				2CE112E425EAD51E003FA18F /* Plans */,
 				2CFC872225C764BC0082B1C1 /* Records */,
 				2CA1AFC0258F2F8000147769 /* HS DataModel */,
@@ -310,6 +313,14 @@
 				2C25E27E2599E0F400E38467 /* HSRecNoValueTableViewCell.xib */,
 			);
 			path = Records;
+			sourceTree = "<group>";
+		};
+		2CFCB4BF25F5A0AD00632C50 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2CFCB4C025F5A0D500632C50 /* MentalHealthResourcesController.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		5A12622368806D49EBEE533B /* Frameworks */ = {
@@ -484,6 +495,7 @@
 				2CCA89B025EC156600370F65 /* GoalPlanListScreenController.swift in Sources */,
 				2C25E27F2599E0F400E38467 /* HSRecNoValueTableViewCell.swift in Sources */,
 				2C8AC1E425F2E6C9009150D8 /* YearlySchoolYearTableViewCell.swift in Sources */,
+				2CFCB4C125F5A0D500632C50 /* MentalHealthResourcesController.swift in Sources */,
 				2CE204B725E0D4D700E53587 /* AngryNoteScreenController.swift in Sources */,
 				2C3736B525574D3800F9CD24 /* SchoolRecordDetailsController.swift in Sources */,
 				2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */,

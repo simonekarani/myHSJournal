@@ -24,7 +24,8 @@ class PlansMainScreenController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.plansMainTableView.tableFooterView = UIView(frame: CGRect.zero)
+
         setupTableView()
     }
     
