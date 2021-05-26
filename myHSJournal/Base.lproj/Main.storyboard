@@ -95,7 +95,7 @@
                         <segue destination="CwL-bE-G2y" kind="show" identifier="gotoEsteem" id="gLu-7n-Rcw"/>
                         <segue destination="rPr-ht-qhw" kind="show" identifier="gotoGoals" id="pGR-i9-lMe"/>
                         <segue destination="y4g-XE-s5B" kind="show" identifier="gotoPlan" id="LmK-oG-7r0"/>
-                        <segue destination="dDn-eG-wKr" kind="show" identifier="gotoResources" id="K2p-o9-AiZ"/>
+                        <segue destination="a3q-3E-D8k" kind="show" identifier="gotoResources" id="yrw-ub-6jd"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCU-bZ-0so" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -404,7 +404,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-3b-DrH">
-                                <rect key="frame" x="98.5" y="79" width="261.5" height="30"/>
+                                <rect key="frame" x="105" y="79" width="255" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="20T-uA-geL"/>
                                 </constraints>
@@ -424,7 +424,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeling:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNK-Sa-4el">
-                                <rect key="frame" x="15" y="79" width="68.5" height="24"/>
+                                <rect key="frame" x="15" y="79" width="75" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="cAj-S8-dFX"/>
                                 </constraints>
@@ -1712,114 +1712,357 @@
             </objects>
             <point key="canvasLocation" x="15232.799999999999" y="223.53823088455775"/>
         </scene>
-        <!--Resources for High School Kids-->
-        <scene sceneID="vD2-Ac-enb">
+        <!--Resources for School Kids-->
+        <scene sceneID="E0A-KW-wni">
             <objects>
-                <viewController id="dDn-eG-wKr" customClass="MentalHealthResourcesController" customModule="myHSJournal" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="giZ-oW-z2p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="a3q-3E-D8k" customClass="MentalHealthResourcesController" customModule="myHSJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9xY-0X-F0n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Please consult an advisor for consultation on the resources." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVL-FZ-nXn">
-                                <rect key="frame" x="10" y="69" width="355" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suicide Prevention" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxW-mZ-qGi">
-                                <rect key="frame" x="10" y="127" width="355" height="30"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Y9-RK-mFr">
+                                <rect key="frame" x="0.0" y="64" width="375" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCR-P6-qiq" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="896"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Please consult an advisor for consultation on the resources." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVL-FZ-nXn">
+                                                <rect key="frame" x="10" y="10" width="355" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suicide Prevention" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxW-mZ-qGi">
+                                                <rect key="frame" x="10" y="73" width="355" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn5-Gd-gF5">
+                                                <rect key="frame" x="10" y="105.5" width="355" height="46"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="For Immediate Help - Call 911 or reach to nearest emergency room">
+                                                        <attributes>
+                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mental Health" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ja0-2M-wnU">
+                                                <rect key="frame" x="121" y="275.5" width="133" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotlines" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPs-Ix-Nau">
+                                                <rect key="frame" x="148" y="732" width="79" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKV-Xz-afR">
+                                                <rect key="frame" x="10" y="489" width="355" height="46"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Good Reads: Prescription Without Pills, by Dr. Susan Heitler">
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smokers and Vapors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqz-PL-DDd">
+                                                <rect key="frame" x="90" y="555" width="195" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHx-7d-VeA">
+                                                <rect key="frame" x="10" y="639.5" width="355" height="20.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="For Kids:">
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48N-eB-S4b">
+                                                <rect key="frame" x="10" y="765" width="355" height="20.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="YWCA Women Crisis: 1-800-572-2782">
+                                                        <attributes>
+                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drug Free Kids: http://www.drugfree.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-BU-dYE">
+                                                <rect key="frame" x="10" y="587.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Prents: http://www.FlavorHookKids.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEg-Kq-1Qj">
+                                                <rect key="frame" x="10" y="613.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="California: 1-800-662-8887" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biq-5u-CIA">
+                                                <rect key="frame" x="10" y="665" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deaf/Hearing Impaired: 1-800-933-4TDD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtV-mQ-5Ox">
+                                                <rect key="frame" x="10" y="691" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visit: http://www.crisistextline.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAQ-3s-2Mx">
+                                                <rect key="frame" x="10" y="156.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text: 741741" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DB-0y-WIh">
+                                                <rect key="frame" x="10" y="182.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call 24 hours a day: 1-800-273-8255" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZa-90-7gU">
+                                                <rect key="frame" x="10" y="208.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat: www.crisischat.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnj-G4-RO2">
+                                                <rect key="frame" x="10" y="234.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="US National Health: http://www.nimh.nih.gov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPf-bd-an9">
+                                                <rect key="frame" x="10" y="308" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anxiety Depression: http://www.adaa.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pex-ca-3nh">
+                                                <rect key="frame" x="10" y="334" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs1-HD-cFi">
+                                                <rect key="frame" x="10" y="360" width="355" height="46"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="National Eating disorders:       http://www.nationaleatingdisorders.org">
+                                                        <attributes>
+                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LGBTQ+ Teens: 1-800-246-7743" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPZ-9Z-k5w">
+                                                <rect key="frame" x="10" y="411" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Domestic Violence: 1-800-799-7233" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdg-bH-MxC">
+                                                <rect key="frame" x="10" y="437" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National Parent: 1-855-427-2736" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nY-3t-cW7">
+                                                <rect key="frame" x="10" y="463" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parenting Support: 1-888-220-7575" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoa-sG-ohw">
+                                                <rect key="frame" x="10" y="816.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National LGBTQ: 1-800-246-PRIDE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmY-Ci-LOx">
+                                                <rect key="frame" x="10" y="842.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teens Dating: 1-866-331-9474" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-0X-1Hg">
+                                                <rect key="frame" x="10" y="790.5" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="JPZ-9Z-k5w" secondAttribute="trailing" constant="10" id="0L8-QL-ibg"/>
+                                            <constraint firstItem="biq-5u-CIA" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="2De-nH-YUV"/>
+                                            <constraint firstAttribute="trailing" secondItem="biq-5u-CIA" secondAttribute="trailing" constant="10" id="2KR-pK-yyO"/>
+                                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="top" secondItem="DCR-P6-qiq" secondAttribute="top" constant="10" id="2Vr-Dg-eOi"/>
+                                            <constraint firstItem="lnj-G4-RO2" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="2tK-K2-8BQ"/>
+                                            <constraint firstItem="lnj-G4-RO2" firstAttribute="top" secondItem="gZa-90-7gU" secondAttribute="bottom" constant="5" id="3i7-w7-qjH"/>
+                                            <constraint firstAttribute="trailing" secondItem="CPf-bd-an9" secondAttribute="trailing" constant="10" id="3ni-hJ-F4o"/>
+                                            <constraint firstAttribute="trailing" secondItem="k0K-BU-dYE" secondAttribute="trailing" constant="10" id="4r3-Pt-fuu"/>
+                                            <constraint firstItem="9nY-3t-cW7" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="7Dj-3M-W8Y"/>
+                                            <constraint firstItem="Pex-ca-3nh" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="8Uq-Gx-Lwq"/>
+                                            <constraint firstAttribute="trailing" secondItem="gZa-90-7gU" secondAttribute="trailing" constant="10" id="8wk-oS-AQV"/>
+                                            <constraint firstItem="Vn5-Gd-gF5" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="9cb-HW-qNW"/>
+                                            <constraint firstItem="QKV-Xz-afR" firstAttribute="top" secondItem="9nY-3t-cW7" secondAttribute="bottom" constant="5" id="CVO-YZ-GUy"/>
+                                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="centerX" secondItem="DCR-P6-qiq" secondAttribute="centerX" id="CwO-p1-YEM"/>
+                                            <constraint firstItem="48N-eB-S4b" firstAttribute="top" secondItem="bPs-Ix-Nau" secondAttribute="bottom" constant="6" id="DUZ-5k-DAC"/>
+                                            <constraint firstItem="kdg-bH-MxC" firstAttribute="top" secondItem="JPZ-9Z-k5w" secondAttribute="bottom" constant="5" id="ESx-Mg-K2T"/>
+                                            <constraint firstItem="gZa-90-7gU" firstAttribute="top" secondItem="7DB-0y-WIh" secondAttribute="bottom" constant="5" id="Eby-Bn-Brl"/>
+                                            <constraint firstItem="oxW-mZ-qGi" firstAttribute="centerX" secondItem="DCR-P6-qiq" secondAttribute="centerX" id="Eki-Xs-pIa"/>
+                                            <constraint firstItem="bEg-Kq-1Qj" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="FyY-PU-zKk"/>
+                                            <constraint firstItem="pAQ-3s-2Mx" firstAttribute="top" secondItem="Vn5-Gd-gF5" secondAttribute="bottom" constant="5" id="Gfb-cP-7wG"/>
+                                            <constraint firstAttribute="trailing" secondItem="KmY-Ci-LOx" secondAttribute="trailing" constant="10" id="Gmk-c3-qwv"/>
+                                            <constraint firstAttribute="trailing" secondItem="oxW-mZ-qGi" secondAttribute="trailing" constant="10" id="H3e-Th-1c4"/>
+                                            <constraint firstItem="ja0-2M-wnU" firstAttribute="top" secondItem="lnj-G4-RO2" secondAttribute="bottom" constant="20" id="Hfe-hH-ZO2"/>
+                                            <constraint firstItem="Vn5-Gd-gF5" firstAttribute="top" secondItem="oxW-mZ-qGi" secondAttribute="bottom" constant="6" id="IIi-et-jWc"/>
+                                            <constraint firstItem="Rxd-0X-1Hg" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="JWQ-fY-A5w"/>
+                                            <constraint firstItem="XtV-mQ-5Ox" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="Jfw-aN-oDq"/>
+                                            <constraint firstAttribute="trailing" secondItem="48N-eB-S4b" secondAttribute="trailing" constant="10" id="KG3-mD-seb"/>
+                                            <constraint firstItem="48N-eB-S4b" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="KUg-Kc-uHg"/>
+                                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="top" secondItem="DCR-P6-qiq" secondAttribute="top" constant="10" id="LMb-ub-MYn"/>
+                                            <constraint firstItem="JPZ-9Z-k5w" firstAttribute="top" secondItem="qs1-HD-cFi" secondAttribute="bottom" constant="5" id="NLc-jJ-co5"/>
+                                            <constraint firstItem="lnj-G4-RO2" firstAttribute="top" secondItem="GVL-FZ-nXn" secondAttribute="bottom" constant="181.5" id="NMf-gQ-2Lp"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rxd-0X-1Hg" secondAttribute="trailing" constant="10" id="OXr-kw-WDx"/>
+                                            <constraint firstAttribute="trailing" secondItem="XtV-mQ-5Ox" secondAttribute="trailing" constant="10" id="Pfq-8p-otP"/>
+                                            <constraint firstItem="QKV-Xz-afR" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="Qd5-4W-sud"/>
+                                            <constraint firstItem="k0K-BU-dYE" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="Raf-sc-opi"/>
+                                            <constraint firstAttribute="trailing" secondItem="yoa-sG-ohw" secondAttribute="trailing" constant="10" id="S1H-pC-3z8"/>
+                                            <constraint firstItem="k0K-BU-dYE" firstAttribute="top" secondItem="iqz-PL-DDd" secondAttribute="bottom" constant="6" id="Suu-c5-buA"/>
+                                            <constraint firstAttribute="trailing" secondItem="GVL-FZ-nXn" secondAttribute="trailing" constant="10" id="Tqw-NR-ub4"/>
+                                            <constraint firstItem="FHx-7d-VeA" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="UCG-Un-4sS"/>
+                                            <constraint firstItem="biq-5u-CIA" firstAttribute="top" secondItem="FHx-7d-VeA" secondAttribute="bottom" constant="5" id="UQY-mb-1em"/>
+                                            <constraint firstItem="XtV-mQ-5Ox" firstAttribute="top" secondItem="biq-5u-CIA" secondAttribute="bottom" constant="5" id="UWC-hi-E7T"/>
+                                            <constraint firstItem="bPs-Ix-Nau" firstAttribute="top" secondItem="XtV-mQ-5Ox" secondAttribute="bottom" constant="20" id="Umg-Y8-ide"/>
+                                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="Vbk-vI-FQu"/>
+                                            <constraint firstItem="bEg-Kq-1Qj" firstAttribute="top" secondItem="k0K-BU-dYE" secondAttribute="bottom" constant="5" id="Vef-8Y-Vgg"/>
+                                            <constraint firstItem="Pex-ca-3nh" firstAttribute="top" secondItem="CPf-bd-an9" secondAttribute="bottom" constant="5" id="X3U-nL-UtV"/>
+                                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="top" secondItem="DCR-P6-qiq" secondAttribute="top" constant="10" id="YCh-f7-Pth"/>
+                                            <constraint firstAttribute="trailing" secondItem="FHx-7d-VeA" secondAttribute="trailing" constant="10" id="YP2-4I-99U"/>
+                                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="top" secondItem="DCR-P6-qiq" secondAttribute="top" constant="10" id="YUr-1v-xay"/>
+                                            <constraint firstItem="FHx-7d-VeA" firstAttribute="top" secondItem="bEg-Kq-1Qj" secondAttribute="bottom" constant="5" id="Ykb-hb-lkV"/>
+                                            <constraint firstItem="Rxd-0X-1Hg" firstAttribute="top" secondItem="48N-eB-S4b" secondAttribute="bottom" constant="5" id="bVV-4D-ZGr"/>
+                                            <constraint firstItem="kdg-bH-MxC" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="cjt-08-5ez"/>
+                                            <constraint firstItem="9nY-3t-cW7" firstAttribute="top" secondItem="kdg-bH-MxC" secondAttribute="bottom" constant="5" id="eu0-0a-KcP"/>
+                                            <constraint firstItem="oxW-mZ-qGi" firstAttribute="top" secondItem="GVL-FZ-nXn" secondAttribute="bottom" constant="20" id="f8l-oc-Qw5"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vn5-Gd-gF5" secondAttribute="trailing" constant="10" id="fPS-GZ-egb"/>
+                                            <constraint firstAttribute="trailing" secondItem="QKV-Xz-afR" secondAttribute="trailing" constant="10" id="fsa-kN-RcH"/>
+                                            <constraint firstItem="CPf-bd-an9" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="hVq-0S-uJ1"/>
+                                            <constraint firstAttribute="trailing" secondItem="bEg-Kq-1Qj" secondAttribute="trailing" constant="10" id="iM4-I5-CNs"/>
+                                            <constraint firstItem="CPf-bd-an9" firstAttribute="top" secondItem="ja0-2M-wnU" secondAttribute="bottom" constant="6" id="jeC-Uc-O0x"/>
+                                            <constraint firstItem="gZa-90-7gU" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="kjt-HV-kEP"/>
+                                            <constraint firstAttribute="trailing" secondItem="9nY-3t-cW7" secondAttribute="trailing" constant="10" id="lHm-Oe-7ge"/>
+                                            <constraint firstAttribute="trailing" secondItem="kdg-bH-MxC" secondAttribute="trailing" constant="10" id="mN1-Yp-c8n"/>
+                                            <constraint firstItem="ja0-2M-wnU" firstAttribute="centerX" secondItem="DCR-P6-qiq" secondAttribute="centerX" id="mWQ-og-UWV"/>
+                                            <constraint firstItem="iqz-PL-DDd" firstAttribute="top" secondItem="QKV-Xz-afR" secondAttribute="bottom" constant="20" id="oU5-sp-uQE"/>
+                                            <constraint firstItem="7DB-0y-WIh" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="p0X-uH-RQG"/>
+                                            <constraint firstItem="JPZ-9Z-k5w" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="pQI-OQ-Ke1"/>
+                                            <constraint firstAttribute="trailing" secondItem="pAQ-3s-2Mx" secondAttribute="trailing" constant="10" id="psj-ZY-F3z"/>
+                                            <constraint firstItem="yoa-sG-ohw" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="rWI-1d-fGI"/>
+                                            <constraint firstItem="iqz-PL-DDd" firstAttribute="centerX" secondItem="DCR-P6-qiq" secondAttribute="centerX" id="rWa-lj-mq8"/>
+                                            <constraint firstItem="bPs-Ix-Nau" firstAttribute="centerX" secondItem="DCR-P6-qiq" secondAttribute="centerX" id="rzT-xm-5qz"/>
+                                            <constraint firstItem="oxW-mZ-qGi" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="s12-eY-7Fr"/>
+                                            <constraint firstAttribute="trailing" secondItem="lnj-G4-RO2" secondAttribute="trailing" constant="10" id="sdI-DX-NkO"/>
+                                            <constraint firstAttribute="trailing" secondItem="7DB-0y-WIh" secondAttribute="trailing" constant="10" id="tAl-Td-JkT"/>
+                                            <constraint firstItem="KmY-Ci-LOx" firstAttribute="top" secondItem="yoa-sG-ohw" secondAttribute="bottom" constant="5" id="tBa-Np-avY"/>
+                                            <constraint firstAttribute="trailing" secondItem="qs1-HD-cFi" secondAttribute="trailing" constant="10" id="vEF-7K-PJn"/>
+                                            <constraint firstItem="yoa-sG-ohw" firstAttribute="top" secondItem="Rxd-0X-1Hg" secondAttribute="bottom" constant="5" id="wEF-8V-BZm"/>
+                                            <constraint firstItem="KmY-Ci-LOx" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="wTC-gH-kXM"/>
+                                            <constraint firstItem="qs1-HD-cFi" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="xoi-bj-gjn"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pex-ca-3nh" secondAttribute="trailing" constant="10" id="xxp-oi-wwk"/>
+                                            <constraint firstItem="7DB-0y-WIh" firstAttribute="top" secondItem="pAQ-3s-2Mx" secondAttribute="bottom" constant="5" id="yEm-Ed-DlP"/>
+                                            <constraint firstItem="pAQ-3s-2Mx" firstAttribute="leading" secondItem="DCR-P6-qiq" secondAttribute="leading" constant="10" id="z6V-mJ-fOM"/>
+                                            <constraint firstItem="qs1-HD-cFi" firstAttribute="top" secondItem="Pex-ca-3nh" secondAttribute="bottom" constant="5" id="zCm-yd-8BN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="sB8-6B-Glb"/>
+                                    <constraint firstItem="DCR-P6-qiq" firstAttribute="centerX" secondItem="8Y9-RK-mFr" secondAttribute="centerX" id="5uL-9H-fz7"/>
+                                    <constraint firstAttribute="bottom" secondItem="DCR-P6-qiq" secondAttribute="bottom" id="AZZ-g8-kMw"/>
+                                    <constraint firstItem="DCR-P6-qiq" firstAttribute="width" secondItem="8Y9-RK-mFr" secondAttribute="width" id="Fut-Gs-r6g"/>
+                                    <constraint firstItem="DCR-P6-qiq" firstAttribute="height" secondItem="8Y9-RK-mFr" secondAttribute="height" id="NjV-pz-sT5"/>
+                                    <constraint firstItem="DCR-P6-qiq" firstAttribute="top" secondItem="8Y9-RK-mFr" secondAttribute="top" id="Vqt-zD-hLz"/>
+                                    <constraint firstAttribute="trailing" secondItem="DCR-P6-qiq" secondAttribute="trailing" id="ZDe-Ws-QeV"/>
+                                    <constraint firstItem="DCR-P6-qiq" firstAttribute="height" secondItem="8Y9-RK-mFr" secondAttribute="height" priority="250" id="dyd-fQ-LOl"/>
+                                    <constraint firstItem="DCR-P6-qiq" firstAttribute="leading" secondItem="8Y9-RK-mFr" secondAttribute="leading" id="iMm-9B-ydJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mental Health" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ja0-2M-wnU">
-                                <rect key="frame" x="10" y="307" width="355" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hTP-Kx-4Un"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smokers and Vapors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqz-PL-DDd">
-                                <rect key="frame" x="10" y="497" width="355" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="6o1-ay-lUb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOE-k0-KJ8">
-                                <rect key="frame" x="30" y="162" width="335" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="XRi-OP-EvN"/>
-                                </constraints>
-                                <string key="text">For Immediate Help - Call 911  or reach to nearest emergency room Visit: http://www.crisistextline.org           741741 Call 24 hours a day: 1-800-273-8255</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deI-1e-7BZ">
-                                <rect key="frame" x="30" y="537" width="335" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="2oI-nT-enX"/>
-                                </constraints>
-                                <string key="text">Drug Free Kids: http://www.drugfree.org For Parents: http://www.FlavorsHookKids.org For Kids: California: 1-800-662-8887 Deaf/Hearing Impaired: 1-800-933-4TDD</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ar-f0-r4I">
-                                <rect key="frame" x="30" y="345" width="335" height="177"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="135" id="eNr-G9-AAh"/>
-                                </constraints>
-                                <string key="text">US National Health: http://www.nimh.nih.gov Anxiety Depression: http://www.adaa.org National Eating disorders:      http://www.nationaleatingdisorders.org  </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                            </textView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2Ar-f0-r4I" firstAttribute="top" secondItem="ja0-2M-wnU" secondAttribute="bottom" constant="10" id="1Qu-mf-YQz"/>
-                            <constraint firstItem="jLU-gL-hmN" firstAttribute="trailing" secondItem="pOE-k0-KJ8" secondAttribute="trailing" constant="10" id="1go-lE-v9f"/>
-                            <constraint firstItem="pOE-k0-KJ8" firstAttribute="leading" secondItem="jLU-gL-hmN" secondAttribute="leading" constant="30" id="4Xh-Z1-59x"/>
-                            <constraint firstItem="jLU-gL-hmN" firstAttribute="trailing" secondItem="ja0-2M-wnU" secondAttribute="trailing" constant="10" id="6hu-YR-TUa"/>
-                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="leading" secondItem="jLU-gL-hmN" secondAttribute="leading" constant="10" id="9Tc-yS-2FI"/>
-                            <constraint firstItem="pOE-k0-KJ8" firstAttribute="top" secondItem="oxW-mZ-qGi" secondAttribute="bottom" constant="5" id="A2V-y0-p2H"/>
-                            <constraint firstItem="jLU-gL-hmN" firstAttribute="trailing" secondItem="iqz-PL-DDd" secondAttribute="trailing" constant="10" id="BIB-Jl-ugv"/>
-                            <constraint firstItem="oxW-mZ-qGi" firstAttribute="leading" secondItem="jLU-gL-hmN" secondAttribute="leading" constant="10" id="GhK-Iy-vfi"/>
-                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="top" secondItem="jLU-gL-hmN" secondAttribute="top" constant="5" id="NrF-fZ-QtG"/>
-                            <constraint firstItem="deI-1e-7BZ" firstAttribute="leading" secondItem="jLU-gL-hmN" secondAttribute="leading" constant="30" id="OGm-BK-eZn"/>
-                            <constraint firstItem="oxW-mZ-qGi" firstAttribute="top" secondItem="GVL-FZ-nXn" secondAttribute="bottom" constant="15" id="Onq-8s-yNh"/>
-                            <constraint firstItem="jLU-gL-hmN" firstAttribute="trailing" secondItem="oxW-mZ-qGi" secondAttribute="trailing" constant="10" id="QcU-Xn-ikQ"/>
-                            <constraint firstItem="ja0-2M-wnU" firstAttribute="top" secondItem="pOE-k0-KJ8" secondAttribute="bottom" constant="15" id="UY4-lZ-3ij"/>
-                            <constraint firstItem="iqz-PL-DDd" firstAttribute="leading" secondItem="jLU-gL-hmN" secondAttribute="leading" constant="10" id="Usm-jf-8dQ"/>
-                            <constraint firstItem="jLU-gL-hmN" firstAttribute="trailing" secondItem="deI-1e-7BZ" secondAttribute="trailing" constant="10" id="Yux-Oo-SEs"/>
-                            <constraint firstItem="deI-1e-7BZ" firstAttribute="top" secondItem="iqz-PL-DDd" secondAttribute="bottom" constant="10" id="auF-JK-vrV"/>
-                            <constraint firstItem="ja0-2M-wnU" firstAttribute="leading" secondItem="jLU-gL-hmN" secondAttribute="leading" constant="10" id="bmL-vQ-M0K"/>
-                            <constraint firstItem="jLU-gL-hmN" firstAttribute="trailing" secondItem="GVL-FZ-nXn" secondAttribute="trailing" constant="10" id="div-Vb-z3C"/>
-                            <constraint firstItem="jLU-gL-hmN" firstAttribute="trailing" secondItem="2Ar-f0-r4I" secondAttribute="trailing" constant="10" id="eWF-rF-pZ3"/>
-                            <constraint firstItem="2Ar-f0-r4I" firstAttribute="leading" secondItem="jLU-gL-hmN" secondAttribute="leading" constant="30" id="fg1-Qp-l4E"/>
-                            <constraint firstItem="iqz-PL-DDd" firstAttribute="top" secondItem="2Ar-f0-r4I" secondAttribute="bottom" constant="15" id="sP9-E5-CA7"/>
+                            <constraint firstItem="8Y9-RK-mFr" firstAttribute="leading" secondItem="ViK-9N-SEx" secondAttribute="leading" id="1Vc-dX-EgZ"/>
+                            <constraint firstItem="ViK-9N-SEx" firstAttribute="bottom" secondItem="8Y9-RK-mFr" secondAttribute="bottom" id="Cke-oP-GeN"/>
+                            <constraint firstItem="8Y9-RK-mFr" firstAttribute="leading" secondItem="ViK-9N-SEx" secondAttribute="leading" id="D3E-nC-ECW"/>
+                            <constraint firstItem="ViK-9N-SEx" firstAttribute="trailing" secondItem="8Y9-RK-mFr" secondAttribute="trailing" id="JC4-GX-XC4"/>
+                            <constraint firstItem="GVL-FZ-nXn" firstAttribute="top" secondItem="ViK-9N-SEx" secondAttribute="top" constant="10" id="Kpo-41-qsg"/>
+                            <constraint firstItem="ViK-9N-SEx" firstAttribute="bottom" secondItem="8Y9-RK-mFr" secondAttribute="bottom" id="Pf0-i1-ifv"/>
+                            <constraint firstItem="ViK-9N-SEx" firstAttribute="top" secondItem="8Y9-RK-mFr" secondAttribute="top" id="UF0-qT-rzP"/>
+                            <constraint firstItem="ViK-9N-SEx" firstAttribute="top" secondItem="8Y9-RK-mFr" secondAttribute="top" id="WMa-XK-UVn"/>
+                            <constraint firstItem="8Y9-RK-mFr" firstAttribute="centerX" secondItem="ViK-9N-SEx" secondAttribute="centerX" id="eCx-5n-UOj"/>
+                            <constraint firstItem="8Y9-RK-mFr" firstAttribute="leading" secondItem="ViK-9N-SEx" secondAttribute="leading" id="xCz-gA-Pjf"/>
+                            <constraint firstItem="ViK-9N-SEx" firstAttribute="trailing" secondItem="8Y9-RK-mFr" secondAttribute="trailing" id="zXV-AS-sNT"/>
+                            <constraint firstItem="8Y9-RK-mFr" firstAttribute="width" secondItem="9xY-0X-F0n" secondAttribute="width" id="zcd-bG-jl8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="jLU-gL-hmN"/>
+                        <viewLayoutGuide key="safeArea" id="ViK-9N-SEx"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Resources for High School Kids" id="eke-Zj-EiM">
+                    <navigationItem key="navigationItem" title="Resources for School Kids" id="eke-Zj-EiM">
                         <barButtonItem key="backBarButtonItem" title="Back" id="BKo-wK-DPs"/>
                     </navigationItem>
+                    <size key="freeformSize" width="375" height="960"/>
+                    <connections>
+                        <outlet property="call911Label" destination="Vn5-Gd-gF5" id="dYL-a2-HH0"/>
+                        <outlet property="crisis24Label" destination="gZa-90-7gU" id="QVy-id-WoA"/>
+                        <outlet property="crisisChatLabel" destination="lnj-G4-RO2" id="Br1-KY-ulR"/>
+                        <outlet property="crisisMsgLabel" destination="7DB-0y-WIh" id="aYV-8X-Jpt"/>
+                        <outlet property="crisisTxtLine" destination="pAQ-3s-2Mx" id="80W-da-sHv"/>
+                        <outlet property="depressionLabel" destination="Pex-ca-3nh" id="efj-t0-nDF"/>
+                        <outlet property="drugCALabel" destination="biq-5u-CIA" id="C84-im-E6U"/>
+                        <outlet property="drugFreeLabel" destination="k0K-BU-dYE" id="ohC-97-Obx"/>
+                        <outlet property="drugHearingLabel" destination="XtV-mQ-5Ox" id="bd5-rU-EZC"/>
+                        <outlet property="eatingLabel" destination="qs1-HD-cFi" id="jO0-cN-Mg1"/>
+                        <outlet property="lgbtqTeensLabel" destination="JPZ-9Z-k5w" id="NwP-Ej-SA8"/>
+                        <outlet property="natHealthLabel" destination="CPf-bd-an9" id="wFh-rv-l3H"/>
+                        <outlet property="nationalLgbtqLabel" destination="KmY-Ci-LOx" id="X6H-Th-L4z"/>
+                        <outlet property="parentLabel" destination="9nY-3t-cW7" id="T1C-rp-vk6"/>
+                        <outlet property="parentingSupportLabel" destination="yoa-sG-ohw" id="HRR-ls-u3u"/>
+                        <outlet property="parentsDrugLabel" destination="bEg-Kq-1Qj" id="8Rr-8w-ioW"/>
+                        <outlet property="readsLabel" destination="QKV-Xz-afR" id="5yG-eb-8YP"/>
+                        <outlet property="resScrollView" destination="8Y9-RK-mFr" id="APm-aB-dXb"/>
+                        <outlet property="teensDatingLabel" destination="Rxd-0X-1Hg" id="qX9-GP-Pd1"/>
+                        <outlet property="teensLabel" destination="Rxd-0X-1Hg" id="S7m-Gq-hu6"/>
+                        <outlet property="violenceLabel" destination="kdg-bH-MxC" id="d29-QB-iwj"/>
+                        <outlet property="ywcaLabel" destination="48N-eB-S4b" id="Ksa-Dl-lZS"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qBB-5Y-NOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dek-uG-Vd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677.60000000000002" y="517.6911544227886"/>
+            <point key="canvasLocation" x="1906.4000000000001" y="694.45277361319347"/>
         </scene>
         <!--High School Records-->
         <scene sceneID="pHa-vm-w27">
