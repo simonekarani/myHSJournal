@@ -84,6 +84,10 @@ class MentalHealthResourcesController: UIViewController {
         gesture18.numberOfTapsRequired = 1
         crisis24Label.addGestureRecognizer(gesture18)
         
+        let gesture19 = UITapGestureRecognizer(target: self, action: #selector(crisisMsgLabelClicked(_:)))
+        gesture19.numberOfTapsRequired = 1
+        crisisMsgLabel.addGestureRecognizer(gesture19)
+        
         // ----
         let gesture6 = UITapGestureRecognizer(target: self, action: #selector(nathealthLabelClicked(_:)))
         gesture6.numberOfTapsRequired = 1
@@ -172,8 +176,8 @@ class MentalHealthResourcesController: UIViewController {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
-    @objc func crisisChatLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "http://www.crisisChat.org"),
+    @objc func crisisMsgLabelClicked(_ sender: Any) {
+        guard let url = URL(string: "sms://741741"),
             UIApplication.shared.canOpenURL(url) else {
                 return
         }
