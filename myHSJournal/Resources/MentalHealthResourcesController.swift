@@ -16,7 +16,7 @@ class MentalHealthResourcesController: UIViewController {
     @IBOutlet weak var call911Label: UILabel!
     @IBOutlet weak var crisisMsgLabel: UILabel!
     @IBOutlet weak var crisis24Label: UILabel!
-    @IBOutlet weak var resScrollView: UIScrollView!
+    @IBOutlet weak var resScrollView: UIScrollView!
     
     @IBOutlet weak var teensLabel: UILabel!
     @IBOutlet weak var natHealthLabel: UILabel!
