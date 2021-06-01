@@ -16,8 +16,7 @@ class MentalHealthResourcesController: UIViewController {
     @IBOutlet weak var call911Label: UILabel!
     @IBOutlet weak var crisisMsgLabel: UILabel!
     @IBOutlet weak var crisis24Label: UILabel!
-    @IBOutlet weak var crisisChatLabel: UILabel!
-    @IBOutlet weak var resScrollView: UIScrollView!
+    @IBOutlet weak var resScrollView: UIScrollView!
     
     @IBOutlet weak var teensLabel: UILabel!
     @IBOutlet weak var natHealthLabel: UILabel!
@@ -42,9 +41,9 @@ class MentalHealthResourcesController: UIViewController {
         super.viewDidLoad()
         
         call911Label.isUserInteractionEnabled = true
+        crisisTxtLine.isUserInteractionEnabled = true
         crisisMsgLabel.isUserInteractionEnabled = true
         crisis24Label.isUserInteractionEnabled = true
-        crisisChatLabel.isUserInteractionEnabled = true
         
         teensLabel.isUserInteractionEnabled = true
         natHealthLabel.isUserInteractionEnabled = true
@@ -84,10 +83,6 @@ class MentalHealthResourcesController: UIViewController {
         let gesture18 = UITapGestureRecognizer(target: self, action: #selector(call24LabelClicked(_:)))
         gesture18.numberOfTapsRequired = 1
         crisis24Label.addGestureRecognizer(gesture18)
-        
-        let gesture19 = UITapGestureRecognizer(target: self, action: #selector(crisisChatLabelClicked(_:)))
-        gesture19.numberOfTapsRequired = 1
-        crisisChatLabel.addGestureRecognizer(gesture19)
         
         // ----
         let gesture6 = UITapGestureRecognizer(target: self, action: #selector(nathealthLabelClicked(_:)))
