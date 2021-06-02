@@ -23,7 +23,6 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     var selectedBtnTag: Int!
     var editYearlyTodoRec: YearlyPlanRecItem!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var yearlyTodoAllItemArray = [YearlyPlanRecItem]()
     var yearlyItemArray = [YearlyPlanRecItem]()
     var todoView: TodoViewType!
@@ -144,24 +143,48 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
         yearlyTodoAllItemArray.removeAll()
         yearlyItemArray.removeAll()
         let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
-        do {
-            yearlyTodoAllItemArray = try context.fetch(request)
-            for (_, element) in yearlyTodoAllItemArray.enumerated() {
-                if todoView == TodoViewType.TODO_ALL {
-                    yearlyItemArray.append(element)
-                }
-                else if todoView == TodoViewType.TODO_ACTIVE {
-                    if element.completed == false {
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                yearlyTodoAllItemArray = try context.fetch(request)
+                for (_, element) in yearlyTodoAllItemArray.enumerated() {
+                    if todoView == TodoViewType.TODO_ALL {
                         yearlyItemArray.append(element)
                     }
-                } else {
-                    if element.completed {
-                        yearlyItemArray.append(element)
+                    else if todoView == TodoViewType.TODO_ACTIVE {
+                        if element.completed == false {
+                            yearlyItemArray.append(element)
+                        }
+                    } else {
+                        if element.completed {
+                            yearlyItemArray.append(element)
+                        }
                     }
                 }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                yearlyTodoAllItemArray = try context.fetch(request)
+                for (_, element) in yearlyTodoAllItemArray.enumerated() {
+                    if todoView == TodoViewType.TODO_ALL {
+                        yearlyItemArray.append(element)
+                    }
+                    else if todoView == TodoViewType.TODO_ACTIVE {
+                        if element.completed == false {
+                            yearlyItemArray.append(element)
+                        }
+                    } else {
+                        if element.completed {
+                            yearlyItemArray.append(element)
+                        }
+                    }
+                }
+            } catch {
+                print("Error in loading \(error)")
+            }
         }
     }
     
@@ -313,17 +336,34 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
-        do {
-            yearlyItemArray = try context.fetch(request)
-            for (_, element) in yearlyItemArray.enumerated() {
-                if (element.timeMillis == timeMillis) {
-                    context.delete(element)
-                    saveContext()
-                    return
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                yearlyItemArray = try context.fetch(request)
+                for (_, element) in yearlyItemArray.enumerated() {
+                    if (element.timeMillis == timeMillis) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
                 }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                yearlyItemArray = try context.fetch(request)
+                for (_, element) in yearlyItemArray.enumerated() {
+                    if (element.timeMillis == timeMillis) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
+                }
+            } catch {
+                print("Error in loading \(error)")
+            }
         }
     }
     
@@ -332,20 +372,42 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
             return
         }
         
-        let plansRecItem = YearlyPlanRecItem(context: self.context)
-        plansRecItem.timeMillis = getCurrentMillis()
-        plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
-        if (selectedBtnTag == 1001) {
-            plansRecItem.yearType = SchoolYearType.NINETH.description
-        } else if (selectedBtnTag == 1002) {
-            plansRecItem.yearType = SchoolYearType.TENTH.description
-        } else if (selectedBtnTag == 1003) {
-            plansRecItem.yearType = SchoolYearType.ELEVENTH.description
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let plansRecItem = YearlyPlanRecItem(context: context)
+                
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
+            if (selectedBtnTag == 1001) {
+                plansRecItem.yearType = SchoolYearType.NINETH.description
+            } else if (selectedBtnTag == 1002) {
+                plansRecItem.yearType = SchoolYearType.TENTH.description
+            } else if (selectedBtnTag == 1003) {
+                plansRecItem.yearType = SchoolYearType.ELEVENTH.description
+            } else {
+                plansRecItem.yearType = SchoolYearType.TWELVETH.description
+            }
+            plansRecItem.yearlyDetails = todoStr
+            plansRecItem.completed = false
         } else {
-            plansRecItem.yearType = SchoolYearType.TWELVETH.description
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            let plansRecItem = YearlyPlanRecItem()
+                
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
+            if (selectedBtnTag == 1001) {
+                plansRecItem.yearType = SchoolYearType.NINETH.description
+            } else if (selectedBtnTag == 1002) {
+                plansRecItem.yearType = SchoolYearType.TENTH.description
+            } else if (selectedBtnTag == 1003) {
+                plansRecItem.yearType = SchoolYearType.ELEVENTH.description
+            } else {
+                plansRecItem.yearType = SchoolYearType.TWELVETH.description
+            }
+            plansRecItem.yearlyDetails = todoStr
+            plansRecItem.completed = false
         }
-        plansRecItem.yearlyDetails = todoStr
-        plansRecItem.completed = false
+        
         saveContext()
         
         loadYearlyRecords()
@@ -356,33 +418,68 @@ class YearlyPlanListScreenController: UIViewController, UITableViewDataSource, U
     func updateRecord() {
         var updtItemArray = [YearlyPlanRecItem]()
         let request: NSFetchRequest<YearlyPlanRecItem> = YearlyPlanRecItem.fetchRequest()
-        do {
-            updtItemArray = try context.fetch(request)
-            var isFound: Bool = false
-            for (_, element) in updtItemArray.enumerated() {
-                if (element.timeMillis == editYearlyTodoRec.timeMillis) {
-                    element.yearlyDetails = todoStr
-                    saveContext()
-                    isFound = true
-                    loadYearlyRecords()
-                    DispatchQueue.main.async {
-                        self.yearlyTodoTableView.reloadData() }
-                    return
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                updtItemArray = try context.fetch(request)
+                var isFound: Bool = false
+                for (_, element) in updtItemArray.enumerated() {
+                    if (element.timeMillis == editYearlyTodoRec.timeMillis) {
+                        element.yearlyDetails = todoStr
+                        saveContext()
+                        isFound = true
+                        loadYearlyRecords()
+                        DispatchQueue.main.async {
+                            self.yearlyTodoTableView.reloadData() }
+                        return
+                    }
                 }
+                if !isFound {
+                    createRecord()
+                }
+            } catch {
+                print("Error in loading \(error)")
             }
-            if !isFound {
-                createRecord()
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                updtItemArray = try context.fetch(request)
+                var isFound: Bool = false
+                for (_, element) in updtItemArray.enumerated() {
+                    if (element.timeMillis == editYearlyTodoRec.timeMillis) {
+                        element.yearlyDetails = todoStr
+                        saveContext()
+                        isFound = true
+                        loadYearlyRecords()
+                        DispatchQueue.main.async {
+                            self.yearlyTodoTableView.reloadData() }
+                        return
+                    }
+                }
+                if !isFound {
+                    createRecord()
+                }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
         }
     }
     
     func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
         }
     }
     

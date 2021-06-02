@@ -153,157 +153,233 @@ class MentalHealthResourcesController: UIViewController {
     }
     
     @objc func call911LabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://911"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://911"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
     @objc func crisisTxtLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "http://www.crisistextline.org"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "http://www.crisistextline.org"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
     @objc func call24LabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18002738255"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18002738255"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func crisisMsgLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "sms://741741"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "sms://741741"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     // ---
     @objc func nathealthLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "http://www.nimh.nih.gov"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "http://www.nimh.nih.gov"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func depressionLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "http://www.adaa.org"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "http://www.adaa.org"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func eatingLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "http://www.nationaleatingdisorders.org"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "http://www.nationaleatingdisorders.org"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func lgbtqteensLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18002467743"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18002467743"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func natparentLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18554272736"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18554272736"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func dviolenceLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18007997233"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18007997233"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
    @objc func readsLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "https://www.amazon.com/Prescriptions-Without-Pills-Depression-Anxiety/dp/1630478105/ref=sr_1_5?dchild=1&keywords=prescriptions+without+pills&qid=1620984361&sr=8-5"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "https://www.amazon.com/Prescriptions-Without-Pills-Depression-Anxiety/dp/1630478105/ref=sr_1_5?dchild=1&keywords=prescriptions+without+pills&qid=1620984361&sr=8-5"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     // ---
     @objc func drugfreeLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "http://www.drugfree.org"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "http://www.drugfree.org"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func parentsDrugLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "http://www.FlavorsHookKids.org"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "http://www.FlavorsHookKids.org"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func drugcaLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18006628887"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18006628887"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func drughearingLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18009334833"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18009334833"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     // ---
     @objc func ywcaLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18005722782"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18005722782"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func teensLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18663319474"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18663319474"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func parentingLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18882207575"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18882207575"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
     @objc func lgbtqLabelClicked(_ sender: Any) {
-        guard let url = URL(string: "tel://18002467743"),
-            UIApplication.shared.canOpenURL(url) else {
-                return
+        if #available(iOS 10.0, *) {
+            guard let url = URL(string: "tel://18002467743"),
+                UIApplication.shared.canOpenURL(url) else {
+                    return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }

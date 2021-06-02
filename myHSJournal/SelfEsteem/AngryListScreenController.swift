@@ -18,7 +18,6 @@ class AngryListScreenController: UIViewController, UITableViewDataSource, UITabl
     var editAngryRec: EsteemRecItem!
     var angryRecCount: Int!
 
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var esteemItemArray = [EsteemRecItem]()
     var angryItemArray = [EsteemRecItem]()
     
@@ -73,15 +72,31 @@ class AngryListScreenController: UIViewController, UITableViewDataSource, UITabl
         esteemItemArray.removeAll()
         angryItemArray.removeAll()
         let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
-        do {
-            esteemItemArray = try context.fetch(request)
-            for (_, element) in esteemItemArray.enumerated() {
-                if element.esteemType == EsteemType.ANGRY.description {
-                    angryItemArray.append(element)
+        
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                esteemItemArray = try context.fetch(request)
+                for (_, element) in esteemItemArray.enumerated() {
+                    if element.esteemType == EsteemType.ANGRY.description {
+                        angryItemArray.append(element)
+                    }
                 }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                esteemItemArray = try context.fetch(request)
+                for (_, element) in esteemItemArray.enumerated() {
+                    if element.esteemType == EsteemType.ANGRY.description {
+                        angryItemArray.append(element)
+                    }
+                }
+            } catch {
+                print("Error in loading \(error)")
+            }
         }
     }
     
@@ -167,25 +182,52 @@ class AngryListScreenController: UIViewController, UITableViewDataSource, UITabl
     
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
-        do {
-            esteemItemArray = try context.fetch(request)
-            for (_, element) in esteemItemArray.enumerated() {
-                if (element.timeMillis == timeMillis) {
-                    context.delete(element)
-                    saveContext()
-                    return
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                esteemItemArray = try context.fetch(request)
+                for (_, element) in esteemItemArray.enumerated() {
+                    if (element.timeMillis == timeMillis) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
                 }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                esteemItemArray = try context.fetch(request)
+                for (_, element) in esteemItemArray.enumerated() {
+                    if (element.timeMillis == timeMillis) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
+                }
+            } catch {
+                print("Error in loading \(error)")
+            }
         }
     }
     
     func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
         }
     }
     

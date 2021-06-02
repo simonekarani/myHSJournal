@@ -26,7 +26,6 @@ class SchoolRecordDetailsController: UIViewController {
     var editHSRec: HSRecItem!
     var selectedSchoolYear: SchoolYearType!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recItemArray = [String]()
     var recState: HSRecState = .NONE
     
@@ -104,54 +103,97 @@ class SchoolRecordDetailsController: UIViewController {
     func isRecordExists(rectitle: String, schoolYear: String) -> Bool {
         var hsItemArray = [HSRecItem]()
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
-        do {
-            hsItemArray = try context.fetch(request)
-            for (_, element) in hsItemArray.enumerated() {
-                if element.title == rectitle {
-                    return true
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                hsItemArray = try context.fetch(request)
+                for (_, element) in hsItemArray.enumerated() {
+                    if element.title == rectitle {
+                        return true
+                    }
                 }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
         }
         return false
     }
     
     func createRecord() {
-        let hsrecItem = HSRecItem(context: self.context)
-        hsrecItem.recType = dropDown.selectedItem
-        hsrecItem.schoolyear = yearDropDown.selectedItem
-        hsrecItem.title = recTitle.text!
-        hsrecItem.grade = recGrade.text
-        hsrecItem.recognition = recAward.text
-        hsrecItem.desc = recDetail.text
-        saveContext()
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let hsrecItem = HSRecItem(context: context)
+            hsrecItem.recType = dropDown.selectedItem
+            hsrecItem.schoolyear = yearDropDown.selectedItem
+            hsrecItem.title = recTitle.text!
+            hsrecItem.grade = recGrade.text
+            hsrecItem.recognition = recAward.text
+            hsrecItem.desc = recDetail.text
+            saveContext()
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            let hsrecItem = HSRecItem()
+            hsrecItem.recType = dropDown.selectedItem
+            hsrecItem.schoolyear = yearDropDown.selectedItem
+            hsrecItem.title = recTitle.text!
+            hsrecItem.grade = recGrade.text
+            hsrecItem.recognition = recAward.text
+            hsrecItem.desc = recDetail.text
+            saveContext()
+        }
     }
     
     func updateRecord(rectitle: String) {
         var hsItemArray = [HSRecItem]()
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
-        do {
-            hsItemArray = try context.fetch(request)
-            var isFound: Bool = false
-            for (_, element) in hsItemArray.enumerated() {
-                if (element.title == rectitle) {
-                    element.recType = dropDown.selectedItem
-                    element.schoolyear = yearDropDown.selectedItem
-                    element.title = recTitle.text!
-                    element.grade = recGrade.text
-                    element.recognition = recAward.text
-                    element.desc = recDetail.text
-                    saveContext()
-                    isFound = true
-                    return
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                hsItemArray = try context.fetch(request)
+                var isFound: Bool = false
+                for (_, element) in hsItemArray.enumerated() {
+                    if (element.title == rectitle) {
+                        element.recType = dropDown.selectedItem
+                        element.schoolyear = yearDropDown.selectedItem
+                        element.title = recTitle.text!
+                        element.grade = recGrade.text
+                        element.recognition = recAward.text
+                        element.desc = recDetail.text
+                        saveContext()
+                        isFound = true
+                        return
+                    }
                 }
+                if !isFound {
+                   createRecord()
+                }
+            } catch {
+                print("Error in loading \(error)")
             }
-            if !isFound {
-               createRecord()
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                hsItemArray = try context.fetch(request)
+                var isFound: Bool = false
+                for (_, element) in hsItemArray.enumerated() {
+                    if (element.title == rectitle) {
+                        element.recType = dropDown.selectedItem
+                        element.schoolyear = yearDropDown.selectedItem
+                        element.title = recTitle.text!
+                        element.grade = recGrade.text
+                        element.recognition = recAward.text
+                        element.desc = recDetail.text
+                        saveContext()
+                        isFound = true
+                        return
+                    }
+                }
+                if !isFound {
+                   createRecord()
+                }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
         }
     }
 
@@ -187,10 +229,20 @@ class SchoolRecordDetailsController: UIViewController {
     }
     
     func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
         }
     }
     

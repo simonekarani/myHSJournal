@@ -29,7 +29,6 @@ class DailyPlanListScreenController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var completedBtn: RoundButton!
     @IBOutlet weak var allBtn: RoundButton!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var dailyTodoAllItemArray = [DailyPlanRecItem]()
     var dailyPlanItemArray = [DailyPlanRecItem]()
     var todoView: TodoViewType!
@@ -155,7 +154,14 @@ class DailyPlanListScreenController: UIViewController, UITableViewDataSource, UI
         dailyPlanItemArray.removeAll()
         let request: NSFetchRequest<DailyPlanRecItem> = DailyPlanRecItem.fetchRequest()
         do {
-            dailyTodoAllItemArray = try context.fetch(request)
+            if #available(iOS 10.0, *) {
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                dailyTodoAllItemArray = try context.fetch(request)
+            } else {
+                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+                dailyTodoAllItemArray = try context.fetch(request)
+            }
+            
             for (_, element) in dailyTodoAllItemArray.enumerated() {
                 if todoView == TodoViewType.TODO_ALL {
                     dailyPlanItemArray.append(element)
@@ -259,12 +265,25 @@ class DailyPlanListScreenController: UIViewController, UITableViewDataSource, UI
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<DailyPlanRecItem> = DailyPlanRecItem.fetchRequest()
         do {
-            dailyPlanItemArray = try context.fetch(request)
-            for (_, element) in dailyPlanItemArray.enumerated() {
-                if (element.timeMillis == timeMillis) {
-                    context.delete(element)
-                    saveContext()
-                    return
+            if #available(iOS 10.0, *) {
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                dailyPlanItemArray = try context.fetch(request)
+                for (_, element) in dailyPlanItemArray.enumerated() {
+                    if (element.timeMillis == timeMillis) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
+                }
+            } else {
+                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+                dailyPlanItemArray = try context.fetch(request)
+                for (_, element) in dailyPlanItemArray.enumerated() {
+                    if (element.timeMillis == timeMillis) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
                 }
             }
         } catch {
@@ -277,11 +296,21 @@ class DailyPlanListScreenController: UIViewController, UITableViewDataSource, UI
             return
         }
         
-        let plansRecItem = DailyPlanRecItem(context: self.context)
-        plansRecItem.timeMillis = getCurrentMillis()
-        plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
-        plansRecItem.taskDetails = todoStr
-        plansRecItem.completed = false
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let plansRecItem = DailyPlanRecItem(context: context)
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
+            plansRecItem.taskDetails = todoStr
+            plansRecItem.completed = false
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            let plansRecItem = DailyPlanRecItem()
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
+            plansRecItem.taskDetails = todoStr
+            plansRecItem.completed = false
+        }
         saveContext()
 
         loadDailyPlanRecords()
@@ -293,7 +322,14 @@ class DailyPlanListScreenController: UIViewController, UITableViewDataSource, UI
         var updtItemArray = [DailyPlanRecItem]()
         let request: NSFetchRequest<DailyPlanRecItem> = DailyPlanRecItem.fetchRequest()
         do {
-            updtItemArray = try context.fetch(request)
+            if #available(iOS 10.0, *) {
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                updtItemArray = try context.fetch(request)
+            } else {
+                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+                updtItemArray = try context.fetch(request)
+            }
+            
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
                 if (element.timeMillis == editTodoRec.timeMillis) {
@@ -315,10 +351,20 @@ class DailyPlanListScreenController: UIViewController, UITableViewDataSource, UI
     }
     
     func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
         }
     }
 

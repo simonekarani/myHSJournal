@@ -25,7 +25,6 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     var selectedBtnTag: Int!
     var editGoalsTodoRec: GoalPlanRecItem!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var goalListItemArray = [GoalsRecItem]()
     var goalsTodoAllItemArray = [GoalPlanRecItem]()
     var goalsItemArray = [GoalPlanRecItem]()
@@ -140,11 +139,22 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     
     func loadGoalsRecords() {
         let gRequest: NSFetchRequest<GoalsRecItem> = GoalsRecItem.fetchRequest()
-        do {
-            goalListItemArray = try context.fetch(gRequest)
-        } catch {
-            print("Error in loading \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                goalListItemArray = try context.fetch(gRequest)
+            } catch {
+                print("Error in loading \(error)")
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                goalListItemArray = try context.fetch(gRequest)
+            } catch {
+                print("Error in loading \(error)")
+            }
         }
+
         if goalListItemArray.count == 0 {
             createNoGoalAlertAction(message: NoGoalMessage)
         }
@@ -153,7 +163,14 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
         goalsItemArray.removeAll()
         let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
         do {
-            goalsTodoAllItemArray = try context.fetch(request)
+            if #available(iOS 10.0, *) {
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                goalsTodoAllItemArray = try context.fetch(request)
+            } else {
+                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+                goalsTodoAllItemArray = try context.fetch(request)
+            }
+            
             for (_, element) in goalsTodoAllItemArray.enumerated() {
                 if todoView == TodoViewType.TODO_ALL {
                     goalsItemArray.append(element)
@@ -309,12 +326,25 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     func deleteRecord(timeMillis: Int64) {
         let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
         do {
-            goalsItemArray = try context.fetch(request)
-            for (_, element) in goalsItemArray.enumerated() {
-                if (element.timeMillis == timeMillis) {
-                    context.delete(element)
-                    saveContext()
-                    return
+            if #available(iOS 10.0, *) {
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                goalsItemArray = try context.fetch(request)
+                for (_, element) in goalsItemArray.enumerated() {
+                    if (element.timeMillis == timeMillis) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
+                }
+            } else {
+                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+                goalsItemArray = try context.fetch(request)
+                for (_, element) in goalsItemArray.enumerated() {
+                    if (element.timeMillis == timeMillis) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
                 }
             }
         } catch {
@@ -327,15 +357,30 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
             return
         }
         
-        let plansRecItem = GoalPlanRecItem(context: self.context)
-        plansRecItem.timeMillis = getCurrentMillis()
-        plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
-        let sectionIdx: Int = selectedBtnTag - 2000
-        let gItem: GoalsRecItem = goalListItemArray[sectionIdx]
-        plansRecItem.goalStr = gItem.title
-        plansRecItem.goalTimeMillis = gItem.timeMillis
-        plansRecItem.taskDetails = todoStr
-        plansRecItem.completed = false
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let plansRecItem = GoalPlanRecItem(context: context)
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
+            let sectionIdx: Int = selectedBtnTag - 2000
+            let gItem: GoalsRecItem = goalListItemArray[sectionIdx]
+            plansRecItem.goalStr = gItem.title
+            plansRecItem.goalTimeMillis = gItem.timeMillis
+            plansRecItem.taskDetails = todoStr
+            plansRecItem.completed = false
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            let plansRecItem = GoalPlanRecItem()
+            plansRecItem.timeMillis = getCurrentMillis()
+            plansRecItem.startDate = Date().string(format: "MM/dd/yyyy")
+            let sectionIdx: Int = selectedBtnTag - 2000
+            let gItem: GoalsRecItem = goalListItemArray[sectionIdx]
+            plansRecItem.goalStr = gItem.title
+            plansRecItem.goalTimeMillis = gItem.timeMillis
+            plansRecItem.taskDetails = todoStr
+            plansRecItem.completed = false
+        }
+        
         saveContext()
         
         loadGoalsRecords()
@@ -347,7 +392,14 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
         var updtItemArray = [GoalPlanRecItem]()
         let request: NSFetchRequest<GoalPlanRecItem> = GoalPlanRecItem.fetchRequest()
         do {
-            updtItemArray = try context.fetch(request)
+            if #available(iOS 10.0, *) {
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                updtItemArray = try context.fetch(request)
+            } else {
+                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+                updtItemArray = try context.fetch(request)
+            }
+            
             var isFound: Bool = false
             for (_, element) in updtItemArray.enumerated() {
                 if (element.timeMillis == editGoalsTodoRec.timeMillis) {
@@ -369,10 +421,20 @@ class GoalPlanListScreenController: UIViewController, UITableViewDataSource, UIT
     }
     
     func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
         }
     }
     

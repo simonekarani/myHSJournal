@@ -14,8 +14,7 @@ import UIKit
 class QuoteListScreenController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var quoteTableViewList: UITableView!
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
     var quoteItemArray = [QuoteRecItem]()
     
     override func viewDidLoad() {
@@ -49,11 +48,15 @@ class QuoteListScreenController: UIViewController, UITableViewDataSource, UITabl
     
     func loadQuoteRecords() {
         quoteItemArray.removeAll()
-        let request: NSFetchRequest<QuoteRecItem> = QuoteRecItem.fetchRequest()
-        do {
-            quoteItemArray = try context.fetch(request)
-        } catch {
-            print("Error in loading \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+            let request: NSFetchRequest<QuoteRecItem> = QuoteRecItem.fetchRequest()
+            do {
+                quoteItemArray = try context.fetch(request)
+            } catch {
+                print("Error in loading \(error)")
+            }
         }
     }
     

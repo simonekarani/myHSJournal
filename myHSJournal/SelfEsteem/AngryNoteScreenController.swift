@@ -18,7 +18,6 @@ class AngryNoteScreenController: UIViewController {
     var editEsteemRec: EsteemRecItem!
     var esteemRecCount: Int!
 
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recItemArray = [String]()
     var recCreated = false
     var recState:HSRecState = .NONE
@@ -62,44 +61,90 @@ class AngryNoteScreenController: UIViewController {
         }
         
         recCreated = true
-        let esteemRecItem = EsteemRecItem(context: self.context)
-        esteemRecItem.esteemType = EsteemType.ANGRY.description
-        esteemRecItem.feelingType = EsteemFeelingType.ANGRY.description
-        esteemRecItem.timeMillis = getCurrentMillis()
-        esteemRecItem.date = Date().string(format: "MM/dd/yyyy")
-        esteemRecItem.msgTitle = angryTitle.text
-        esteemRecItem.message = angryNote.text
-        saveContext()
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let esteemRecItem = EsteemRecItem(context: context)
+            esteemRecItem.esteemType = EsteemType.ANGRY.description
+            esteemRecItem.feelingType = EsteemFeelingType.ANGRY.description
+            esteemRecItem.timeMillis = getCurrentMillis()
+            esteemRecItem.date = Date().string(format: "MM/dd/yyyy")
+            esteemRecItem.msgTitle = angryTitle.text
+            esteemRecItem.message = angryNote.text
+            saveContext()
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            let esteemRecItem = EsteemRecItem()
+            esteemRecItem.esteemType = EsteemType.ANGRY.description
+            esteemRecItem.feelingType = EsteemFeelingType.ANGRY.description
+            esteemRecItem.timeMillis = getCurrentMillis()
+            esteemRecItem.date = Date().string(format: "MM/dd/yyyy")
+            esteemRecItem.msgTitle = angryTitle.text
+            esteemRecItem.message = angryNote.text
+            saveContext()
+        }
     }
     
     func updateRecord() {
         var esteemItemArray = [EsteemRecItem]()
         let request: NSFetchRequest<EsteemRecItem> = EsteemRecItem.fetchRequest()
-        do {
-            esteemItemArray = try context.fetch(request)
-            var isFound: Bool = false
-            for (_, element) in esteemItemArray.enumerated() {
-                if (element.timeMillis == editEsteemRec.timeMillis) {
-                    element.msgTitle = angryTitle.text
-                    element.message = angryNote.text
-                    saveContext()
-                    isFound = true
-                    return
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                esteemItemArray = try context.fetch(request)
+                var isFound: Bool = false
+                for (_, element) in esteemItemArray.enumerated() {
+                    if (element.timeMillis == editEsteemRec.timeMillis) {
+                        element.msgTitle = angryTitle.text
+                        element.message = angryNote.text
+                        saveContext()
+                        isFound = true
+                        return
+                    }
                 }
+                if !isFound {
+                    createRecord()
+                }
+            } catch {
+                print("Error in loading \(error)")
             }
-            if !isFound {
-                createRecord()
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                esteemItemArray = try context.fetch(request)
+                var isFound: Bool = false
+                for (_, element) in esteemItemArray.enumerated() {
+                    if (element.timeMillis == editEsteemRec.timeMillis) {
+                        element.msgTitle = angryTitle.text
+                        element.message = angryNote.text
+                        saveContext()
+                        isFound = true
+                        return
+                    }
+                }
+                if !isFound {
+                    createRecord()
+                }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
         }
     }
     
     func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
         }
     }
     

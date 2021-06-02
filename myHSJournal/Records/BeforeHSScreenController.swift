@@ -17,7 +17,6 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
     var selectedSchoolYear: SchoolYearType!
     var editHSRec: HSRecItem!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var hsItemArray = [HSRecItem]()
     var academicItemArray = [HSRecItem]()
     var researchItemArray = [HSRecItem]()
@@ -70,7 +69,14 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
         researchItemArray.removeAll()
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
         do {
-            hsItemArray = try context.fetch(request)
+            if #available(iOS 10.0, *) {
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                hsItemArray = try context.fetch(request)
+            } else {
+                let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+                hsItemArray = try context.fetch(request)
+            }
+            
             for (_, element) in hsItemArray.enumerated() {
                 if (element.schoolyear == SchoolYearType.SIXTH.description ||
                     element.schoolyear == SchoolYearType.SEVENTH.description ||
@@ -261,25 +267,52 @@ class BeforeHSScreenController: UIViewController, UITableViewDataSource, UITable
     
     func deleteRecord(title: String) {
         let request: NSFetchRequest<HSRecItem> = HSRecItem.fetchRequest()
-        do {
-            hsItemArray = try context.fetch(request)
-            for (_, element) in hsItemArray.enumerated() {
-                if (element.title == title) {
-                    context.delete(element)
-                    saveContext()
-                    return
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                hsItemArray = try context.fetch(request)
+                for (_, element) in hsItemArray.enumerated() {
+                    if (element.title == title) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
                 }
+            } catch {
+                print("Error in loading \(error)")
             }
-        } catch {
-            print("Error in loading \(error)")
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                hsItemArray = try context.fetch(request)
+                for (_, element) in hsItemArray.enumerated() {
+                    if (element.title == title) {
+                        context.delete(element)
+                        saveContext()
+                        return
+                    }
+                }
+            } catch {
+                print("Error in loading \(error)")
+            }
         }
     }
     
     func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
         }
     }
     
