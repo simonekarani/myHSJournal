@@ -35,6 +35,14 @@ class LetterRecTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(recItem: AspireRecItem, count: Int) {
+        titleMsg.text = recItem.aspireTo
+        dateMsg.text = recItem.date
+        detailMsg.text = recItem.aspireReasons
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2

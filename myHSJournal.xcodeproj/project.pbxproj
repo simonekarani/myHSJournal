@@ -14,7 +14,6 @@
 		2C239B2625D9FD5F003CE4BD /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239B2525D9FD5F003CE4BD /* RecordsTableViewCell.swift */; };
 		2C239B2825DA28EF003CE4BD /* BoosterScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239B2725DA28EF003CE4BD /* BoosterScreenController.swift */; };
 		2C239B2A25DA47E4003CE4BD /* LetterFriendScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239B2925DA47E4003CE4BD /* LetterFriendScreenController.swift */; };
-		2C239B2C25DB277B003CE4BD /* PersonalMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239B2B25DB277B003CE4BD /* PersonalMessageData.swift */; };
 		2C239B2E25DB68BB003CE4BD /* LetterListScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239B2D25DB68BB003CE4BD /* LetterListScreenController.swift */; };
 		2C239B3025DB8E7F003CE4BD /* EsteemFeelingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239B2F25DB8E7F003CE4BD /* EsteemFeelingType.swift */; };
 		2C239B3225DB8EA0003CE4BD /* EsteemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239B3125DB8EA0003CE4BD /* EsteemType.swift */; };
@@ -32,6 +31,20 @@
 		2C56A2B425E39E5900048D32 /* QuotePastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C56A2B225E39E5900048D32 /* QuotePastTableViewCell.xib */; };
 		2C6971F825E2598000E1FD28 /* AnxietyListScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6971F725E2598000E1FD28 /* AnxietyListScreenController.swift */; };
 		2C6A037925EB86A500D6E64D /* PlansMainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A037825EB86A500D6E64D /* PlansMainScreenController.swift */; };
+		2C6B5F3B26FFB2C200BD22B0 /* MyDayMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F2F26FFB2C200BD22B0 /* MyDayMainTableViewCell.swift */; };
+		2C6B5F3D26FFB2C200BD22B0 /* MyDayMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F3126FFB2C200BD22B0 /* MyDayMainViewController.swift */; };
+		2C6B5F4126FFC4A700BD22B0 /* DidIDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F3F26FFC4A700BD22B0 /* DidIDoTableViewCell.swift */; };
+		2C6B5F4226FFC4A700BD22B0 /* DidIDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6B5F4026FFC4A700BD22B0 /* DidIDoTableViewCell.xib */; };
+		2C6B5F4726FFC4CC00BD22B0 /* PastDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F4326FFC4CC00BD22B0 /* PastDayViewController.swift */; };
+		2C6B5F4826FFC4CC00BD22B0 /* PastMyDayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6B5F4426FFC4CC00BD22B0 /* PastMyDayTableViewCell.xib */; };
+		2C6B5F4926FFC4CC00BD22B0 /* PastMyDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F4526FFC4CC00BD22B0 /* PastMyDayTableViewCell.swift */; };
+		2C6B5F4A26FFC4CC00BD22B0 /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F4626FFC4CC00BD22B0 /* MyDayViewController.swift */; };
+		2C6B5F5026FFE33E00BD22B0 /* DeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F4F26FFE33E00BD22B0 /* DeedsViewController.swift */; };
+		2C6B5F5327001B6100BD22B0 /* GoalPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F5127001B6100BD22B0 /* GoalPlanTableViewCell.swift */; };
+		2C6B5F5427001B6100BD22B0 /* GoalPlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6B5F5227001B6100BD22B0 /* GoalPlanTableViewCell.xib */; };
+		2C6B5F57270035E600BD22B0 /* AspireInspireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F55270035E600BD22B0 /* AspireInspireViewController.swift */; };
+		2C6B5F58270035E600BD22B0 /* AspireListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F56270035E600BD22B0 /* AspireListViewController.swift */; };
+		2C6B5F5A270061F900BD22B0 /* MyDayRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5F59270061F900BD22B0 /* MyDayRoutineViewController.swift */; };
 		2C6BF4AC259341D6002641EC /* SchoolYearType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4AB259341D6002641EC /* SchoolYearType.swift */; };
 		2C6BF4B72596EFBE002641EC /* HSRecTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */; };
 		2C6BF4B82596EFBE002641EC /* HSRecTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */; };
@@ -83,7 +96,6 @@
 		2C239B2525D9FD5F003CE4BD /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		2C239B2725DA28EF003CE4BD /* BoosterScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterScreenController.swift; sourceTree = "<group>"; };
 		2C239B2925DA47E4003CE4BD /* LetterFriendScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterFriendScreenController.swift; sourceTree = "<group>"; };
-		2C239B2B25DB277B003CE4BD /* PersonalMessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalMessageData.swift; sourceTree = "<group>"; };
 		2C239B2D25DB68BB003CE4BD /* LetterListScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListScreenController.swift; sourceTree = "<group>"; };
 		2C239B2F25DB8E7F003CE4BD /* EsteemFeelingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsteemFeelingType.swift; sourceTree = "<group>"; };
 		2C239B3125DB8EA0003CE4BD /* EsteemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsteemType.swift; sourceTree = "<group>"; };
@@ -101,6 +113,20 @@
 		2C56A2B225E39E5900048D32 /* QuotePastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuotePastTableViewCell.xib; sourceTree = "<group>"; };
 		2C6971F725E2598000E1FD28 /* AnxietyListScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnxietyListScreenController.swift; sourceTree = "<group>"; };
 		2C6A037825EB86A500D6E64D /* PlansMainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansMainScreenController.swift; sourceTree = "<group>"; };
+		2C6B5F2F26FFB2C200BD22B0 /* MyDayMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayMainTableViewCell.swift; sourceTree = "<group>"; };
+		2C6B5F3126FFB2C200BD22B0 /* MyDayMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayMainViewController.swift; sourceTree = "<group>"; };
+		2C6B5F3F26FFC4A700BD22B0 /* DidIDoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DidIDoTableViewCell.swift; sourceTree = "<group>"; };
+		2C6B5F4026FFC4A700BD22B0 /* DidIDoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DidIDoTableViewCell.xib; sourceTree = "<group>"; };
+		2C6B5F4326FFC4CC00BD22B0 /* PastDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDayViewController.swift; sourceTree = "<group>"; };
+		2C6B5F4426FFC4CC00BD22B0 /* PastMyDayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastMyDayTableViewCell.xib; sourceTree = "<group>"; };
+		2C6B5F4526FFC4CC00BD22B0 /* PastMyDayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastMyDayTableViewCell.swift; sourceTree = "<group>"; };
+		2C6B5F4626FFC4CC00BD22B0 /* MyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
+		2C6B5F4F26FFE33E00BD22B0 /* DeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeedsViewController.swift; sourceTree = "<group>"; };
+		2C6B5F5127001B6100BD22B0 /* GoalPlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalPlanTableViewCell.swift; sourceTree = "<group>"; };
+		2C6B5F5227001B6100BD22B0 /* GoalPlanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalPlanTableViewCell.xib; sourceTree = "<group>"; };
+		2C6B5F55270035E600BD22B0 /* AspireInspireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspireInspireViewController.swift; sourceTree = "<group>"; };
+		2C6B5F56270035E600BD22B0 /* AspireListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspireListViewController.swift; sourceTree = "<group>"; };
+		2C6B5F59270061F900BD22B0 /* MyDayRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayRoutineViewController.swift; sourceTree = "<group>"; };
 		2C6BF4AB259341D6002641EC /* SchoolYearType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolYearType.swift; sourceTree = "<group>"; };
 		2C6BF4B52596EFBE002641EC /* HSRecTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRecTitleTableViewCell.swift; sourceTree = "<group>"; };
 		2C6BF4B62596EFBE002641EC /* HSRecTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSRecTitleTableViewCell.xib; sourceTree = "<group>"; };
@@ -167,7 +193,6 @@
 				2CA1AFC325908A9900147769 /* HSRecType.swift */,
 				2C6BF4AB259341D6002641EC /* SchoolYearType.swift */,
 				2C76DE6F25A15D710065A84D /* HSRecState.swift */,
-				2C239B2B25DB277B003CE4BD /* PersonalMessageData.swift */,
 				2C239B2F25DB8E7F003CE4BD /* EsteemFeelingType.swift */,
 				2C239B3125DB8EA0003CE4BD /* EsteemType.swift */,
 				2C56A2AF25E348BB00048D32 /* MoralQuotesData.swift */,
@@ -227,31 +252,45 @@
 			path = "HS DataModel";
 			sourceTree = "<group>";
 		};
-		2CE112DB25EA1CEC003FA18F /* Goals */ = {
+		2CE112DB25EA1CEC003FA18F /* myDay */ = {
 			isa = PBXGroup;
 			children = (
-				2CE112DC25EA1E72003FA18F /* GoalsScreenController.swift */,
-				2CE112DE25EA1EA5003FA18F /* GoalsListTableViewCell.swift */,
-				2CE112DF25EA1EA5003FA18F /* GoalsListTableViewCell.xib */,
-				2CE112E225EAD50F003FA18F /* GoalsNoteScreenController.swift */,
+				2C6B5F3126FFB2C200BD22B0 /* MyDayMainViewController.swift */,
+				2C6B5F2F26FFB2C200BD22B0 /* MyDayMainTableViewCell.swift */,
+				2C6B5F4626FFC4CC00BD22B0 /* MyDayViewController.swift */,
+				2C6B5F4326FFC4CC00BD22B0 /* PastDayViewController.swift */,
+				2C6B5F4526FFC4CC00BD22B0 /* PastMyDayTableViewCell.swift */,
+				2C6B5F4426FFC4CC00BD22B0 /* PastMyDayTableViewCell.xib */,
+				2C6B5F3F26FFC4A700BD22B0 /* DidIDoTableViewCell.swift */,
+				2C6B5F4026FFC4A700BD22B0 /* DidIDoTableViewCell.xib */,
+				2C6B5F4F26FFE33E00BD22B0 /* DeedsViewController.swift */,
+				2C6B5F59270061F900BD22B0 /* MyDayRoutineViewController.swift */,
 			);
-			path = Goals;
+			path = myDay;
 			sourceTree = "<group>";
 		};
-		2CE112E425EAD51E003FA18F /* Plans */ = {
+		2CE112E425EAD51E003FA18F /* GoalsPlans */ = {
 			isa = PBXGroup;
 			children = (
 				2C6A037825EB86A500D6E64D /* PlansMainScreenController.swift */,
 				2CCA89A925EC13AC00370F65 /* PlansMainTableViewCell.swift */,
+				2C6B5F56270035E600BD22B0 /* AspireListViewController.swift */,
+				2C6B5F55270035E600BD22B0 /* AspireInspireViewController.swift */,
+				2CCA89AF25EC156600370F65 /* GoalPlanListScreenController.swift */,
+				2CE112DC25EA1E72003FA18F /* GoalsScreenController.swift */,
+				2CE112DE25EA1EA5003FA18F /* GoalsListTableViewCell.swift */,
+				2CE112DF25EA1EA5003FA18F /* GoalsListTableViewCell.xib */,
+				2CE112E225EAD50F003FA18F /* GoalsNoteScreenController.swift */,
 				2CCA89AB25EC152F00370F65 /* DailyPlanListScreenController.swift */,
 				2CCA89AD25EC154F00370F65 /* YearlyPlanListScreenController.swift */,
-				2CCA89AF25EC156600370F65 /* GoalPlanListScreenController.swift */,
 				2CCA89B125EC29D400370F65 /* DailyTodoTableViewCell.swift */,
 				2CCA89B225EC29D500370F65 /* DailyTodoTableViewCell.xib */,
 				2C8AC1E225F2E6C9009150D8 /* YearlySchoolYearTableViewCell.swift */,
 				2C8AC1E325F2E6C9009150D8 /* YearlySchoolYearTableViewCell.xib */,
+				2C6B5F5127001B6100BD22B0 /* GoalPlanTableViewCell.swift */,
+				2C6B5F5227001B6100BD22B0 /* GoalPlanTableViewCell.xib */,
 			);
-			path = Plans;
+			path = GoalsPlans;
 			sourceTree = "<group>";
 		};
 		2CF710AC2546366800D5FFE6 = {
@@ -275,15 +314,15 @@
 		2CF710B72546366800D5FFE6 /* myHSJournal */ = {
 			isa = PBXGroup;
 			children = (
+				2C16E347254F2CD0006BAB7A /* MainHS Screen */,
 				2CFCB4BF25F5A0AD00632C50 /* Resources */,
-				2CE112E425EAD51E003FA18F /* Plans */,
+				2CE112E425EAD51E003FA18F /* GoalsPlans */,
 				2CFC872225C764BC0082B1C1 /* Records */,
 				2CA1AFC0258F2F8000147769 /* HS DataModel */,
-				2CE112DB25EA1CEC003FA18F /* Goals */,
+				2CE112DB25EA1CEC003FA18F /* myDay */,
 				2C093E012557B8BC008F7659 /* Helpers */,
 				2C75F8F125D7AFC800973708 /* SelfEsteem */,
 				2C9FBA0125500D0800D9F4BD /* HS Results */,
-				2C16E347254F2CD0006BAB7A /* MainHS Screen */,
 				2CF710B82546366800D5FFE6 /* AppDelegate.swift */,
 				2CF710BA2546366800D5FFE6 /* ViewController.swift */,
 				2CF710BC2546366800D5FFE6 /* Main.storyboard */,
@@ -404,11 +443,14 @@
 				2C239B3A25DBB3EF003CE4BD /* LetterRecTableViewCell.xib in Resources */,
 				2C56A2B425E39E5900048D32 /* QuotePastTableViewCell.xib in Resources */,
 				2C6BF4BC2596EFEB002641EC /* HSRecDetailTableViewCell.xib in Resources */,
+				2C6B5F4226FFC4A700BD22B0 /* DidIDoTableViewCell.xib in Resources */,
 				2C8AC1E525F2E6C9009150D8 /* YearlySchoolYearTableViewCell.xib in Resources */,
 				2C239B3E25DBB40D003CE4BD /* FeelingRecTableViewCell.xib in Resources */,
 				2C25E2802599E0F400E38467 /* HSRecNoValueTableViewCell.xib in Resources */,
+				2C6B5F4826FFC4CC00BD22B0 /* PastMyDayTableViewCell.xib in Resources */,
 				2CE112E125EA1EA5003FA18F /* GoalsListTableViewCell.xib in Resources */,
 				2CCA89B425EC29D500370F65 /* DailyTodoTableViewCell.xib in Resources */,
+				2C6B5F5427001B6100BD22B0 /* GoalPlanTableViewCell.xib in Resources */,
 				2CF710C32546366800D5FFE6 /* Assets.xcassets in Resources */,
 				2CE204B525E0D32400E53587 /* AngryRecTableViewCell.xib in Resources */,
 				2C6BF4B82596EFBE002641EC /* HSRecTitleTableViewCell.xib in Resources */,
@@ -466,34 +508,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C56A2B325E39E5900048D32 /* QuotePastTableViewCell.swift in Sources */,
+				2C6B5F4A26FFC4CC00BD22B0 /* MyDayViewController.swift in Sources */,
 				2C6BF4BB2596EFEB002641EC /* HSRecDetailTableViewCell.swift in Sources */,
 				2C76DE7025A15D710065A84D /* HSRecState.swift in Sources */,
 				2CE204B425E0D32400E53587 /* AngryRecTableViewCell.swift in Sources */,
 				2C9FBA0925500DD000D9F4BD /* SeniorScreenController.swift in Sources */,
+				2C6B5F5026FFE33E00BD22B0 /* DeedsViewController.swift in Sources */,
 				2C9FBA0D2550135A00D9F4BD /* BeforeHSScreenController.swift in Sources */,
 				2C16E34F254FE57E006BAB7A /* MainScreenCollectionCell.swift in Sources */,
 				2CA1AFC425908A9900147769 /* HSRecType.swift in Sources */,
+				2C6B5F5A270061F900BD22B0 /* MyDayRoutineViewController.swift in Sources */,
 				2C9FBA0525500D6100D9F4BD /* SophomoreScreenController.swift in Sources */,
 				2C6BF4AC259341D6002641EC /* SchoolYearType.swift in Sources */,
 				2CE112E325EAD50F003FA18F /* GoalsNoteScreenController.swift in Sources */,
 				2CE112E025EA1EA5003FA18F /* GoalsListTableViewCell.swift in Sources */,
+				2C6B5F4926FFC4CC00BD22B0 /* PastMyDayTableViewCell.swift in Sources */,
+				2C6B5F57270035E600BD22B0 /* AspireInspireViewController.swift in Sources */,
 				2C239B3D25DBB40D003CE4BD /* FeelingRecTableViewCell.swift in Sources */,
 				2C9FBA0725500DBB00D9F4BD /* JuniorScreenController.swift in Sources */,
 				2CCA89AC25EC152F00370F65 /* DailyPlanListScreenController.swift in Sources */,
 				2C239B3025DB8E7F003CE4BD /* EsteemFeelingType.swift in Sources */,
 				2C95564425E1E02A00A319C4 /* FeelingNoteScreenController.swift in Sources */,
+				2C6B5F58270035E600BD22B0 /* AspireListViewController.swift in Sources */,
 				2C9FBA0325500D5100D9F4BD /* FreshmenScreenController.swift in Sources */,
 				2C239B3225DB8EA0003CE4BD /* EsteemType.swift in Sources */,
+				2C6B5F3B26FFB2C200BD22B0 /* MyDayMainTableViewCell.swift in Sources */,
 				2C75F8F325D7B00700973708 /* SelfEsteemScreenController.swift in Sources */,
 				2CCA89AA25EC13AC00370F65 /* PlansMainTableViewCell.swift in Sources */,
+				2C6B5F3D26FFB2C200BD22B0 /* MyDayMainViewController.swift in Sources */,
 				2C75F8F525D7BFD100973708 /* EsteemMainTableViewCell.swift in Sources */,
 				2C093E032557B8FF008F7659 /* RoundButton.swift in Sources */,
 				2C9FBA0B25500E6A00D9F4BD /* MyAchievementScreenController.swift in Sources */,
 				2CE112DD25EA1E72003FA18F /* GoalsScreenController.swift in Sources */,
+				2C6B5F5327001B6100BD22B0 /* GoalPlanTableViewCell.swift in Sources */,
+				2C6B5F4726FFC4CC00BD22B0 /* PastDayViewController.swift in Sources */,
 				2C6971F825E2598000E1FD28 /* AnxietyListScreenController.swift in Sources */,
 				2C56A2AC25E32A4900048D32 /* MoralQuoteScreenController.swift in Sources */,
 				2CCA89B025EC156600370F65 /* GoalPlanListScreenController.swift in Sources */,
 				2C25E27F2599E0F400E38467 /* HSRecNoValueTableViewCell.swift in Sources */,
+				2C6B5F4126FFC4A700BD22B0 /* DidIDoTableViewCell.swift in Sources */,
 				2C8AC1E425F2E6C9009150D8 /* YearlySchoolYearTableViewCell.swift in Sources */,
 				2CFCB4C125F5A0D500632C50 /* MentalHealthResourcesController.swift in Sources */,
 				2CE204B725E0D4D700E53587 /* AngryNoteScreenController.swift in Sources */,
@@ -501,7 +554,6 @@
 				2CF710BB2546366800D5FFE6 /* ViewController.swift in Sources */,
 				2C6A037925EB86A500D6E64D /* PlansMainScreenController.swift in Sources */,
 				2CCA89AE25EC154F00370F65 /* YearlyPlanListScreenController.swift in Sources */,
-				2C239B2C25DB277B003CE4BD /* PersonalMessageData.swift in Sources */,
 				2CCA89B325EC29D500370F65 /* DailyTodoTableViewCell.swift in Sources */,
 				2C95564225E1E00600A319C4 /* FeelingListScreenController.swift in Sources */,
 				2C239B2A25DA47E4003CE4BD /* LetterFriendScreenController.swift in Sources */,
@@ -665,6 +717,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JAC5P67S2G;
 				INFOPLIST_FILE = myHSJournal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -672,7 +725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.simonekarani.myHSJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -688,6 +741,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JAC5P67S2G;
 				INFOPLIST_FILE = myHSJournal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -695,7 +749,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.simonekarani.myHSJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

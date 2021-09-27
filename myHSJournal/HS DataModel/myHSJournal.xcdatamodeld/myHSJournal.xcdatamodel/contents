@@ -1,64 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G9018" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AspireRecItem" representedClassName="AspireRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="aspireReasons" optional="YES" attributeType="String"/>
+        <attribute name="aspireTo" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="DailyPlanRecItem" representedClassName="DailyPlanRecItem" syncable="YES" codeGenerationType="class">
-        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="taskDetails" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="String"/>
+        <attribute name="startDate" optional="YES" attributeType="String"/>
+        <attribute name="taskDetails" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="DayRoutineRecItem" representedClassName="DayRoutineRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="estTimeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="routine" optional="YES" attributeType="String"/>
+        <attribute name="routineType" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="DeedsRecItem" representedClassName="DeedsRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="dateStr" optional="YES" attributeType="String"/>
+        <attribute name="deedDetails" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="EsteemRecItem" representedClassName="EsteemRecItem" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="esteemType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="feelingType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="msgTitle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="esteemType" optional="YES" attributeType="String"/>
+        <attribute name="feelingType" optional="YES" attributeType="String"/>
+        <attribute name="message" optional="YES" attributeType="String"/>
+        <attribute name="msgTitle" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="GoalPlanRecItem" representedClassName="GoalPlanRecItem" syncable="YES" codeGenerationType="class">
-        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="goalStr" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="goalTimeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="taskDetails" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="String"/>
+        <attribute name="goalStr" optional="YES" attributeType="String"/>
+        <attribute name="goalTimeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="String"/>
+        <attribute name="taskDetails" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="GoalsRecItem" representedClassName="GoalsRecItem" syncable="YES" codeGenerationType="class">
-        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="dateSet" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="goalDetails" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="GoalsRecItem" representedClassName=".GoalsRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="dateSet" optional="YES" attributeType="String"/>
+        <attribute name="goalDetails" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="HSRecItem" representedClassName=".HSRecItem" syncable="YES" codeGenerationType="class">
-        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="grade" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recognition" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recType" attributeType="String" syncable="YES"/>
-        <attribute name="schoolyear" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="grade" optional="YES" attributeType="String"/>
+        <attribute name="recognition" optional="YES" attributeType="String"/>
+        <attribute name="recType" attributeType="String"/>
+        <attribute name="schoolyear" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+    <entity name="MyDayRecItem" representedClassName="MyDayRecItem" syncable="YES" codeGenerationType="class">
+        <attribute name="dayDate" optional="YES" attributeType="String"/>
+        <attribute name="howStatus" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="QuoteRecItem" representedClassName="QuoteRecItem" syncable="YES" codeGenerationType="class">
-        <attribute name="quoteAuthor" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="quoteDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="quoteMsg" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quoteAuthor" optional="YES" attributeType="String"/>
+        <attribute name="quoteDate" optional="YES" attributeType="String"/>
+        <attribute name="quoteMsg" optional="YES" attributeType="String"/>
     </entity>
     <entity name="YearlyPlanRecItem" representedClassName="YearlyPlanRecItem" syncable="YES" codeGenerationType="class">
-        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="yearlyDetails" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="yearType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="String"/>
+        <attribute name="startDate" optional="YES" attributeType="String"/>
+        <attribute name="timeMillis" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="yearlyDetails" optional="YES" attributeType="String"/>
+        <attribute name="yearType" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="AspireRecItem" positionX="-27" positionY="117" width="128" height="89"/>
         <element name="DailyPlanRecItem" positionX="-63" positionY="54" width="128" height="120"/>
+        <element name="DeedsRecItem" positionX="-36" positionY="108" width="128" height="74"/>
         <element name="EsteemRecItem" positionX="-63" positionY="27" width="128" height="135"/>
         <element name="GoalPlanRecItem" positionX="-36" positionY="90" width="128" height="150"/>
-        <element name="GoalsRecItem" positionX="-63" positionY="54" width="128" height="120"/>
+        <element name="GoalsRecItem" positionX="-63" positionY="54" width="128" height="118"/>
         <element name="HSRecItem" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="MyDayRecItem" positionX="-45" positionY="99" width="128" height="74"/>
         <element name="QuoteRecItem" positionX="-63" positionY="54" width="128" height="90"/>
         <element name="YearlyPlanRecItem" positionX="-54" positionY="81" width="128" height="135"/>
+        <element name="DayRoutineRecItem" positionX="-18" positionY="126" width="128" height="119"/>
     </elements>
 </model>

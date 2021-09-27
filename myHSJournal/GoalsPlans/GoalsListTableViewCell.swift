@@ -19,8 +19,8 @@ class GoalsListTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        checkBtn.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
-        checkBtn.setImage(UIImage(named:"Checkmark"), for: .selected)
+        checkBtn.setImage(UIImage(named:"checkempty"), for: .normal)
+        checkBtn.setImage(UIImage(named:"checkmark"), for: .selected)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

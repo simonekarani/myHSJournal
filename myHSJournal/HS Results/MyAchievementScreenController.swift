@@ -110,7 +110,6 @@ class MyAchievementScreenController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("** row = \(indexPath.row) section = \(indexPath.section) count=\(indexPath.count)")
         if (indexPath.section == 0 && indexPath.row == 0) {
             let cell: HSRecTitleTableViewCell = myAchievementTableView.dequeueReusableCell(withIdentifier: "HSRecTitleTableViewCell", for: indexPath) as! HSRecTitleTableViewCell
             cell.configureCell(name: "Academic")

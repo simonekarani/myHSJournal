@@ -14,12 +14,14 @@ class PlansMainScreenController: UIViewController {
     @IBOutlet weak var plansMainTableView: UITableView!
     
     let devCourses = [
-        ("Goal Based Plans"), ("Yearly Plans"),
-        ("Daily Todo")
+        ("Create Goals"), ("Goal Based Plans"),
+        ("Yearly Plans"), ("Daily Todo"),
+        ("Aspire To Inspire")
     ]
     let devCousesImages = [
-        UIImage(named: "goalPlan"), UIImage(named: "yearlyPlan"),
-        UIImage(named: "dailyPlan")
+        UIImage(named: "createGoals"), UIImage(named: "goalPlan"),
+        UIImage(named: "yearlyPlan"), UIImage(named: "dailyPlan"),
+        UIImage(named: "aspireInspire")
     ]
     
     override func viewDidLoad() {
@@ -46,11 +48,15 @@ class PlansMainScreenController: UIViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.row) {
         case 0:
-            performSegue(withIdentifier: "gotoGoalPlan", sender: self)
+            performSegue(withIdentifier: "gotoGoals", sender: self)
         case 1:
-            performSegue(withIdentifier: "gotoYearlyPlan", sender: self)
+            performSegue(withIdentifier: "gotoGoalPlan", sender: self)
         case 2:
+            performSegue(withIdentifier: "gotoYearlyPlan", sender: self)
+        case 3:
             performSegue(withIdentifier: "gotoDailyPlan", sender: self)
+        case 4:
+            performSegue(withIdentifier: "gotoAspire", sender: self)
         default:
             performSegue(withIdentifier: "gotoDailyPlan", sender: self)
             
@@ -65,7 +71,7 @@ extension PlansMainScreenController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return 100
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

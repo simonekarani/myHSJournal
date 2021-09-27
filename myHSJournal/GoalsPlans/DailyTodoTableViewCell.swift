@@ -17,11 +17,13 @@ class DailyTodoTableViewCell: UITableViewCell {
     var planRecItem:DailyPlanRecItem!
     var yearlyPlanRecItem:YearlyPlanRecItem!
     var goalPlanRecItem:GoalPlanRecItem!
+    var deedsRecItem:DeedsRecItem!
+    var routineRecItem:DayRoutineRecItem!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        todoBtn.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
-        todoBtn.setImage(UIImage(named:"Checkmark"), for: .selected)
+        todoBtn.setImage(UIImage(named:"checkempty"), for: .normal)
+        todoBtn.setImage(UIImage(named:"checkmark"), for: .selected)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -72,6 +74,30 @@ class DailyTodoTableViewCell: UITableViewCell {
         setupCellDetails()
     }
     
+    func configureCell(recItem: DeedsRecItem) {
+        planRecType = 7
+        todoTask.text = recItem.deedDetails!
+        todoBtn.isSelected = true
+        todoBtn.transform = .identity
+        deedsRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
+    func configureCell(recItem: DayRoutineRecItem) {
+        planRecType = 10
+        todoTask.text = recItem.routine!
+        if recItem.completed {
+            todoBtn.isSelected = true
+        } else {
+            todoBtn.isSelected = false
+        }
+        todoBtn.transform = .identity
+        routineRecItem = recItem
+        
+        setupCellDetails()
+    }
+    
     func setupCellDetails() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
@@ -84,8 +110,10 @@ class DailyTodoTableViewCell: UITableViewCell {
             planRecItem.completed = !sender.isSelected
         } else if planRecType == 2 {
             yearlyPlanRecItem.completed = !sender.isSelected
-        } else {
+        } else if planRecType == 3 {
             goalPlanRecItem.completed = !sender.isSelected
+        } else if planRecType == 10 {
+            routineRecItem.completed = !sender.isSelected
         }
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

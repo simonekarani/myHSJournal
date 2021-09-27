@@ -11,12 +11,12 @@ import UIKit
 
 class MainScreenController: UICollectionViewController {
     
-    let frontLabelArray = ["Self-Esteem", "School Goals", "Plan Your School",
+    let frontLabelArray = ["Self-Esteem", "Goals & Plans", "My Day",
                            "School Records", "School Report",  "Self-Help Resources"]
     let frontImageArray = [
         UIImage(named: "esteem"),
         UIImage(named: "goals"),
-        UIImage(named: "plan"),
+        UIImage(named: "myday"),
         UIImage(named: "records"),
         UIImage(named: "mainreport"),
         UIImage(named: "resource")
@@ -35,7 +35,6 @@ class MainScreenController: UICollectionViewController {
         //            [NSAttributedString.Key.foregroundColor: UIColor.red,
         //             NSAttributedString.Key.font: UIFont(name: "Verdana", size: 22)!]
         
-        print("frame=\(self.view.frame) , width=\(self.view.frame.width), height=\(self.view.frame.height)")
         
         self.navigationItem.setHidesBackButton(true,  animated:true)
         
@@ -65,11 +64,11 @@ class MainScreenController: UICollectionViewController {
             performSegue(withIdentifier: "gotoEsteem", sender: self)
             
         case 1:
-            performSegue(withIdentifier: "gotoGoals", sender: self)
-            
-        case 2:
             performSegue(withIdentifier: "gotoPlan", sender: self)
             
+        case 2:
+            performSegue(withIdentifier: "gotoMyDay", sender: self)
+
         case 3:
             performSegue(withIdentifier: "gotoRecords", sender: self)
             

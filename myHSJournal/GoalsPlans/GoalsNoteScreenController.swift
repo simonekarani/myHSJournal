@@ -52,7 +52,7 @@ class GoalsNoteScreenController: UIViewController {
         }
         if (goalsRecCount == 0 && recCreated == false) {
             let controllersInNavigationCount = self.navigationController?.viewControllers.count
-            self.navigationController?.popToViewController(self.navigationController?.viewControllers[controllersInNavigationCount!-2] as! MainScreenController, animated: true)
+            self.navigationController?.popToViewController(self.navigationController?.viewControllers[controllersInNavigationCount!-2] as! PlansMainScreenController, animated: true)
         }
     }
     
@@ -163,5 +163,13 @@ class GoalsNoteScreenController: UIViewController {
 
     func getCurrentMillis()->Int64{
         return  Int64(NSDate().timeIntervalSince1970 * 1000)
+    }
+}
+
+extension Date {
+   func getFormattedDate(format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: self)
     }
 }

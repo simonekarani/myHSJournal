@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DidIDoTableViewCell" rowHeight="75" id="Hk3-RW-dUk" customClass="DidIDoTableViewCell" customModule="happykids" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="430" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hk3-RW-dUk" id="1qB-dd-Je5">
+                <rect key="frame" x="0.0" y="0.0" width="430" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BlF-d1-fxh">
+                        <rect key="frame" x="20" y="22" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="EhR-Rz-usD"/>
+                            <constraint firstAttribute="width" constant="40" id="rTl-xS-fXM"/>
+                        </constraints>
+                        <connections>
+                            <action selector="checkBtnSelected:" destination="Hk3-RW-dUk" eventType="touchUpInside" id="2kK-QA-oJt"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="58F-Yo-rT5">
+                        <rect key="frame" x="75" y="7" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="BNS-1H-eSg"/>
+                            <constraint firstAttribute="width" constant="70" id="Q2h-OP-Lv6"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9X-AI-r2e">
+                        <rect key="frame" x="165" y="28.5" width="255" height="27.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="a9X-AI-r2e" firstAttribute="centerY" secondItem="1qB-dd-Je5" secondAttribute="centerY" id="21X-6I-C8n"/>
+                    <constraint firstItem="58F-Yo-rT5" firstAttribute="centerY" secondItem="1qB-dd-Je5" secondAttribute="centerY" id="BrC-3z-Hfn"/>
+                    <constraint firstItem="a9X-AI-r2e" firstAttribute="leading" secondItem="58F-Yo-rT5" secondAttribute="trailing" constant="20" id="IIs-xE-uO1"/>
+                    <constraint firstAttribute="trailing" secondItem="a9X-AI-r2e" secondAttribute="trailing" constant="10" id="NrA-P8-fpE"/>
+                    <constraint firstItem="BlF-d1-fxh" firstAttribute="leading" secondItem="1qB-dd-Je5" secondAttribute="leading" constant="20" id="S1y-KS-jKc"/>
+                    <constraint firstItem="BlF-d1-fxh" firstAttribute="centerY" secondItem="1qB-dd-Je5" secondAttribute="centerY" id="coV-CZ-eS9"/>
+                    <constraint firstItem="58F-Yo-rT5" firstAttribute="leading" secondItem="BlF-d1-fxh" secondAttribute="trailing" constant="15" id="vC2-sd-oHR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="fpy-ln-eup"/>
+            <connections>
+                <outlet property="checkBtn" destination="BlF-d1-fxh" id="75n-cS-lNd"/>
+                <outlet property="didImg" destination="58F-Yo-rT5" id="bca-lX-8CF"/>
+                <outlet property="didText" destination="a9X-AI-r2e" id="jgq-r6-3KN"/>
+            </connections>
+            <point key="canvasLocation" x="39.130434782608695" y="4.0178571428571423"/>
+        </tableViewCell>
+    </objects>
+</document>
